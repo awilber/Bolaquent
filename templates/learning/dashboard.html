@@ -3,40 +3,153 @@
 {% block title %}Dashboard - Bolaquent{% endblock %}
 
 {% block content %}
-<h2>📊 Learning Dashboard</h2>
+<!-- Age-Appropriate Header -->
+{% if user.tier_id <= 2 %}
+    <div class="playful-header">
+        <h2>🌟 {{ user.username }}'s Learning Adventure! 🌟</h2>
+        <div class="mascot">🦄</div>
+    </div>
+{% elif user.tier_id <= 4 %}
+    <h2>📊 {{ user.username }}'s Learning Dashboard</h2>
+{% else %}
+    <h2>📈 Learning Analytics Dashboard</h2>
+{% endif %}
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-    <div style="background: #f8fafc; padding: 20px; border-radius: 8px;">
-        <h3>👤 Your Profile</h3>
-        <p><strong>Name:</strong> {{ user.username }}</p>
-        <p><strong>Age:</strong> {{ user.age }} years old</p>
-        <p><strong>Learning Tier:</strong> <span class="tier-badge">{{ user.age_tier.name if user.age_tier else 'Unknown' }}</span></p>
-        {% if user.age_tier %}
-            <p><small>{{ user.age_tier.description }}</small></p>
+<!-- Profile and Progress Section -->
+<div class="dashboard-grid">
+    <div class="dashboard-card profile-card">
+        {% if user.tier_id <= 2 %}
+            <h3>🎭 About You</h3>
+            <div class="profile-avatar">
+                {% if user.age <= 3 %}🧸{% elif user.age <= 4 %}🐻{% else %}🦋{% endif %}
+            </div>
+        {% elif user.tier_id <= 4 %}
+            <h3>👤 Your Profile</h3>
+        {% else %}
+            <h3>📋 User Profile</h3>
         {% endif %}
+        
+        <div class="profile-info">
+            <p><strong>Name:</strong> {{ user.username }}</p>
+            <p><strong>Age:</strong> {{ user.age }} years old</p>
+            <p><strong>Learning Tier:</strong> 
+                <span class="tier-badge">
+                    {% if user.tier_id <= 2 %}🌈 {{ user.age_tier.name if user.age_tier else 'Little Learner' }}
+                    {% elif user.tier_id <= 4 %}⭐ {{ user.age_tier.name if user.age_tier else 'Student' }}
+                    {% else %}🎓 {{ user.age_tier.name if user.age_tier else 'Professional' }}
+                    {% endif %}
+                </span>
+            </p>
+            {% if user.age_tier %}
+                <p class="tier-description">{{ user.age_tier.description }}</p>
+            {% endif %}
+        </div>
     </div>
     
-    <div style="background: #f8fafc; padding: 20px; border-radius: 8px;">
-        <h3>📈 Progress Overview</h3>
-        <p><strong>Words Learned:</strong> {{ learned_words }} / {{ total_words }}</p>
-        <div class="progress-bar" style="margin: 10px 0;">
-            <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
+    <div class="dashboard-card progress-card">
+        {% if user.tier_id <= 2 %}
+            <h3>🏆 Your Amazing Progress!</h3>
+        {% elif user.tier_id <= 4 %}
+            <h3>📈 Progress Overview</h3>
+        {% else %}
+            <h3>📊 Learning Analytics</h3>
+        {% endif %}
+        
+        <div class="progress-stats">
+            {% if user.tier_id <= 2 %}
+                <div class="big-number">{{ learned_words }}</div>
+                <p>Words You Know!</p>
+                <div class="progress-celebration">
+                    {% for i in range(min(5, learned_words)) %}🌟{% endfor %}
+                </div>
+            {% else %}
+                <p><strong>Words Mastered:</strong> {{ learned_words }} / {{ total_words }}</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
+                </div>
+                <p class="progress-text">{{ progress_percentage }}% Complete</p>
+            {% endif %}
         </div>
-        <p>{{ progress_percentage }}% Complete</p>
+        
+        {% if user.tier_id >= 5 %}
+            <div class="detailed-stats">
+                <!-- Professional tier gets detailed analytics -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">{{ progress_percentage }}%</div>
+                        <div class="stat-label">Completion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ learned_words }}</div>
+                        <div class="stat-label">Words Mastered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ total_words - learned_words }}</div>
+                        <div class="stat-label">Remaining</div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 
-<div style="margin: 30px 0;">
-    <h3>🎯 Quick Actions</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-        <a href="{{ url_for('learning.practice') }}" class="btn" style="padding: 20px; text-align: center; text-decoration: none; display: block;">
-            🎯 Start Practice Session
+<!-- Quick Actions Section -->
+<div class="quick-actions">
+    {% if user.tier_id <= 2 %}
+        <h3>🎪 Let's Play and Learn!</h3>
+    {% elif user.tier_id <= 4 %}
+        <h3>🎯 Quick Actions</h3>
+    {% else %}
+        <h3>📋 Learning Activities</h3>
+    {% endif %}
+    
+    <div class="action-grid">
+        <a href="{{ url_for('learning.practice') }}" class="action-btn practice-btn">
+            {% if user.tier_id <= 2 %}
+                <div class="action-icon">🎮</div>
+                <div class="action-title">Play & Learn!</div>
+                <div class="action-desc">Fun games with words</div>
+            {% elif user.tier_id <= 4 %}
+                <div class="action-icon">🎯</div>
+                <div class="action-title">Practice Session</div>
+                <div class="action-desc">Interactive learning</div>
+            {% else %}
+                <div class="action-icon">📝</div>
+                <div class="action-title">Practice Session</div>
+                <div class="action-desc">Focused vocabulary training</div>
+            {% endif %}
         </a>
-        <a href="{{ url_for('learning.vocabulary') }}" class="btn" style="padding: 20px; text-align: center; text-decoration: none; display: block; background: #10b981;">
-            📚 Browse Vocabulary
+        
+        <a href="{{ url_for('learning.vocabulary') }}" class="action-btn vocabulary-btn">
+            {% if user.tier_id <= 2 %}
+                <div class="action-icon">📖</div>
+                <div class="action-title">Word Book</div>
+                <div class="action-desc">See all your words</div>
+            {% elif user.tier_id <= 4 %}
+                <div class="action-icon">📚</div>
+                <div class="action-title">Vocabulary</div>
+                <div class="action-desc">Browse and study words</div>
+            {% else %}
+                <div class="action-icon">📊</div>
+                <div class="action-title">Vocabulary Bank</div>
+                <div class="action-desc">Comprehensive word database</div>
+            {% endif %}
         </a>
-        <a href="{{ url_for('learning.achievements') }}" class="btn" style="padding: 20px; text-align: center; text-decoration: none; display: block; background: #f59e0b;">
-            🏆 View Achievements
+        
+        <a href="{{ url_for('learning.achievements') }}" class="action-btn achievements-btn">
+            {% if user.tier_id <= 2 %}
+                <div class="action-icon">🏆</div>
+                <div class="action-title">My Prizes!</div>
+                <div class="action-desc">See what you've won</div>
+            {% elif user.tier_id <= 4 %}
+                <div class="action-icon">🏅</div>
+                <div class="action-title">Achievements</div>
+                <div class="action-desc">Unlock badges and rewards</div>
+            {% else %}
+                <div class="action-icon">📈</div>
+                <div class="action-title">Performance</div>
+                <div class="action-desc">Detailed progress analytics</div>
+            {% endif %}
         </a>
     </div>
 </div>

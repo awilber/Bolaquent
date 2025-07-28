@@ -1,0 +1,429 @@
+/* Bolaquent Age-Appropriate Theme System */
+
+/* Base Theme Variables */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #64748b;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --background-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --border-radius: 8px;
+  --font-size-base: 16px;
+  --spacing-unit: 8px;
+}
+
+/* =================
+   TIER 1-2: PLAYFUL & COLORFUL (Ages 2-6)
+   ================= */
+.theme-playful {
+  --primary-color: #ff6b6b;
+  --secondary-color: #4ecdc4;
+  --success-color: #51cf66;
+  --warning-color: #ffd43b;
+  --danger-color: #ff8787;
+  --background-color: #fff5f5;
+  --surface-color: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --border-color: #fed7d7;
+  --border-radius: 16px;
+  --font-size-base: 20px;
+  --spacing-unit: 12px;
+}
+
+.theme-playful body {
+  font-family: 'Comic Sans MS', 'Marker Felt', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  min-height: 100vh;
+}
+
+.theme-playful .container {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.2);
+  border: 4px solid #ff6b6b;
+}
+
+.theme-playful .nav {
+  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+  border-radius: 20px 20px 0 0;
+  padding: 24px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.theme-playful .btn {
+  background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(81, 207, 102, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theme-playful .btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(81, 207, 102, 0.4);
+  background: linear-gradient(135deg, #40c057 0%, #37b24d 100%);
+}
+
+.theme-playful .tier-badge {
+  background: linear-gradient(135deg, #ffd43b 0%, #fab005 100%);
+  color: #1a1a1a;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 212, 59, 0.3);
+}
+
+.theme-playful .progress-bar {
+  background: #e9ecef;
+  height: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #ff6b6b;
+}
+
+.theme-playful .progress-fill {
+  background: linear-gradient(90deg, #51cf66 0%, #40c057 100%);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.theme-playful .progress-fill::after {
+  content: '🌟';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+/* Playful animations */
+.theme-playful .celebration {
+  animation: bounce 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-10px); }
+}
+
+/* =================
+   TIER 3-4: EDUCATIONAL & ENGAGING (Ages 6-14)
+   ================= */
+.theme-educational {
+  --primary-color: #3b82f6;
+  --secondary-color: #6366f1;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --background-color: #f1f5f9;
+  --surface-color: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #cbd5e1;
+  --border-radius: 12px;
+  --font-size-base: 16px;
+  --spacing-unit: 8px;
+}
+
+.theme-educational body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.theme-educational .container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
+  border: 2px solid #e2e8f0;
+}
+
+.theme-educational .nav {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  border-radius: 14px 14px 0 0;
+  padding: 20px;
+  color: white;
+}
+
+.theme-educational .btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.theme-educational .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.theme-educational .tier-badge {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+}
+
+.theme-educational .progress-bar {
+  background: #e2e8f0;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.theme-educational .progress-fill {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  height: 100%;
+  border-radius: 9px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.theme-educational .badge-system {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.theme-educational .achievement-badge {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+}
+
+/* =================
+   TIER 5-6: PROFESSIONAL & SOPHISTICATED (Ages 15+)
+   ================= */
+.theme-professional {
+  --primary-color: #1e40af;
+  --secondary-color: #64748b;
+  --success-color: #059669;
+  --warning-color: #d97706;
+  --danger-color: #dc2626;
+  --background-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  --border-radius: 8px;
+  --font-size-base: 15px;
+  --spacing-unit: 8px;
+}
+
+.theme-professional body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+.theme-professional .container {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.theme-professional .nav {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  border-radius: 11px 11px 0 0;
+  padding: 16px 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.theme-professional .btn {
+  background: #1e40af;
+  border: 1px solid #1e40af;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.theme-professional .btn:hover {
+  background: #1e3a8a;
+  border-color: #1e3a8a;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+}
+
+.theme-professional .btn.secondary {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: var(--text-primary);
+}
+
+.theme-professional .btn.secondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.theme-professional .tier-badge {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+}
+
+.theme-professional .progress-bar {
+  background: #f1f5f9;
+  height: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.theme-professional .progress-fill {
+  background: linear-gradient(90deg, #059669 0%, #047857 100%);
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.2s ease;
+}
+
+.theme-professional .dashboard-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 12px 0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.theme-professional .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.theme-professional .stat-item {
+  text-align: center;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.theme-professional .stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 4px;
+}
+
+.theme-professional .stat-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* =================
+   RESPONSIVE DESIGN
+   ================= */
+@media (max-width: 768px) {
+  .theme-playful .btn {
+    padding: 20px 28px;
+    font-size: 20px;
+    border-radius: 24px;
+  }
+  
+  .theme-playful .container {
+    margin: 8px;
+    border-radius: 20px;
+  }
+  
+  .theme-educational .stats-grid,
+  .theme-professional .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* =================
+   ACCESSIBILITY ENHANCEMENTS
+   ================= */
+.theme-playful .btn:focus,
+.theme-educational .btn:focus,
+.theme-professional .btn:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+.theme-playful *:focus,
+.theme-educational *:focus,
+.theme-professional *:focus {
+  outline-color: var(--primary-color);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .theme-playful,
+  .theme-educational,
+  .theme-professional {
+    --border-color: #000000;
+  }
+  
+  .theme-playful .btn,
+  .theme-educational .btn,
+  .theme-professional .btn {
+    border: 2px solid #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-playful *,
+  .theme-educational *,
+  .theme-professional * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

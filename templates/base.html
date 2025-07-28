@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{% if session.tier_id %}{% if session.tier_id <= 2 %}theme-playful{% elif session.tier_id <= 4 %}theme-educational{% else %}theme-professional{% endif %}{% else %}theme-educational{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Bolaquent - Vocabulary Learning{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
         .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
