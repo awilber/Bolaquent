@@ -14,26 +14,54 @@ Bolaquent
 <span style="color: #f0f0f0">Date/Time:</span>
 [Current date and time]
 <span style="color: #f0f0f0">Launch:</span>
-[To be determined based on project setup]
+python app.py
 ---
 ```
 
-## Project Status
+## Project Overview
 
-This is currently an empty project directory. The project structure, build commands, test commands, and architecture will be documented here as the project develops.
+Bolaquent is a multi-tiered vocabulary and grammar learning app designed for learners from early verbal stages to highly educated adults. The app features age-appropriate gamification and adaptive difficulty scaling.
+
+**Target Audience**: English language learners (designed for future multi-language support)
+**Age Tiers**: Based on pedagogical best practices for cognitive development
+**Platform**: Cross-platform Flask web app with responsive design
+
+## Infrastructure
+
+**Repository**: https://github.com/awilber/Bolaquent
+**AWS Instance**: i-0332d1b2863b08d95  
+**Public IP**: 54.89.117.172
+**Security Group**: sg-027bbdda70b9ae03b
 
 ## Development Setup
 
-*To be updated when project structure is established*
+```bash
+# Clone repository
+git clone https://github.com/awilber/Bolaquent.git
+cd Bolaquent
 
-## Architecture
+# Install dependencies (when requirements.txt exists)
+pip install -r requirements.txt
 
-*To be documented as the project architecture is defined*
+# Run locally
+python app.py
+```
 
-## Common Commands
+## Deployment
 
-*To be populated with build, test, and development commands as they are implemented*
+```bash
+# Deploy to AWS
+./deploy.sh
 
-## Important Notes
+# SSH to instance
+ssh -i ~/.ssh/customer-success-key-east.pem ec2-user@54.89.117.172
+```
 
-This project is in its initial setup phase. Update this CLAUDE.md file as the project structure and requirements become clear.
+## Architecture Pattern
+
+Following the established Flask blueprint pattern from other projects:
+- Flask app with modular blueprints
+- SQLAlchemy for database management
+- Blueprint-based routing for different learning modules
+- Cross-platform responsive design
+- Age-tier based content delivery system

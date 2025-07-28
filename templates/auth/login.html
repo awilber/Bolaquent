@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Bolaquent{% endblock %}
+
+{% block content %}
+<h2>🔐 Login to Bolaquent</h2>
+
+<form method="POST" style="max-width: 400px; margin: 20px 0;">
+    <div style="margin-bottom: 15px;">
+        <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
+        <input type="text" id="username" name="username" required 
+               style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;">
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+        <label for="age" style="display: block; margin-bottom: 5px;">Age:</label>
+        <input type="number" id="age" name="age" min="2" max="99" required
+               style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px;">
+        <small style="color: #64748b;">Your age determines your learning tier</small>
+    </div>
+    
+    <button type="submit" class="btn" style="width: 100%; font-size: 1.1em;">
+        🚀 Start Learning
+    </button>
+</form>
+
+<p style="margin-top: 20px;">
+    Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>
+</p>
+{% endblock %}
