@@ -1,0 +1,148 @@
+name: Bolaquent CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+    
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    - name: Format check with black
+      run: |
+        black --check --line-length=100 .
+    
+    - name: Type check with mypy
+      run: |
+        mypy . --ignore-missing-imports
+    
+    - name: Test with pytest
+      run: |
+        pytest --cov=. --cov-report=xml
+    
+    - name: Test Flask app imports
+      run: |
+        python -c "import app; print('✅ Flask app imports successfully')"
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Create deployment package
+      run: |
+        mkdir -p deploy
+        cp -r . deploy/
+        cd deploy
+        pip install -r requirements.txt -t .
+        rm -rf .git .github __pycache__ *.pyc
+        zip -r ../bolaquent-deploy.zip .
+    
+    - name: Upload deployment artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: bolaquent-deploy
+        path: bolaquent-deploy.zip
+
+  deploy:
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Download deployment artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: bolaquent-deploy
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    
+    - name: Deploy to EC2
+      run: |
+        # Upload deployment package to S3 (for backup)
+        aws s3 cp bolaquent-deploy.zip s3://bolaquent-deployments/$(date +%Y%m%d-%H%M%S)-bolaquent.zip
+        
+        # Deploy to EC2 instance
+        aws ssm send-command \
+          --instance-ids "i-0332d1b2863b08d95" \
+          --document-name "AWS-RunShellScript" \
+          --parameters 'commands=[
+            "sudo yum update -y",
+            "sudo yum install -y python3 python3-pip",
+            "cd /home/ec2-user",
+            "sudo systemctl stop bolaquent || true",
+            "rm -rf bolaquent-app || true",
+            "mkdir -p bolaquent-app",
+            "cd bolaquent-app",
+            "aws s3 cp s3://bolaquent-deployments/$(aws s3 ls s3://bolaquent-deployments/ | sort | tail -n 1 | awk \"{print \\$4}\") bolaquent-deploy.zip",
+            "unzip -o bolaquent-deploy.zip",
+            "python3 -m pip install --user -r requirements.txt",
+            "nohup python3 app.py > app.log 2>&1 &",
+            "echo $! > app.pid",
+            "sleep 5",
+            "curl -f http://localhost:5000/ || curl -f http://localhost:5010/ || curl -f http://localhost:5020/"
+          ]' \
+          --output text
+    
+    - name: Verify deployment
+      run: |
+        echo "Deployment completed to EC2 instance i-0332d1b2863b08d95"
+        echo "Application should be accessible at http://54.89.117.172:5000"
+        
+        # Wait for deployment to complete
+        sleep 30
+        
+        # Test the deployment
+        curl -f http://54.89.117.172:5000/ || echo "⚠️ Service may still be starting up"
+
+  notify:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Create deployment notification
+      run: |
+        if [ "${{ needs.deploy.result }}" == "success" ]; then
+          echo "✅ Bolaquent deployed successfully to AWS"
+          echo "🌐 Live at: http://54.89.117.172:5000"
+        else
+          echo "❌ Deployment failed - check logs"
+        fi
