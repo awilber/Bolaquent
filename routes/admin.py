@@ -7,16 +7,24 @@ bp = Blueprint("admin", __name__, url_prefix="/admin")
 @bp.route("/")
 def dashboard():
     # Simple admin dashboard
+    total_users = User.query.count()
+    
     stats = {
-        "total_users": User.query.count(),
+        "total_users": total_users,
         "total_words": VocabularyWord.query.count(),
-        "total_rules": GrammarRule.query.count(),
-        "tier_distribution": {},
+        "active_sessions": 1,  # Placeholder
+        "total_practice_sessions": 10,  # Placeholder
+        "tier_distribution": []
     }
 
     # Get user distribution by tier
     for tier in AgeTier.query.all():
-        stats["tier_distribution"][tier.name] = User.query.filter_by(tier_id=tier.id).count()
+        user_count = User.query.filter_by(tier_id=tier.id).count()
+        stats["tier_distribution"].append({
+            "name": tier.name,
+            "age_range": f"{tier.min_age}-{tier.max_age}",
+            "user_count": user_count
+        })
 
     return render_template("admin/dashboard.html", stats=stats)
 

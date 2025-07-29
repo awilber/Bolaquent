@@ -132,17 +132,46 @@ def achievements():
 
     user = User.query.get(session["user_id"])
 
-    # Calculate achievements
+    # Calculate achievements data
     total_mastered = UserProgress.query.filter(
         UserProgress.user_id == user.id, UserProgress.mastery_level >= 80
     ).count()
 
     practice_streak = 1  # Placeholder - would need more complex logic
 
+    # Mock achievements data structure that matches the template
     achievements = {
-        "words_mastered": total_mastered,
-        "practice_streak": practice_streak,
-        "tier_name": user.age_tier.name if user.age_tier else "Unknown",
+        "earned": [],  # No earned achievements yet
+        "available": [
+            {
+                "icon": "🏆", 
+                "name": "First Achievement" if user.tier_id > 2 else "First Winner",
+                "description": "Earn your first achievement by mastering 5 vocabulary words" if user.tier_id > 2 else "Win your first prize by learning 5 words!",
+                "points": 10,
+                "progress": min(100, (total_mastered / 5) * 100)
+            },
+            {
+                "icon": "🔥",
+                "name": "Learning Streak" if user.tier_id > 2 else "Hot Streak", 
+                "description": "Maintain a 7-day learning streak" if user.tier_id > 2 else "Practice for 3 days in a row!",
+                "points": 25,
+                "progress": min(100, (practice_streak / 7) * 100)
+            },
+            {
+                "icon": "⭐",
+                "name": "Vocabulary Master" if user.tier_id > 2 else "Super Star",
+                "description": "Master 50 vocabulary words in your tier" if user.tier_id > 2 else "Learn 25 words to become a super star!",
+                "points": 50,
+                "progress": min(100, (total_mastered / (50 if user.tier_id > 2 else 25)) * 100)
+            }
+        ]
     }
+
+    # Add user stats for template
+    user.total_points = 0  # Placeholder
+    user.words_learned = total_mastered
+    user.total_words = VocabularyWord.query.filter_by(tier_id=user.tier_id).count()
+    user.practice_sessions = 1  # Placeholder
+    user.streak_days = practice_streak
 
     return render_template("learning/achievements.html", user=user, achievements=achievements)
