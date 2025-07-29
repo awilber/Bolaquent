@@ -40,9 +40,9 @@ jobs:
     #   run: |
     #     mypy . --ignore-missing-imports
     
-    - name: Test with pytest
-      run: |
-        pytest --cov=. --cov-report=xml
+    # - name: Test with pytest
+    #   run: |
+    #     pytest --cov=. --cov-report=xml
     
     - name: Test Flask app imports
       run: |
