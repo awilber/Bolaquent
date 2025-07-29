@@ -14,7 +14,7 @@ Bolaquent
 <span style="color: #f0f0f0">Date/Time:</span>
 [Current date and time]
 <span style="color: #f0f0f0">Launch:</span>
-python app.py
+cd "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent" && source venv/bin/activate && python app.py
 ---
 ```
 
@@ -125,12 +125,13 @@ The application auto-creates tables and sample data on first run. The `init_db()
 - Sample vocabulary words distributed across tiers
 - Proper tier relationships and constraints
 
-### Port Management
-The application implements intelligent port scanning:
-- Default port: 5000
-- Scans for available ports if default is occupied
-- Increments by 10 until available port found
-- Environment variable `PORT` overrides scanning
+### Port Management Protocol
+The application MUST use the centralized port management system:
+- Register with port-manager: `../utils/port-manager`
+- Kill only Bolaquent processes: `ps aux | grep -E "(app.py|Bolaquent)" | grep -v grep | awk '{print $2}' | xargs kill -9`
+- Use allocated port: Check existing allocation with `node index.js --app-name "Bolaquent" --check-existing`
+- Start with allocated port: `PORT=ALLOCATED_PORT python app.py`
+- Register PID after startup: `node index.js --app-name "Bolaquent" --register-ports PORT --pid $PID`
 
 ## Infrastructure
 
@@ -140,6 +141,40 @@ The application implements intelligent port scanning:
 **Security Group**: sg-027bbdda70b9ae03b
 **Local Development**: http://localhost:5000 (or next available port)
 **Production**: http://54.89.117.172:5000
+
+## Comprehensive QA Protocol
+
+### Mandatory Testing Before Completion
+Before marking any task as complete, run comprehensive testing:
+```bash
+# 1. Service Verification
+ps aux | grep app.py | grep -v grep  # Verify process running
+curl -I http://localhost:PORT/        # Verify HTTP response
+
+# 2. Authentication Flow Testing
+curl -X POST -d "username=testuser11&age=11" -c cookies.txt http://localhost:PORT/auth/login
+
+# 3. All Page Verification
+curl -b cookies.txt -s http://localhost:PORT/learning/dashboard | grep -E "(<title>|error)" | head -1
+curl -b cookies.txt -s http://localhost:PORT/learning/vocabulary | grep -E "(<title>|error)" | head -1
+curl -b cookies.txt -s http://localhost:PORT/learning/practice | grep -E "(<title>|error)" | head -1
+curl -b cookies.txt -s http://localhost:PORT/learning/achievements | grep -E "(<title>|error)" | head -1
+curl -b cookies.txt -s http://localhost:PORT/admin/ | grep -E "(<title>|error)" | head -1
+```
+
+### QA Completion Criteria
+✅ All 5 core pages return proper HTML titles (not errors)
+✅ Authentication flow works correctly
+✅ Service responds to HTTP requests
+✅ No Python exceptions in terminal output
+✅ Database queries execute without errors
+
+### AWS Deployment Verification
+After any deployment claims:
+```bash
+curl -I http://54.89.117.172/ 2>&1 | head -5
+# Must show successful connection, not "Connection refused"
+```
 
 ## Development Workflow
 
