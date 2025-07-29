@@ -1,0 +1,530 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is available
+Found available port: 5010
+Starting Bolaquent on port 5010
+Multi-tiered vocabulary learning app accessible at: http://localhost:5010/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5010
+ * Running on http://192.168.1.16:5010
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 802-535-929
+127.0.0.1 - - [28/Jul/2025 19:42:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:42:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2025 19:43:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:52] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2025 19:43:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:43:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:44:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:45:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:46:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:47:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:48:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:42] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+127.0.0.1 - - [28/Jul/2025 19:49:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:51] "[32mGET /learning/practice HTTP/1.1[0m" 302 -
+127.0.0.1 - - [28/Jul/2025 19:49:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:49:59] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+127.0.0.1 - - [28/Jul/2025 19:49:59] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2025 19:49:59] "[35m[1mGET /learning/practice HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/learning.py", line 66, in practice
+    return render_template("learning/practice.html", words=practice_words, user=user)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: learning/practice.html
+127.0.0.1 - - [28/Jul/2025 19:50:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:50:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:34] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+127.0.0.1 - - [28/Jul/2025 19:51:34] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2025 19:51:34] "[35m[1mGET /learning/practice HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/learning.py", line 66, in practice
+    return render_template("learning/practice.html", words=practice_words, user=user)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/templates/learning/practice.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/templates/base.html", line 50, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/templates/learning/practice.html", line 306, in block 'content'
+    const practiceWords = {{ words|tojson if words else "[]"|safe }};
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/filters.py", line 1721, in do_tojson
+    return htmlsafe_json_dumps(value, dumps=dumps, **kwargs)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/jinja2/utils.py", line 669, in htmlsafe_json_dumps
+    dumps(obj, **kwargs)
+    ~~~~~^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/json/provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ~~~~~~^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/encoder.py", line 261, in iterencode
+    return _iterencode(o, 0)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/json/provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type VocabularyWord is not JSON serializable
+127.0.0.1 - - [28/Jul/2025 19:51:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/learning.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 802-535-929
+127.0.0.1 - - [28/Jul/2025 19:51:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:51:57] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+127.0.0.1 - - [28/Jul/2025 19:51:57] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2025 19:51:57] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2025 19:51:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:52:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:54] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:56] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:53:58] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:00] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:02] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:04] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:06] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:08] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:10] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:12] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:14] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:16] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:18] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:20] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:22] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:24] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:26] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:28] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:30] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:32] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:34] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:36] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:38] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:40] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:42] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:44] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:46] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:48] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:50] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+127.0.0.1 - - [28/Jul/2025 19:54:52] "[33mGET /directories/api/scan-progress/1 HTTP/1.1[0m" 404 -
+/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-a1vz474y'}
+  warnings.warn(
+/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-d_86eg50'}
+  warnings.warn(

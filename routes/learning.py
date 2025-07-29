@@ -50,7 +50,7 @@ def practice():
     user = User.query.get(session["user_id"])
 
     # Get words that need practice (low mastery or not practiced recently)
-    practice_words = (
+    practice_words_query = (
         db.session.query(VocabularyWord)
         .outerjoin(
             UserProgress,
@@ -59,9 +59,20 @@ def practice():
         )
         .filter(VocabularyWord.tier_id == user.tier_id)
         .filter(db.or_(UserProgress.mastery_level < 70, UserProgress.mastery_level.is_(None)))
-        .limit(user.age_tier.words_per_session)
+        .limit(10)  # Simplified limit instead of using age_tier.words_per_session
         .all()
     )
+
+    # Convert to dictionaries for JSON serialization
+    practice_words = [
+        {
+            "id": word.id,
+            "word": word.word,
+            "definition": word.definition,
+            "difficulty_level": word.difficulty_level
+        }
+        for word in practice_words_query
+    ]
 
     return render_template("learning/practice.html", words=practice_words, user=user)
 
