@@ -63,7 +63,7 @@
                     {% if user.tier_id <= 2 %}Practice Time 🎮{% else %}Practice Sessions{% endif %}
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill practice" style="width: {{ min(user.practice_sessions / 50 * 100, 100) if user.practice_sessions else 0 }}%;"></div>
+                    <div class="progress-fill practice" style="width: {{ user.practice_progress }}%;"></div>
                 </div>
                 <div class="progress-text">{{ user.practice_sessions if user.practice_sessions else 0 }} sessions</div>
             </div>
@@ -73,7 +73,7 @@
                     {% if user.tier_id <= 2 %}Streak Days 🔥{% else %}Learning Streak{% endif %}
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill streak" style="width: {{ min(user.streak_days / 30 * 100, 100) if user.streak_days else 0 }}%;"></div>
+                    <div class="progress-fill streak" style="width: {{ user.streak_progress }}%;"></div>
                 </div>
                 <div class="progress-text">{{ user.streak_days if user.streak_days else 0 }} days</div>
             </div>

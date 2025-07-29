@@ -34,7 +34,7 @@
     <div class="tier-distribution">
         <h3>👥 User Distribution by Tier</h3>
         <div class="tier-stats">
-            {% for tier in stats.tier_distribution if stats.tier_distribution else [] %}
+            {% for tier in (stats.tier_distribution if stats.tier_distribution else []) %}
                 <div class="tier-bar">
                     <div class="tier-label">{{ tier.name }} ({{ tier.age_range }})</div>
                     <div class="tier-progress">

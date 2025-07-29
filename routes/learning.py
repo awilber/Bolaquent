@@ -37,7 +37,20 @@ def vocabulary():
         return redirect(url_for("auth.login"))
 
     user = User.query.get(session["user_id"])
-    tier_words = VocabularyWord.query.filter_by(tier_id=user.tier_id).limit(20).all()
+    tier_words_query = VocabularyWord.query.filter_by(tier_id=user.tier_id).limit(20).all()
+    
+    # Convert to dictionaries for JSON serialization in template
+    tier_words = [
+        {
+            "id": word.id,
+            "word": word.word,
+            "definition": word.definition,
+            "part_of_speech": word.part_of_speech,
+            "category": word.category,
+            "difficulty_level": word.difficulty_level
+        }
+        for word in tier_words_query
+    ]
 
     return render_template("learning/vocabulary.html", words=tier_words, user=user)
 
@@ -173,5 +186,9 @@ def achievements():
     user.total_words = VocabularyWord.query.filter_by(tier_id=user.tier_id).count()
     user.practice_sessions = 1  # Placeholder
     user.streak_days = practice_streak
+    
+    # Calculate progress percentages for template (avoiding min() function in template)
+    user.practice_progress = min(user.practice_sessions / 50 * 100, 100) if user.practice_sessions else 0
+    user.streak_progress = min(user.streak_days / 30 * 100, 100) if user.streak_days else 0
 
     return render_template("learning/achievements.html", user=user, achievements=achievements)
