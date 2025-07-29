@@ -38,7 +38,7 @@ def vocabulary():
 
     user = User.query.get(session["user_id"])
     tier_words_query = VocabularyWord.query.filter_by(tier_id=user.tier_id).limit(20).all()
-    
+
     # Convert to dictionaries for JSON serialization in template
     tier_words = [
         {
@@ -47,7 +47,7 @@ def vocabulary():
             "definition": word.definition,
             "part_of_speech": word.part_of_speech,
             "category": word.category,
-            "difficulty_level": word.difficulty_level
+            "difficulty_level": word.difficulty_level,
         }
         for word in tier_words_query
     ]
@@ -82,7 +82,7 @@ def practice():
             "id": word.id,
             "word": word.word,
             "definition": word.definition,
-            "difficulty_level": word.difficulty_level
+            "difficulty_level": word.difficulty_level,
         }
         for word in practice_words_query
     ]
@@ -157,27 +157,39 @@ def achievements():
         "earned": [],  # No earned achievements yet
         "available": [
             {
-                "icon": "🏆", 
+                "icon": "🏆",
                 "name": "First Achievement" if user.tier_id > 2 else "First Winner",
-                "description": "Earn your first achievement by mastering 5 vocabulary words" if user.tier_id > 2 else "Win your first prize by learning 5 words!",
+                "description": (
+                    "Earn your first achievement by mastering 5 vocabulary words"
+                    if user.tier_id > 2
+                    else "Win your first prize by learning 5 words!"
+                ),
                 "points": 10,
-                "progress": min(100, (total_mastered / 5) * 100)
+                "progress": min(100, (total_mastered / 5) * 100),
             },
             {
                 "icon": "🔥",
-                "name": "Learning Streak" if user.tier_id > 2 else "Hot Streak", 
-                "description": "Maintain a 7-day learning streak" if user.tier_id > 2 else "Practice for 3 days in a row!",
+                "name": "Learning Streak" if user.tier_id > 2 else "Hot Streak",
+                "description": (
+                    "Maintain a 7-day learning streak"
+                    if user.tier_id > 2
+                    else "Practice for 3 days in a row!"
+                ),
                 "points": 25,
-                "progress": min(100, (practice_streak / 7) * 100)
+                "progress": min(100, (practice_streak / 7) * 100),
             },
             {
                 "icon": "⭐",
                 "name": "Vocabulary Master" if user.tier_id > 2 else "Super Star",
-                "description": "Master 50 vocabulary words in your tier" if user.tier_id > 2 else "Learn 25 words to become a super star!",
+                "description": (
+                    "Master 50 vocabulary words in your tier"
+                    if user.tier_id > 2
+                    else "Learn 25 words to become a super star!"
+                ),
                 "points": 50,
-                "progress": min(100, (total_mastered / (50 if user.tier_id > 2 else 25)) * 100)
-            }
-        ]
+                "progress": min(100, (total_mastered / (50 if user.tier_id > 2 else 25)) * 100),
+            },
+        ],
     }
 
     # Add user stats for template
@@ -186,9 +198,11 @@ def achievements():
     user.total_words = VocabularyWord.query.filter_by(tier_id=user.tier_id).count()
     user.practice_sessions = 1  # Placeholder
     user.streak_days = practice_streak
-    
+
     # Calculate progress percentages for template (avoiding min() function in template)
-    user.practice_progress = min(user.practice_sessions / 50 * 100, 100) if user.practice_sessions else 0
+    user.practice_progress = (
+        min(user.practice_sessions / 50 * 100, 100) if user.practice_sessions else 0
+    )
     user.streak_progress = min(user.streak_days / 30 * 100, 100) if user.streak_days else 0
 
     return render_template("learning/achievements.html", user=user, achievements=achievements)
