@@ -1,0 +1,36 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+Using allocated port: 5030
+Starting Bolaquent on port 5030
+Multi-tiered vocabulary learning app accessible at: http://localhost:5030/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5030
+ * Running on http://192.168.1.16:5030
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [29/Jul/2025 23:35:20] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:20] "[32mGET /auth/demo?tier=1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 23:35:20] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 23:35:20] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:20] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:20] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:21] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:26] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 23:35:26] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 23:35:26] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:26] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:30] "[32mGET /auth/demo?tier=6 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 23:35:30] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 23:35:30] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:30] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 23:35:36] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-7ewqpckx'}
+  warnings.warn(

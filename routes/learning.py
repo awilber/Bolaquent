@@ -36,8 +36,15 @@ def vocabulary():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    user = User.query.get(session["user_id"])
-    tier_words_query = VocabularyWord.query.filter_by(tier_id=user.tier_id).limit(20).all()
+    # Handle demo users
+    if session.get("is_demo"):
+        tier_id = session.get("tier_id", 3)  # Default to Elementary
+        tier_words_query = VocabularyWord.query.filter_by(tier_id=tier_id).limit(20).all()
+    else:
+        user = User.query.get(session["user_id"])
+        if not user:
+            return redirect(url_for("auth.login"))
+        tier_words_query = VocabularyWord.query.filter_by(tier_id=user.tier_id).limit(20).all()
 
     # Convert to dictionaries for JSON serialization in template
     tier_words = [
@@ -52,6 +59,14 @@ def vocabulary():
         for word in tier_words_query
     ]
 
+    # Create mock user object for demo users
+    if session.get("is_demo"):
+        mock_user = type('obj', (object,), {
+            'username': session.get("username", "Demo User"),
+            'tier_id': session.get("tier_id", 3)
+        })
+        user = mock_user
+    
     return render_template("learning/vocabulary.html", words=tier_words, user=user)
 
 
@@ -60,21 +75,29 @@ def practice():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    user = User.query.get(session["user_id"])
-
-    # Get words that need practice (low mastery or not practiced recently)
-    practice_words_query = (
-        db.session.query(VocabularyWord)
-        .outerjoin(
-            UserProgress,
-            (UserProgress.vocabulary_word_id == VocabularyWord.id)
-            & (UserProgress.user_id == user.id),
+    # Handle demo users
+    if session.get("is_demo"):
+        tier_id = session.get("tier_id", 3)  # Default to Elementary
+        # For demo users, just get vocabulary words for their tier
+        practice_words_query = VocabularyWord.query.filter_by(tier_id=tier_id).limit(10).all()
+    else:
+        user = User.query.get(session["user_id"])
+        if not user:
+            return redirect(url_for("auth.login"))
+        
+        # Get words that need practice (low mastery or not practiced recently)
+        practice_words_query = (
+            db.session.query(VocabularyWord)
+            .outerjoin(
+                UserProgress,
+                (UserProgress.vocabulary_word_id == VocabularyWord.id)
+                & (UserProgress.user_id == user.id),
+            )
+            .filter(VocabularyWord.tier_id == user.tier_id)
+            .filter(db.or_(UserProgress.mastery_level < 70, UserProgress.mastery_level.is_(None)))
+            .limit(10)  # Simplified limit instead of using age_tier.words_per_session
+            .all()
         )
-        .filter(VocabularyWord.tier_id == user.tier_id)
-        .filter(db.or_(UserProgress.mastery_level < 70, UserProgress.mastery_level.is_(None)))
-        .limit(10)  # Simplified limit instead of using age_tier.words_per_session
-        .all()
-    )
 
     # Convert to dictionaries for JSON serialization
     practice_words = [
@@ -82,11 +105,19 @@ def practice():
             "id": word.id,
             "word": word.word,
             "definition": word.definition,
-            "difficulty_level": word.difficulty_level,
+            "difficulty_level": getattr(word, 'difficulty_level', 1),
         }
         for word in practice_words_query
     ]
 
+    # Create mock user object for demo users
+    if session.get("is_demo"):
+        mock_user = type('obj', (object,), {
+            'username': session.get("username", "Demo User"),
+            'tier_id': session.get("tier_id", 3)
+        })
+        user = mock_user
+    
     return render_template("learning/practice.html", words=practice_words, user=user)
 
 
@@ -143,14 +174,26 @@ def achievements():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    user = User.query.get(session["user_id"])
+    # Handle demo users
+    if session.get("is_demo"):
+        # Mock achievements data for demo users
+        total_mastered = 15
+        practice_streak = 3
+        mock_user = type('obj', (object,), {
+            'username': session.get("username", "Demo User"),
+            'tier_id': session.get("tier_id", 3)
+        })
+        user = mock_user
+    else:
+        user = User.query.get(session["user_id"])
+        if not user:
+            return redirect(url_for("auth.login"))
 
-    # Calculate achievements data
-    total_mastered = UserProgress.query.filter(
-        UserProgress.user_id == user.id, UserProgress.mastery_level >= 80
-    ).count()
-
-    practice_streak = 1  # Placeholder - would need more complex logic
+        # Calculate achievements data
+        total_mastered = UserProgress.query.filter(
+            UserProgress.user_id == user.id, UserProgress.mastery_level >= 80
+        ).count()
+        practice_streak = 1  # Placeholder - would need more complex logic
 
     # Mock achievements data structure that matches the template
     achievements = {
