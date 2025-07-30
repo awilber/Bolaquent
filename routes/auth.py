@@ -74,6 +74,39 @@ def register():
     return render_template("auth/register.html")
 
 
+@bp.route("/guest")
+def guest_login():
+    """Show guest tier selection page"""
+    return render_template("auth/guest_select.html")
+
+
+@bp.route("/start-guest", methods=["POST"])
+def start_guest_session():
+    """Start a guest session with selected tier"""
+    age = request.form.get("age", type=int)
+    tier_id = request.form.get("tier_id", type=int)
+    
+    if not age or not tier_id:
+        flash("Please select an age range to continue")
+        return redirect(url_for("auth.guest_login"))
+    
+    # Validate tier exists
+    tier = AgeTier.query.get(tier_id)
+    if not tier:
+        flash("Invalid age range selected")
+        return redirect(url_for("auth.guest_login"))
+    
+    # Create guest session
+    session["user_id"] = "guest"
+    session["username"] = "Guest User"
+    session["tier_id"] = tier_id
+    session["age"] = age
+    session["is_guest"] = True
+    
+    flash(f"Welcome, Guest! You're exploring the {tier.name} learning tier. No registration required!")
+    return redirect(url_for("learning.dashboard"))
+
+
 @bp.route("/demo")
 def demo():
     # Create a demo session without requiring registration

@@ -19,12 +19,36 @@
         <small style="color: #64748b;">Your age determines your learning tier</small>
     </div>
     
-    <button type="submit" class="btn" style="width: 100%; font-size: 1.1em;">
-        🚀 Start Learning
-    </button>
+    <div class="login-actions" style="display: flex; gap: 12px; margin-top: 20px;">
+        <button type="submit" class="btn btn-primary" style="flex: 1; font-size: 1.1em; background: #3b82f6; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer;">
+            🚀 Start Learning
+        </button>
+        <a href="{{ url_for('auth.guest_login') }}" class="btn btn-secondary" style="flex: 1; font-size: 1.1em; background: transparent; color: #3b82f6; padding: 12px; border: 2px solid #3b82f6; border-radius: 8px; text-decoration: none; text-align: center; cursor: pointer; transition: all 0.2s ease;">
+            👤 Learn as a Guest
+        </a>
+    </div>
 </form>
 
-<p style="margin-top: 20px;">
+<p style="margin-top: 20px; text-align: center;">
     Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>
 </p>
+
+<style>
+.btn-secondary:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .login-actions {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .btn {
+        min-height: 44px;
+        font-size: 1em !important;
+    }
+}
+</style>
 {% endblock %}

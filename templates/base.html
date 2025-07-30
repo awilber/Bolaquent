@@ -2,8 +2,19 @@
 <html lang="en" class="{% if session.tier_id %}{% if session.tier_id <= 2 %}theme-playful{% elif session.tier_id <= 4 %}theme-educational{% else %}theme-professional{% endif %}{% else %}theme-educational{% endif %}">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>{% block title %}Bolaquent - Vocabulary Learning{% endblock %}</title>
+    
+    <!-- Mobile App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Bolaquent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Performance Optimization -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <style>
@@ -23,7 +34,7 @@
     <div class="container">
         <nav class="nav">
             <a href="{{ url_for('index') }}">🏠 Home</a>
-            {% if session.user_id %}
+            {% if session.user_id or session.is_guest %}
                 <a href="{{ url_for('learning.dashboard') }}">📊 Dashboard</a>
                 <a href="{{ url_for('learning.vocabulary') }}">📚 Vocabulary</a>
                 <a href="{{ url_for('learning.practice') }}">🎯 Practice</a>

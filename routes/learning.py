@@ -10,17 +10,31 @@ def dashboard():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    user = User.query.get(session["user_id"])
-    if not user:
-        return redirect(url_for("auth.login"))
+    # Handle demo and guest users
+    if session.get("is_demo") or session.get("is_guest"):
+        tier_id = session.get("tier_id", 3)  # Default to Elementary
+        total_words = VocabularyWord.query.filter_by(tier_id=tier_id).count()
+        learned_words = 8  # Mock progress for demo/guest
+        progress_percentage = (learned_words / total_words * 100) if total_words > 0 else 0
+        
+        # Create mock user object
+        mock_user = type('obj', (object,), {
+            'username': session.get("username", "Guest User"),
+            'tier_id': tier_id
+        })
+        user = mock_user
+    else:
+        user = User.query.get(session["user_id"])
+        if not user:
+            return redirect(url_for("auth.login"))
 
-    # Get user's progress statistics
-    total_words = VocabularyWord.query.filter_by(tier_id=user.tier_id).count()
-    learned_words = UserProgress.query.filter(
-        UserProgress.user_id == user.id, UserProgress.mastery_level >= 80
-    ).count()
+        # Get user's progress statistics
+        total_words = VocabularyWord.query.filter_by(tier_id=user.tier_id).count()
+        learned_words = UserProgress.query.filter(
+            UserProgress.user_id == user.id, UserProgress.mastery_level >= 80
+        ).count()
 
-    progress_percentage = (learned_words / total_words * 100) if total_words > 0 else 0
+        progress_percentage = (learned_words / total_words * 100) if total_words > 0 else 0
 
     return render_template(
         "learning/dashboard.html",
@@ -36,8 +50,8 @@ def vocabulary():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    # Handle demo users
-    if session.get("is_demo"):
+    # Handle demo and guest users
+    if session.get("is_demo") or session.get("is_guest"):
         tier_id = session.get("tier_id", 3)  # Default to Elementary
         tier_words_query = VocabularyWord.query.filter_by(tier_id=tier_id).limit(20).all()
     else:
@@ -59,10 +73,10 @@ def vocabulary():
         for word in tier_words_query
     ]
 
-    # Create mock user object for demo users
-    if session.get("is_demo"):
+    # Create mock user object for demo and guest users
+    if session.get("is_demo") or session.get("is_guest"):
         mock_user = type('obj', (object,), {
-            'username': session.get("username", "Demo User"),
+            'username': session.get("username", "Guest User"),
             'tier_id': session.get("tier_id", 3)
         })
         user = mock_user
@@ -75,10 +89,10 @@ def practice():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    # Handle demo users
-    if session.get("is_demo"):
+    # Handle demo and guest users
+    if session.get("is_demo") or session.get("is_guest"):
         tier_id = session.get("tier_id", 3)  # Default to Elementary
-        # For demo users, just get vocabulary words for their tier
+        # For demo/guest users, just get vocabulary words for their tier
         practice_words_query = VocabularyWord.query.filter_by(tier_id=tier_id).limit(10).all()
     else:
         user = User.query.get(session["user_id"])
@@ -110,10 +124,10 @@ def practice():
         for word in practice_words_query
     ]
 
-    # Create mock user object for demo users
-    if session.get("is_demo"):
+    # Create mock user object for demo and guest users
+    if session.get("is_demo") or session.get("is_guest"):
         mock_user = type('obj', (object,), {
-            'username': session.get("username", "Demo User"),
+            'username': session.get("username", "Guest User"),
             'tier_id': session.get("tier_id", 3)
         })
         user = mock_user
@@ -132,7 +146,19 @@ def submit_practice():
 
     user_id = session["user_id"]
 
-    # Find or create progress record
+    # Handle demo and guest users (no persistent progress)
+    if session.get("is_demo") or session.get("is_guest"):
+        # Return mock progress data for demo/guest users
+        return jsonify(
+            {
+                "success": True,
+                "mastery_level": 75 if is_correct else 50,
+                "attempts": 3,
+                "correct_answers": 2,
+            }
+        )
+
+    # Find or create progress record for regular users
     progress = UserProgress.query.filter_by(user_id=user_id, vocabulary_word_id=word_id).first()
 
     if not progress:
@@ -174,13 +200,13 @@ def achievements():
     if "user_id" not in session:
         return redirect(url_for("auth.login"))
 
-    # Handle demo users
-    if session.get("is_demo"):
-        # Mock achievements data for demo users
+    # Handle demo and guest users
+    if session.get("is_demo") or session.get("is_guest"):
+        # Mock achievements data for demo/guest users
         total_mastered = 15
         practice_streak = 3
         mock_user = type('obj', (object,), {
-            'username': session.get("username", "Demo User"),
+            'username': session.get("username", "Guest User"),
             'tier_id': session.get("tier_id", 3)
         })
         user = mock_user
