@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect, url_for, request, jsonify
-from models import db, User, VocabularyWord, UserProgress, AgeTier
+from models import db, User, VocabularyWord, UserProgress
 from datetime import datetime
 
 bp = Blueprint("learning", __name__, url_prefix="/learning")

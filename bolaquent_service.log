@@ -1,0 +1,144 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is available
+Found available port: 5010
+Starting Bolaquent on port 5010
+Multi-tiered vocabulary learning app accessible at: http://localhost:5010/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5010
+ * Running on http://192.168.1.16:5010
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [30/Jul/2025 17:10:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:10:05] "[32mGET /auth/demo?age=11 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:10:12] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:11:08] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:11:15] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:11:23] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:11:29] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:12:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:12:58] "GET / HTTP/1.1" 200 -
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/app.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/models.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/admin.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/learning.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [30/Jul/2025 17:13:47] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:13:47] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:13:47] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:13:47] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:02] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:50] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:14:50] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:14:52] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:53] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:53] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 17:14:59] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:14:59] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:14:59] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:15:02] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:15:02] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:15:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:17:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:18:04] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:18:09] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:20:37] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:02] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:21:02] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:02] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:02] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:05] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:05] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:05] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 17:21:07] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:21:07] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:07] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:07] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:08] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:08] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:08] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:11] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:11] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:11] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:13] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:13] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:13] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:14] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:14] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:14] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:17] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:21:17] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:21:17] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -

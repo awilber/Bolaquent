@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="{% if session.tier_id %}{% if session.tier_id <= 2 %}theme-playful{% elif session.tier_id <= 4 %}theme-educational{% else %}theme-professional{% endif %}{% else %}theme-educational{% endif %}">
+<html lang="en" class="{% if session.tier_id %}{% if session.tier_id <= 2 %}theme-playful{% elif session.tier_id <= 4 %}theme-educational{% else %}theme-professional{% endif %}{% else %}theme-educational{% endif %}" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -17,51 +17,140 @@
     <meta name="msapplication-tap-highlight" content="no">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
-        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
-        .nav { background: #2563eb; color: white; padding: 15px; margin: -20px -20px 20px -20px; border-radius: 8px 8px 0 0; }
-        .nav a { color: white; text-decoration: none; margin-right: 20px; }
-        .nav a:hover { text-decoration: underline; }
-        .btn { background: #3b82f6; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
-        .btn:hover { background: #2563eb; }
-        .tier-badge { background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; }
-        .progress-bar { background: #e5e7eb; height: 20px; border-radius: 10px; overflow: hidden; }
-        .progress-fill { background: #10b981; height: 100%; transition: width 0.3s; }
-        
-        /* Theme Toggle Button Styling */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            margin: 0 8px;
+        /* Override inline styles to use CSS variables - ProductLifecycle Style */
+        body { 
+            font-family: var(--font-family); 
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            margin: 0; 
+            padding: var(--spacing-lg); 
+            background: var(--bg-primary);
             color: var(--text-primary);
-            background-color: var(--surface-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
-        .theme-toggle:hover {
-            background-color: var(--hover-color, rgba(0, 0, 0, 0.05));
-            border-color: var(--primary-color);
-            transform: scale(1.05);
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg); 
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-default);
+            color: var(--text-primary);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
-        .theme-toggle:active {
-            transform: scale(0.95);
+        .nav { 
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary); 
+            padding: var(--spacing-md); 
+            margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-lg) calc(-1 * var(--spacing-lg)); 
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            backdrop-filter: blur(8px);
         }
         
-        /* Dark mode specific styling */
-        [data-theme="dark"] .theme-toggle {
-            background-color: var(--elevated-color, var(--surface-color));
-            border-color: var(--border-color);
+        .nav a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin-right: var(--spacing-lg); 
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            transition: var(--transition-fast);
         }
         
-        [data-theme="dark"] .theme-toggle:hover {
-            background-color: var(--hover-color);
-            box-shadow: var(--shadow-glow, 0 0 10px rgba(94, 158, 255, 0.2));
+        .nav a:hover { 
+            background-color: var(--bg-hover);
+            color: var(--text-primary);
+        }
+        
+        .nav a.active {
+            background: var(--accent-primary);
+            color: var(--text-inverse);
+        }
+        
+        .nav-user-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .nav-brand {
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+        }
+        
+        .btn { 
+            background: var(--accent-primary); 
+            color: var(--text-inverse); 
+            padding: var(--spacing-sm) var(--spacing-md); 
+            border: none; 
+            border-radius: var(--radius-md); 
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            font-family: var(--font-family);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            line-height: 1;
+        }
+        
+        .btn:hover:not(:disabled) { 
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn:active:not(:disabled) {
+            background: var(--accent-active);
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .tier-badge { 
+            background: var(--status-success); 
+            color: var(--text-inverse); 
+            padding: 2px var(--spacing-sm); 
+            border-radius: var(--radius-sm); 
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .progress-bar { 
+            background: var(--border-default); 
+            height: 20px; 
+            border-radius: 10px; 
+            overflow: hidden; 
+        }
+        
+        .progress-fill { 
+            background: var(--status-success); 
+            height: 100%; 
+            transition: var(--transition-normal); 
         }
     </style>
 </head>
@@ -77,8 +166,8 @@
                 <a href="{{ url_for('admin.dashboard') }}">⚙️ Admin</a>
                 <div class="nav-user-info">
                     <span>Hello, {{ session.username }}!</span>
-                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
-                        🌙
+                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Switch to light mode">
+                        ☀️
                     </button>
                     <a href="{{ url_for('auth.logout') }}">👋 Logout</a>
                 </div>
@@ -86,54 +175,18 @@
                 <a href="{{ url_for('auth.demo') }}">🚀 Try Demo</a>
                 <a href="{{ url_for('auth.login') }}">🔐 Login</a>
                 <a href="{{ url_for('auth.register') }}">📝 Register</a>
-                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
-                    🌙
-                </button>
+                <div class="nav-user-info">
+                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Switch to light mode">
+                        ☀️
+                    </button>
+                </div>
             {% endif %}
         </nav>
-        
-        <script>
-        // Theme Toggle Functionality - Similar to ProductLifecycle
-        function initializeTheme() {
-            // Check for saved theme preference or default to light mode
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-            
-            applyTheme(theme);
-        }
-        
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-                themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-            }
-            localStorage.setItem('theme', theme);
-        }
-        
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        }
-        
-        // Initialize theme on page load
-        document.addEventListener('DOMContentLoaded', initializeTheme);
-        
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-            if (!localStorage.getItem('theme')) {
-                applyTheme(e.matches ? 'dark' : 'light');
-            }
-        });
-        </script>
         
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div style="background: #fef2f2; color: #dc2626; padding: 10px; margin: 10px 0; border-radius: 4px;">
+                    <div class="flash-message" style="background: var(--status-info-bg); color: var(--status-info); padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid var(--border-default);">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -142,5 +195,63 @@
         
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+        // ProductLifecycle-style Theme Management
+        function initializeTheme() {
+            // Default to dark mode
+            const savedTheme = localStorage.getItem('theme');
+            const theme = savedTheme || 'dark';
+            
+            console.log('Initializing theme:', theme);
+            applyTheme(theme);
+        }
+        
+        function applyTheme(theme) {
+            console.log('Applying theme:', theme);
+            
+            // Set data-theme attribute on html element
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Update theme toggle button
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+                themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+                console.log('Updated button to:', themeToggle.textContent);
+            }
+            
+            // Save preference
+            localStorage.setItem('theme', theme);
+            
+            console.log('Theme applied successfully');
+        }
+        
+        function toggleTheme() {
+            console.log('Toggle theme clicked!');
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            console.log('Switching from', currentTheme, 'to', newTheme);
+            applyTheme(newTheme);
+        }
+        
+        // Initialize immediately
+        initializeTheme();
+        
+        // Also initialize on DOM ready as backup
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM ready, re-initializing theme');
+            initializeTheme();
+        });
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        console.log('Theme system initialized');
+    </script>
 </body>
 </html>

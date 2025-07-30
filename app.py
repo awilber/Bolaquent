@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, session
 from flask_cors import CORS
 from config import Config
-from models import db, AgeTier, VocabularyWord, User
+from models import db, AgeTier, VocabularyWord
 import os
 
 

@@ -27,19 +27,53 @@
     100% { transform: translateY(-10px) rotate(5deg); }
 }
 
-/* Dashboard Grid Layout */
+/* Dashboard Grid Layout - ProductLifecycle Style */
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin: 24px 0;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
 }
 
 @media (max-width: 768px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: var(--spacing-md);
     }
+}
+
+/* Content Areas */
+.dashboard-content {
+    padding: var(--spacing-lg);
+    background: var(--bg-primary);
+    min-height: calc(100vh - 140px);
+}
+
+/* Main Content Container */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+/* Page Headers */
+.page-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-header h1 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: var(--line-height-tight);
+}
+
+.page-header p {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: var(--line-height-normal);
 }
 
 /* Profile Card Styles */

@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from models import db, VocabularyWord, GrammarRule, AgeTier, User
-import subprocess
-import sys
+from models import db, VocabularyWord, AgeTier, User
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
