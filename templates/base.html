@@ -29,9 +29,12 @@
                 <a href="{{ url_for('learning.practice') }}">🎯 Practice</a>
                 <a href="{{ url_for('learning.achievements') }}">🏆 Achievements</a>
                 <a href="{{ url_for('admin.dashboard') }}">⚙️ Admin</a>
-                <a href="{{ url_for('auth.logout') }}" style="float: right;">👋 Logout</a>
-                <span style="float: right; margin-right: 20px;">Hello, {{ session.username }}!</span>
+                <div class="nav-user-info">
+                    <span>Hello, {{ session.username }}!</span>
+                    <a href="{{ url_for('auth.logout') }}">👋 Logout</a>
+                </div>
             {% else %}
+                <a href="{{ url_for('auth.demo') }}">🚀 Try Demo</a>
                 <a href="{{ url_for('auth.login') }}">🔐 Login</a>
                 <a href="{{ url_for('auth.register') }}">📝 Register</a>
             {% endif %}

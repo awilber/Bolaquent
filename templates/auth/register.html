@@ -9,40 +9,58 @@
     <div class="tier-preview">
         <h3>Choose Your Learning Adventure</h3>
         <div class="tier-options">
-            <div class="tier-card" data-ages="2-4">
+            <div class="tier-card" data-ages="2-4" data-tier="1">
                 <div class="tier-icon">🧸</div>
                 <h4>Little Learners</h4>
                 <p>Ages 2-4 • Fun games with colors and animals!</p>
+                <div class="demo-link">
+                    <a href="{{ url_for('auth.demo') }}?tier=1" class="btn-demo">Try Demo</a>
+                </div>
             </div>
             
-            <div class="tier-card" data-ages="4-6">
+            <div class="tier-card" data-ages="4-6" data-tier="2">
                 <div class="tier-icon">🎨</div>
                 <h4>Preschool Explorer</h4>
                 <p>Ages 4-6 • Interactive stories and puzzles!</p>
+                <div class="demo-link">
+                    <a href="{{ url_for('auth.demo') }}?tier=2" class="btn-demo">Try Demo</a>
+                </div>
             </div>
             
-            <div class="tier-card" data-ages="6-10">
+            <div class="tier-card" data-ages="6-10" data-tier="3">
                 <div class="tier-icon">📚</div>
                 <h4>School Star</h4>
                 <p>Ages 6-10 • Academic vocabulary and reading!</p>
+                <div class="demo-link">
+                    <a href="{{ url_for('auth.demo') }}?tier=3" class="btn-demo">Try Demo</a>
+                </div>
             </div>
             
-            <div class="tier-card" data-ages="11-14">
+            <div class="tier-card" data-ages="11-14" data-tier="4">
                 <div class="tier-icon">🧠</div>
                 <h4>Knowledge Builder</h4>
                 <p>Ages 11-14 • Advanced concepts and critical thinking!</p>
+                <div class="demo-link">
+                    <a href="{{ url_for('auth.demo') }}?tier=4" class="btn-demo">Try Demo</a>
+                </div>
             </div>
             
-            <div class="tier-card" data-ages="15-18">
+            <div class="tier-card" data-ages="15-18" data-tier="5">
                 <div class="tier-icon">🎓</div>
                 <h4>College Prep</h4>
                 <p>Ages 15-18 • SAT prep and advanced literature!</p>
+                <div class="demo-link">
+                    <a href="{{ url_for('auth.demo') }}?tier=5" class="btn-demo">Try Demo</a>
+                </div>
             </div>
             
-            <div class="tier-card" data-ages="18+">
+            <div class="tier-card" data-ages="18+" data-tier="6">
                 <div class="tier-icon">👨‍💼</div>
                 <h4>Professional</h4>
                 <p>Ages 18+ • Specialized vocabulary and career focus!</p>
+                <div class="demo-link">
+                    <a href="{{ url_for('auth.demo') }}?tier=6" class="btn-demo">Try Demo</a>
+                </div>
             </div>
         </div>
     </div>
@@ -218,6 +236,44 @@
     letter-spacing: 1px;
 }
 
+.demo-link {
+    margin-top: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.tier-card:hover .demo-link {
+    opacity: 1;
+}
+
+.btn-demo {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-demo:hover {
+    background: var(--primary-color);
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.theme-playful .btn-demo {
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 @media (max-width: 768px) {
     .tier-options {
         grid-template-columns: 1fr;
@@ -225,6 +281,15 @@
     
     .tier-card {
         padding: 20px;
+    }
+    
+    .demo-link {
+        opacity: 1; /* Always show on mobile */
+    }
+    
+    .btn-demo {
+        padding: 12px 20px;
+        font-size: 16px;
     }
 }
 </style>

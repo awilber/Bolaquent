@@ -72,3 +72,28 @@ def register():
         return redirect(url_for("learning.dashboard"))
 
     return render_template("auth/register.html")
+
+
+@bp.route("/demo")
+def demo():
+    # Create a demo session without requiring registration
+    tier_param = request.args.get("tier", type=int)
+    
+    if tier_param:
+        # Use specified tier
+        demo_tier = AgeTier.query.get(tier_param)
+    else:
+        # Default to middle-tier (Educational) for demo
+        demo_tier = AgeTier.query.filter_by(name="Elementary").first()
+    
+    if not demo_tier:
+        demo_tier = AgeTier.query.first()  # Fallback to any tier
+    
+    session["user_id"] = "demo"
+    session["username"] = "Demo User"
+    session["tier_id"] = demo_tier.id if demo_tier else 3
+    session["is_demo"] = True
+    
+    tier_name = demo_tier.name if demo_tier else "Elementary"
+    flash(f"Welcome to the Bolaquent demo! You're experiencing the {tier_name} learning tier. Explore all features without creating an account.")
+    return redirect(url_for("learning.dashboard"))

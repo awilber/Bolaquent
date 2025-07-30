@@ -263,15 +263,84 @@
     line-height: 1.5;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Mobile-first responsive adjustments */
+@media (max-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 12px 0;
+    }
+    
     .action-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .action-btn {
+        padding: 16px;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .action-icon {
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+    
+    .action-title {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+    
+    .action-desc {
+        font-size: 12px;
+    }
+    
+    .theme-playful .playful-header {
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .theme-playful .big-number {
+        font-size: 48px;
+    }
+    
+    .theme-playful .mascot {
+        font-size: 36px;
+    }
+    
+    .theme-playful .action-btn {
+        padding: 24px 16px;
+        min-height: 140px;
+    }
+    
+    .profile-info p {
+        margin: 8px 0;
+        font-size: 14px;
+    }
+    
+    .progress-text {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 16px;
     }
     
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
     .theme-playful .action-btn {
-        padding: 32px 20px;
+        padding: 28px 18px;
     }
     
     .theme-playful .big-number {
@@ -280,6 +349,49 @@
     
     .theme-playful .mascot {
         font-size: 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .action-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+}
+
+/* Touch optimization for mobile */
+@media (max-width: 768px) {
+    .action-btn {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    .action-btn:active {
+        transform: translateY(-2px) scale(0.98);
+    }
+    
+    /* Improve text readability on small screens */
+    .tier-description {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .learning-tips {
+        padding: 16px;
+        margin: 16px 0;
+    }
+    
+    .learning-tips h4 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .learning-tips p {
+        font-size: 14px;
+        line-height: 1.4;
     }
 }
 
