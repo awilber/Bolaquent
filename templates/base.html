@@ -28,6 +28,41 @@
         .tier-badge { background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; }
         .progress-bar { background: #e5e7eb; height: 20px; border-radius: 10px; overflow: hidden; }
         .progress-fill { background: #10b981; height: 100%; transition: width 0.3s; }
+        
+        /* Theme Toggle Button Styling */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin: 0 8px;
+            color: var(--text-primary);
+            background-color: var(--surface-color);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--hover-color, rgba(0, 0, 0, 0.05));
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        /* Dark mode specific styling */
+        [data-theme="dark"] .theme-toggle {
+            background-color: var(--elevated-color, var(--surface-color));
+            border-color: var(--border-color);
+        }
+        
+        [data-theme="dark"] .theme-toggle:hover {
+            background-color: var(--hover-color);
+            box-shadow: var(--shadow-glow, 0 0 10px rgba(94, 158, 255, 0.2));
+        }
     </style>
 </head>
 <body>
@@ -42,14 +77,58 @@
                 <a href="{{ url_for('admin.dashboard') }}">⚙️ Admin</a>
                 <div class="nav-user-info">
                     <span>Hello, {{ session.username }}!</span>
+                    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+                        🌙
+                    </button>
                     <a href="{{ url_for('auth.logout') }}">👋 Logout</a>
                 </div>
             {% else %}
                 <a href="{{ url_for('auth.demo') }}">🚀 Try Demo</a>
                 <a href="{{ url_for('auth.login') }}">🔐 Login</a>
                 <a href="{{ url_for('auth.register') }}">📝 Register</a>
+                <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+                    🌙
+                </button>
             {% endif %}
         </nav>
+        
+        <script>
+        // Theme Toggle Functionality - Similar to ProductLifecycle
+        function initializeTheme() {
+            // Check for saved theme preference or default to light mode
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            applyTheme(theme);
+        }
+        
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+                themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+            localStorage.setItem('theme', theme);
+        }
+        
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        }
+        
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', initializeTheme);
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        </script>
         
         {% with messages = get_flashed_messages() %}
             {% if messages %}

@@ -86,13 +86,14 @@ def expand_vocabulary():
     try:
         # Run vocabulary expansion script
         from expand_vocabulary import expand_vocabulary_by_tier
+
         expand_vocabulary_by_tier()
-        
+
         # Get updated stats
         total_words = VocabularyWord.query.count()
         flash(f"Vocabulary successfully expanded! Total words: {total_words}")
-        
+
     except Exception as e:
         flash(f"Error expanding vocabulary: {str(e)}")
-    
+
     return redirect(url_for("admin.dashboard"))

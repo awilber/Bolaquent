@@ -85,25 +85,27 @@ def start_guest_session():
     """Start a guest session with selected tier"""
     age = request.form.get("age", type=int)
     tier_id = request.form.get("tier_id", type=int)
-    
+
     if not age or not tier_id:
         flash("Please select an age range to continue")
         return redirect(url_for("auth.guest_login"))
-    
+
     # Validate tier exists
     tier = AgeTier.query.get(tier_id)
     if not tier:
         flash("Invalid age range selected")
         return redirect(url_for("auth.guest_login"))
-    
+
     # Create guest session
     session["user_id"] = "guest"
     session["username"] = "Guest User"
     session["tier_id"] = tier_id
     session["age"] = age
     session["is_guest"] = True
-    
-    flash(f"Welcome, Guest! You're exploring the {tier.name} learning tier. No registration required!")
+
+    flash(
+        f"Welcome, Guest! You're exploring the {tier.name} learning tier. No registration required!"
+    )
     return redirect(url_for("learning.dashboard"))
 
 
@@ -111,22 +113,24 @@ def start_guest_session():
 def demo():
     # Create a demo session without requiring registration
     tier_param = request.args.get("tier", type=int)
-    
+
     if tier_param:
         # Use specified tier
         demo_tier = AgeTier.query.get(tier_param)
     else:
         # Default to middle-tier (Educational) for demo
         demo_tier = AgeTier.query.filter_by(name="Elementary").first()
-    
+
     if not demo_tier:
         demo_tier = AgeTier.query.first()  # Fallback to any tier
-    
+
     session["user_id"] = "demo"
     session["username"] = "Demo User"
     session["tier_id"] = demo_tier.id if demo_tier else 3
     session["is_demo"] = True
-    
+
     tier_name = demo_tier.name if demo_tier else "Elementary"
-    flash(f"Welcome to the Bolaquent demo! You're experiencing the {tier_name} learning tier. Explore all features without creating an account.")
+    flash(
+        f"Welcome to the Bolaquent demo! You're experiencing the {tier_name} learning tier. Explore all features without creating an account."
+    )
     return redirect(url_for("learning.dashboard"))

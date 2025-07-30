@@ -16,12 +16,13 @@ def dashboard():
         total_words = VocabularyWord.query.filter_by(tier_id=tier_id).count()
         learned_words = 8  # Mock progress for demo/guest
         progress_percentage = (learned_words / total_words * 100) if total_words > 0 else 0
-        
+
         # Create mock user object
-        mock_user = type('obj', (object,), {
-            'username': session.get("username", "Guest User"),
-            'tier_id': tier_id
-        })
+        mock_user = type(
+            "obj",
+            (object,),
+            {"username": session.get("username", "Guest User"), "tier_id": tier_id},
+        )
         user = mock_user
     else:
         user = User.query.get(session["user_id"])
@@ -75,12 +76,16 @@ def vocabulary():
 
     # Create mock user object for demo and guest users
     if session.get("is_demo") or session.get("is_guest"):
-        mock_user = type('obj', (object,), {
-            'username': session.get("username", "Guest User"),
-            'tier_id': session.get("tier_id", 3)
-        })
+        mock_user = type(
+            "obj",
+            (object,),
+            {
+                "username": session.get("username", "Guest User"),
+                "tier_id": session.get("tier_id", 3),
+            },
+        )
         user = mock_user
-    
+
     return render_template("learning/vocabulary.html", words=tier_words, user=user)
 
 
@@ -98,7 +103,7 @@ def practice():
         user = User.query.get(session["user_id"])
         if not user:
             return redirect(url_for("auth.login"))
-        
+
         # Get words that need practice (low mastery or not practiced recently)
         practice_words_query = (
             db.session.query(VocabularyWord)
@@ -119,19 +124,23 @@ def practice():
             "id": word.id,
             "word": word.word,
             "definition": word.definition,
-            "difficulty_level": getattr(word, 'difficulty_level', 1),
+            "difficulty_level": getattr(word, "difficulty_level", 1),
         }
         for word in practice_words_query
     ]
 
     # Create mock user object for demo and guest users
     if session.get("is_demo") or session.get("is_guest"):
-        mock_user = type('obj', (object,), {
-            'username': session.get("username", "Guest User"),
-            'tier_id': session.get("tier_id", 3)
-        })
+        mock_user = type(
+            "obj",
+            (object,),
+            {
+                "username": session.get("username", "Guest User"),
+                "tier_id": session.get("tier_id", 3),
+            },
+        )
         user = mock_user
-    
+
     return render_template("learning/practice.html", words=practice_words, user=user)
 
 
@@ -205,10 +214,14 @@ def achievements():
         # Mock achievements data for demo/guest users
         total_mastered = 15
         practice_streak = 3
-        mock_user = type('obj', (object,), {
-            'username': session.get("username", "Guest User"),
-            'tier_id': session.get("tier_id", 3)
-        })
+        mock_user = type(
+            "obj",
+            (object,),
+            {
+                "username": session.get("username", "Guest User"),
+                "tier_id": session.get("tier_id", 3),
+            },
+        )
         user = mock_user
     else:
         user = User.query.get(session["user_id"])

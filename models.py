@@ -31,7 +31,7 @@ class User(db.Model):
 
     id = db.Column(Integer, primary_key=True)
     username = db.Column(String(80), unique=True, nullable=False)
-    email = db.Column(String(120), unique=True, nullable=False)
+    email = db.Column(String(120), unique=True, nullable=True)
     age = db.Column(Integer)
     tier_id = db.Column(Integer, ForeignKey("age_tiers.id"))
     created_at = db.Column(DateTime, default=datetime.utcnow)

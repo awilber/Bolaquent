@@ -1,6 +1,6 @@
 /* Bolaquent Age-Appropriate Theme System */
 
-/* Base Theme Variables */
+/* Base Theme Variables - Light Mode */
 :root {
   --primary-color: #3b82f6;
   --secondary-color: #64748b;
@@ -25,6 +25,67 @@
   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.2);
   --transition-smooth: all var(--animation-speed-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Theme Variables - Similar to ProductLifecycle */
+[data-theme="dark"],
+.theme-dark {
+  /* Primary colors adapted from ProductLifecycle linear-dark theme */
+  --primary-color: #5E9EFF;
+  --secondary-color: rgba(255, 255, 255, 0.60);
+  --success-color: #4ADE80;
+  --warning-color: #FBBF24;
+  --danger-color: #F87171;
+  
+  /* Background colors - Dark grey instead of pure black */
+  --background-color: #121212;
+  --surface-color: #1E1E1E;
+  --elevated-color: #252525;
+  --overlay-color: rgba(0, 0, 0, 0.7);
+  --hover-color: rgba(255, 255, 255, 0.05);
+  
+  /* Text colors with proper contrast */
+  --text-primary: rgba(255, 255, 255, 0.87);
+  --text-secondary: rgba(255, 255, 255, 0.60);
+  --text-muted: rgba(255, 255, 255, 0.38);
+  --text-inverse: #121212;
+  
+  /* Border colors */
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  
+  /* Enhanced shadows for dark mode */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(94, 158, 255, 0.3);
+  
+  /* Status colors for dark mode */
+  --success-bg: rgba(74, 222, 128, 0.15);
+  --warning-bg: rgba(251, 191, 36, 0.15);
+  --danger-bg: rgba(248, 113, 113, 0.15);
+  --info-bg: rgba(94, 158, 255, 0.15);
+}
+
+/* Automatic dark mode detection */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Apply dark theme automatically if no theme is explicitly set */
+    --primary-color: #5E9EFF;
+    --secondary-color: rgba(255, 255, 255, 0.60);
+    --success-color: #4ADE80;
+    --warning-color: #FBBF24;
+    --danger-color: #F87171;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-primary: rgba(255, 255, 255, 0.87);
+    --text-secondary: rgba(255, 255, 255, 0.60);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /* =================
@@ -821,33 +882,44 @@ input, textarea, select {
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #0f172a;
-    --surface-color: #1e293b;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --border-color: #334155;
-  }
-  
-  .theme-playful {
-    --background-color: #1a1625;
-    --surface-color: #2d1b69;
-    --border-color: #4c1d95;
-  }
-  
-  .theme-educational {
-    --background-color: #0c1821;
-    --surface-color: #1e3a8a;
-    --border-color: #1e40af;
-  }
-  
-  .theme-professional {
-    --background-color: #111827;
-    --surface-color: #374151;
-    --border-color: #4b5563;
-  }
+/* Enhanced Dark Mode Support for Age Tiers */
+[data-theme="dark"] .theme-playful,
+.theme-dark .theme-playful {
+  /* Playful dark theme - warmer dark colors */
+  --primary-color: #FF8A9B;
+  --secondary-color: #6BCECC;
+  --success-color: #68E380;
+  --warning-color: #FFD86B;
+  --danger-color: #FF9B9B;
+  --background-color: #1A1625;
+  --surface-color: #2D1B45;
+  --border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .theme-educational,
+.theme-dark .theme-educational {
+  /* Educational dark theme - professional but approachable */
+  --primary-color: #5E9EFF;
+  --secondary-color: #7B7EFF;
+  --success-color: #4ADE80;
+  --warning-color: #FBBF24;
+  --danger-color: #F87171;
+  --background-color: #0C1821;
+  --surface-color: #1E3A4A;
+  --border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .theme-professional,
+.theme-dark .theme-professional {
+  /* Professional dark theme - clean and minimal */
+  --primary-color: #4A8FE7;
+  --secondary-color: rgba(255, 255, 255, 0.60);
+  --success-color: #34D399;
+  --warning-color: #F59E0B;
+  --danger-color: #EF4444;
+  --background-color: #111827;
+  --surface-color: #1F2937;
+  --border-color: rgba(255, 255, 255, 0.10);
 }
 
 /* High contrast mode support */
