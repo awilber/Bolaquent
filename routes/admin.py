@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models import db, VocabularyWord, GrammarRule, AgeTier, User
+import subprocess
+import sys
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -76,3 +78,21 @@ def manage_tiers():
 def manage_users():
     users = User.query.all()
     return render_template("admin/users.html", users=users)
+
+
+@bp.route("/expand-vocabulary", methods=["POST"])
+def expand_vocabulary():
+    """Expand vocabulary by 100x for all tiers"""
+    try:
+        # Run vocabulary expansion script
+        from expand_vocabulary import expand_vocabulary_by_tier
+        expand_vocabulary_by_tier()
+        
+        # Get updated stats
+        total_words = VocabularyWord.query.count()
+        flash(f"Vocabulary successfully expanded! Total words: {total_words}")
+        
+    except Exception as e:
+        flash(f"Error expanding vocabulary: {str(e)}")
+    
+    return redirect(url_for("admin.dashboard"))

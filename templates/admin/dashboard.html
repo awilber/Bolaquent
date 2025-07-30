@@ -81,6 +81,15 @@
                 <p>Configure application settings and preferences</p>
                 <button class="btn btn-primary" onclick="systemSettings()">Open Settings</button>
             </div>
+            
+            <div class="action-card">
+                <div class="action-icon">🚀</div>
+                <h4>Expand Vocabulary (100x)</h4>
+                <p>Massively expand vocabulary database by 100x for all age tiers</p>
+                <form method="POST" action="{{ url_for('admin.expand_vocabulary') }}" style="display: inline;">
+                    <button type="submit" class="btn btn-success" onclick="return confirmExpansion()">🚀 Expand Now</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -353,6 +362,12 @@
     border-color: var(--error-color);
 }
 
+.btn-success {
+    background: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
 .no-data {
     text-align: center;
     padding: 40px;
@@ -497,6 +512,10 @@ function dangerousReset() {
     } else if (confirmText !== null) {
         showAlert('System reset cancelled. Confirmation text did not match.', 'warning');
     }
+}
+
+function confirmExpansion() {
+    return confirm('🚀 Expand Vocabulary Database?\n\nThis will add approximately 5,000+ new words across all age tiers:\n\n• Educational content for each tier\n• Age-appropriate definitions\n• Categorized by subject areas\n• 100x expansion of current vocabulary\n\nThis process may take a few minutes. Continue?');
 }
 
 function showAlert(message, type) {
