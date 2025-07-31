@@ -1,0 +1,167 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+Using allocated port: 5025
+Starting Bolaquent on port 5025
+Multi-tiered vocabulary learning app accessible at: http://localhost:5025/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5025
+ * Running on http://192.168.1.16:5025
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [29/Jul/2025 21:11:39] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:11:42] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:11:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:13] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:49] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:49] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:15:11] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:15:14] "[32mHEAD /auth/demo HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:15:18] "[32mHEAD /auth/demo HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:16:07] "[35m[1mPOST /auth/register HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: users.email
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ~^^^^^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/auth.py", line 66, in register
+    db.session.commit()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4345, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4480, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4441, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+    ^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+    
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+    
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+    
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+    
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+    
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ^
+  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: users.email
+[SQL: INSERT INTO users (username, email, age, tier_id, created_at, last_active) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('testuser999', None, 25, 6, '2025-07-30 01:16:07.366934', '2025-07-30 01:16:07.367011')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/vocabulary HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/practice HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/achievements HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:04] "[32mGET /auth/demo HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:18:04] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:18:04] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:04] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:04] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [29/Jul/2025 21:22:51] "HEAD / HTTP/1.1" 200 -

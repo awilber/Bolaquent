@@ -1,0 +1,97 @@
+/* Additional Dark Themes for Bolaquent */
+
+/* Dracula Theme */
+[data-theme="dracula"] {
+  --bg-primary: #282a36;
+  --bg-secondary: #44475a;
+  --bg-elevated: #6272a4;
+  --bg-overlay: rgba(40, 42, 54, 0.8);
+  --bg-hover: rgba(248, 248, 242, 0.08);
+  --text-primary: #f8f8f2;
+  --text-secondary: #6272a4;
+  --text-muted: #44475a;
+  --text-inverse: #282a36;
+  --accent-primary: #bd93f9;
+  --accent-hover: #ff79c6;
+  --accent-active: #8be9fd;
+  --accent-gradient: linear-gradient(135deg, #bd93f9 0%, #ff79c6 100%);
+  --status-success: #50fa7b;
+  --status-success-bg: rgba(80, 250, 123, 0.15);
+  --status-warning: #f1fa8c;
+  --status-warning-bg: rgba(241, 250, 140, 0.15);
+  --status-error: #ff5555;
+  --status-error-bg: rgba(255, 85, 85, 0.15);
+  --status-info: #8be9fd;
+  --status-info-bg: rgba(139, 233, 253, 0.15);
+  --border-default: #44475a;
+  --border-subtle: #383e4c;
+  --border-strong: #6272a4;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(189, 147, 249, 0.5);
+}
+
+/* Catppuccin Mocha Theme */
+[data-theme="catppuccin-mocha"] {
+  --bg-primary: #1e1e2e;
+  --bg-secondary: #313244;
+  --bg-elevated: #45475a;
+  --bg-overlay: rgba(30, 30, 46, 0.8);
+  --bg-hover: rgba(205, 214, 244, 0.08);
+  --text-primary: #cdd6f4;
+  --text-secondary: #bac2de;
+  --text-muted: #a6adc8;
+  --text-inverse: #1e1e2e;
+  --accent-primary: #b4befe;
+  --accent-hover: #cba6f7;
+  --accent-active: #89b4fa;
+  --accent-gradient: linear-gradient(135deg, #b4befe 0%, #cba6f7 100%);
+  --status-success: #a6e3a1;
+  --status-success-bg: rgba(166, 227, 161, 0.15);
+  --status-warning: #f9e2af;
+  --status-warning-bg: rgba(249, 226, 175, 0.15);
+  --status-error: #f38ba8;
+  --status-error-bg: rgba(243, 139, 168, 0.15);
+  --status-info: #89b4fa;
+  --status-info-bg: rgba(137, 180, 250, 0.15);
+  --border-default: #45475a;
+  --border-subtle: #313244;
+  --border-strong: #585b70;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(180, 190, 254, 0.5);
+}
+
+/* Tokyo Night Theme */
+[data-theme="tokyo-night"] {
+  --bg-primary: #1a1b26;
+  --bg-secondary: #24283b;
+  --bg-elevated: #414868;
+  --bg-overlay: rgba(26, 27, 38, 0.8);
+  --bg-hover: rgba(169, 177, 214, 0.08);
+  --text-primary: #a9b1d6;
+  --text-secondary: #9aa5ce;
+  --text-muted: #565f89;
+  --text-inverse: #1a1b26;
+  --accent-primary: #7aa2f7;
+  --accent-hover: #bb9af7;
+  --accent-active: #2ac3de;
+  --accent-gradient: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
+  --status-success: #9ece6a;
+  --status-success-bg: rgba(158, 206, 106, 0.15);
+  --status-warning: #e0af68;
+  --status-warning-bg: rgba(224, 175, 104, 0.15);
+  --status-error: #f7768e;
+  --status-error-bg: rgba(247, 118, 142, 0.15);
+  --status-info: #7aa2f7;
+  --status-info-bg: rgba(122, 162, 247, 0.15);
+  --border-default: #24283b;
+  --border-subtle: #1f2335;
+  --border-strong: #414868;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(122, 162, 247, 0.5);
+}

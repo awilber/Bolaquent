@@ -1,0 +1,463 @@
+/* Dashboard-specific styles for age-appropriate interfaces */
+
+/* Playful Header for Young Learners */
+.theme-playful .playful-header {
+    text-align: center;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    padding: 32px;
+    border-radius: 24px;
+    margin-bottom: 24px;
+    border: 4px solid #ff6b6b;
+    animation: gentle-bounce 3s ease-in-out infinite;
+}
+
+.theme-playful .mascot {
+    font-size: 48px;
+    animation: float 2s ease-in-out infinite alternate;
+    margin-top: 16px;
+}
+
+@keyframes gentle-bounce {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(-5deg); }
+    100% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Dashboard Grid Layout - Compact Style */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Content Areas - Compact */
+.dashboard-content {
+    padding: var(--spacing-md);
+    background: var(--bg-primary);
+    min-height: calc(100vh - 100px);
+}
+
+/* Main Content Container - Compact */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+/* Page Headers - Compact */
+.page-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.page-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+    line-height: var(--line-height-tight);
+}
+
+.page-header p {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: var(--line-height-normal);
+}
+
+/* Profile Card Styles */
+.profile-card {
+    position: relative;
+}
+
+.theme-playful .profile-avatar {
+    font-size: 64px;
+    text-align: center;
+    margin: 16px 0;
+    animation: wiggle 4s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.profile-info p {
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+.tier-description {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Progress Card Styles */
+.progress-stats {
+    margin: 16px 0;
+}
+
+.theme-playful .big-number {
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--success-color);
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+    margin: 16px 0;
+    animation: pulse-grow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-grow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.theme-playful .progress-celebration {
+    font-size: 32px;
+    text-align: center;
+    margin: 16px 0;
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+.progress-text {
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 8px 0;
+}
+
+/* Quick Actions Section */
+.quick-actions {
+    margin: 32px 0;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    display: block;
+    text-decoration: none;
+    background: var(--surface-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+
+.action-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.action-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.action-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Theme-specific action button styles */
+.theme-playful .action-btn {
+    border-radius: 20px;
+    border-width: 4px;
+    transform: rotate(-1deg);
+}
+
+.theme-playful .action-btn:nth-child(2) {
+    transform: rotate(1deg);
+}
+
+.theme-playful .action-btn:nth-child(3) {
+    transform: rotate(-0.5deg);
+}
+
+.theme-playful .action-btn:hover {
+    transform: rotate(0deg) translateY(-6px) scale(1.02);
+}
+
+.theme-playful .action-icon {
+    font-size: 56px;
+    animation: bounce-icon 3s ease-in-out infinite;
+}
+
+@keyframes bounce-icon {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.theme-playful .action-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Professional theme enhancements */
+.theme-professional .action-btn {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.theme-professional .action-btn:hover {
+    background: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+}
+
+.theme-professional .action-icon {
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+/* Button color variations */
+.practice-btn:hover {
+    border-color: var(--success-color);
+}
+
+.vocabulary-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.achievements-btn:hover {
+    border-color: var(--warning-color);
+}
+
+.theme-playful .practice-btn {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.theme-playful .vocabulary-btn {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.theme-playful .achievements-btn {
+    background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+}
+
+/* Learning Tips Section */
+.learning-tips {
+    background: var(--warning-color);
+    color: #1a1a1a;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin: 24px 0;
+}
+
+.theme-playful .learning-tips {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 3px solid var(--warning-color);
+    border-radius: 16px;
+}
+
+.learning-tips h4 {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+}
+
+.learning-tips p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 12px 0;
+    }
+    
+    .action-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .action-btn {
+        padding: 16px;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .action-icon {
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+    
+    .action-title {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+    
+    .action-desc {
+        font-size: 12px;
+    }
+    
+    .theme-playful .playful-header {
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+    
+    .theme-playful .big-number {
+        font-size: 48px;
+    }
+    
+    .theme-playful .mascot {
+        font-size: 36px;
+    }
+    
+    .theme-playful .action-btn {
+        padding: 24px 16px;
+        min-height: 140px;
+    }
+    
+    .profile-info p {
+        margin: 8px 0;
+        font-size: 14px;
+    }
+    
+    .progress-text {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .action-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .theme-playful .action-btn {
+        padding: 28px 18px;
+    }
+    
+    .theme-playful .big-number {
+        font-size: 56px;
+    }
+    
+    .theme-playful .mascot {
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .action-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+}
+
+/* Touch optimization for mobile */
+@media (max-width: 768px) {
+    .action-btn {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    .action-btn:active {
+        transform: translateY(-2px) scale(0.98);
+    }
+    
+    /* Improve text readability on small screens */
+    .tier-description {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .learning-tips {
+        padding: 16px;
+        margin: 16px 0;
+    }
+    
+    .learning-tips h4 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    
+    .learning-tips p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+/* Accessibility improvements */
+.action-btn:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-playful .playful-header,
+    .theme-playful .mascot,
+    .theme-playful .profile-avatar,
+    .theme-playful .big-number,
+    .theme-playful .progress-celebration,
+    .theme-playful .action-icon {
+        animation: none;
+    }
+    
+    .action-btn:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .action-btn {
+        border-width: 3px;
+        border-color: #000000;
+    }
+    
+    .theme-playful .action-btn {
+        border-width: 4px;
+    }
+}

@@ -1,0 +1,148 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is available
+Found available port: 5010
+Starting Bolaquent on port 5010
+Multi-tiered vocabulary learning app accessible at: http://localhost:5010/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5010
+ * Running on http://192.168.1.16:5010
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [30/Jul/2025 14:04:49] "GET / HTTP/1.1" 200 -
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/admin.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+ * Detected change in '/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/models.py', reloading
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is occupied, trying next...
+Port 5020 is available
+Found available port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [30/Jul/2025 15:38:57] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 15:38:57] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:38:57] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 15:38:57] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:02] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:02] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:02] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 15:39:35] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:35] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:35] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:39:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 15:47:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:47:26] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:47:26] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:47:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 15:50:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:45] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:45] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 15:50:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 15:50:56] "[33mGET /settings HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 15:50:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 16:01:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:01:17] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:01:17] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:01:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 16:03:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:03:11] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:03:11] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:03:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 16:04:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:04:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:04:21] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:04:26] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:04:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:04:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:34] "[32mGET /auth/demo HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 16:09:34] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:34] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:34] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:40] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:41] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:41] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:49] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:49] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:49] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:50] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:57] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:57] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:57] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:58] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:09:58] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:09:58] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:10:02] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 16:10:03] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 16:10:03] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:00:10] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:00:10] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:00:10] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:00:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 17:01:38] "[33mGET /settings HTTP/1.1[0m" 404 -
+127.0.0.1 - - [30/Jul/2025 17:02:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:02:39] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:02:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:02:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:03:47] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:03:47] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:03:47] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:03:47] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:03:51] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:03:51] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:03:51] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:03:51] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:04:00] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 17:04:00] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:04:00] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:04:00] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:04:01] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:04:01] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:04:01] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [30/Jul/2025 17:05:33] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:05:39] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:05:43] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 17:05:48] "GET / HTTP/1.1" 200 -
+/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-1d8x89yn'}
+  warnings.warn(
+/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-y59x45ua'}
+  warnings.warn(

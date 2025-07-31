@@ -1,0 +1,24 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+Using allocated port: 5020
+Starting Bolaquent on port 5020
+Multi-tiered vocabulary learning app accessible at: http://localhost:5020/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5020
+ * Running on http://192.168.1.16:5020
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [30/Jul/2025 14:04:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 14:04:52] "[32mGET /auth/demo?tier=3 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 14:04:56] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 14:05:00] "GET /learning/vocabulary HTTP/1.1" 200 -
+/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/resource_tracker.py:301: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-1ppcw1f8'}
+  warnings.warn(

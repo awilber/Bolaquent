@@ -1,359 +1,126 @@
-/* Bolaquent Theme System - Based on ProductLifecycle Architecture */
+/* Bolaquent Theme System - Exact ProductLifecycle Architecture */
 
-/* Base CSS Variables for Light Theme */
+/* CSS Variables for ProductLifecycle Theme System */
 :root {
-  /* Colors - Light Theme */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-elevated: #ffffff;
-  --bg-overlay: rgba(0, 0, 0, 0.5);
-  --bg-hover: rgba(0, 0, 0, 0.05);
-  
-  --text-primary: rgba(0, 0, 0, 0.87);
-  --text-secondary: rgba(0, 0, 0, 0.60);
-  --text-muted: rgba(0, 0, 0, 0.38);
-  --text-inverse: #ffffff;
-  
-  --accent-primary: #3b82f6;
-  --accent-hover: #2563eb;
-  --accent-active: #1d4ed8;
-  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  
-  --status-success: #10b981;
-  --status-success-bg: rgba(16, 185, 129, 0.15);
-  --status-warning: #f59e0b;
-  --status-warning-bg: rgba(245, 158, 11, 0.15);
-  --status-error: #ef4444;
-  --status-error-bg: rgba(239, 68, 68, 0.15);
-  --status-info: #3b82f6;
-  --status-info-bg: rgba(59, 130, 246, 0.15);
-  
-  --border-default: rgba(0, 0, 0, 0.12);
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.16);
-  
-  /* Effects */
-  --blur-sm: blur(4px);
-  --blur-md: blur(8px);
-  --blur-lg: blur(16px);
-  
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
-  
-  --transition-fast: all 0.15s ease;
-  --transition-normal: all 0.3s ease;
-  --transition-slow: all 0.5s ease;
-  
-  /* Typography - Exact ProductLifecycle */
+  /* Typography - Inter Font System from ProductLifecycle */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
   
-  /* Font Sizes - ProductLifecycle Scale */
-  --font-size-xs: 0.75rem;    /* 12px */
-  --font-size-sm: 0.875rem;   /* 14px */
-  --font-size-base: 1rem;     /* 16px */
-  --font-size-lg: 1.125rem;   /* 18px */
-  --font-size-xl: 1.25rem;    /* 20px */
-  --font-size-2xl: 1.5rem;    /* 24px */
-  --font-size-3xl: 1.875rem;  /* 30px */
+  /* Typography Scale - Exact ProductLifecycle Constants */
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 17.5px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 24px;
+  --font-size-xxxl: 32px;
   
-  /* Font Weights - ProductLifecycle */
+  /* Font Weights */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   
-  /* Line Heights - ProductLifecycle */
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  /* Spacing System - Exact ProductLifecycle Constants */
+  --spacing-xxxs: 2px;
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-base: 16px;
+  --spacing-md: 20px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 40px;
+  --spacing-xxxl: 48px;
   
-  /* Spacing - Ultra Compact Scale */
-  --spacing-xs: 1px;
-  --spacing-sm: 2px;
-  --spacing-md: 4px;
-  --spacing-lg: 6px;
-  --spacing-xl: 8px;
-  --spacing-2xl: 12px;
-  --spacing-3xl: 16px;
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-base: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 12px;
+  --border-radius-full: 50%;
   
-  /* Border Radius - ProductLifecycle */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  /* Effects - Exact ProductLifecycle System */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(16px);
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+  
+  --transition-fast: all 0.15s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
 }
 
-/* Dark Theme - Pure Black Theme with High Contrast */
+/* Linear Dark Theme - Exact ProductLifecycle Colors */
 [data-theme="dark"] {
-  /* Background - Pure black focused theme */
-  --bg-primary: #000000;       /* Pure black background */
-  --bg-secondary: #111111;     /* Near-black secondary */
-  --bg-elevated: #1a1a1a;      /* Elevated surfaces - subtle gray */
-  --bg-overlay: rgba(0, 0, 0, 0.9);
-  --bg-hover: rgba(255, 255, 255, 0.1);
+  /* Background Colors - Exact ProductLifecycle linear-dark hierarchy */
+  --bg-primary: #121212;    /* Dark grey instead of pure black */
+  --bg-secondary: #1E1E1E;  /* Slightly lighter for cards */
+  --bg-elevated: #252525;   /* Elevated surfaces */
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  --bg-hover: rgba(255, 255, 255, 0.05);
   
-  /* Text - Maximum contrast for black backgrounds */
-  --text-primary: #ffffff;     /* Pure white primary text */
-  --text-secondary: #e0e0e0;   /* Light gray secondary text */
-  --text-muted: #a0a0a0;       /* Medium gray muted text */
-  --text-inverse: #000000;     /* Black text on light backgrounds */
+  /* Text Colors - Exact ProductLifecycle rgba values */
+  --text-primary: rgba(255, 255, 255, 0.87);    /* High emphasis */
+  --text-secondary: rgba(255, 255, 255, 0.60);  /* Medium emphasis */
+  --text-muted: rgba(255, 255, 255, 0.38);      /* Disabled */
+  --text-inverse: #121212;
   
-  /* Accent - High contrast blue system */
-  --accent-primary: #4da6ff;   /* Bright blue for black backgrounds */
-  --accent-hover: #66b3ff;     /* Lighter blue on hover */
-  --accent-active: #3399ff;    /* Darker blue when pressed */
-  --accent-gradient: linear-gradient(135deg, #4da6ff 0%, #9966ff 100%);
+  /* Accent Colors - Exact ProductLifecycle blue system */
+  --accent-primary: #5E9EFF;   /* Slightly desaturated blue */
+  --accent-hover: #7DB3FF;
+  --accent-active: #4A8FE7;
+  --accent-gradient: linear-gradient(135deg, #5E9EFF 0%, #9D7EFF 100%);
   
-  /* Status - High contrast semantic colors */
-  --status-success: #4ade80;   /* Bright green */
-  --status-success-bg: rgba(74, 222, 128, 0.2);
-  --status-warning: #fbbf24;   /* Bright yellow */
-  --status-warning-bg: rgba(251, 191, 36, 0.2);
-  --status-error: #f87171;     /* Bright red */
-  --status-error-bg: rgba(248, 113, 113, 0.2);
-  --status-info: #4da6ff;      /* Bright blue */
-  --status-info-bg: rgba(77, 166, 255, 0.2);
+  /* Status Colors - Exact ProductLifecycle palette */
+  --status-success: #4ADE80;    /* Lighter green for dark mode */
+  --status-success-bg: rgba(74, 222, 128, 0.15);
+  --status-warning: #FBBF24;    /* Softer yellow */
+  --status-warning-bg: rgba(251, 191, 36, 0.15);
+  --status-error: #F87171;      /* Softer red */
+  --status-error-bg: rgba(248, 113, 113, 0.15);
+  --status-info: #60A5FA;       /* Lighter blue */
+  --status-info-bg: rgba(96, 165, 250, 0.15);
   
-  /* Borders - High contrast borders for black theme */
-  --border-default: #333333;   /* Medium gray border */
-  --border-subtle: #222222;    /* Subtle border */
-  --border-strong: #555555;    /* Strong border for emphasis */
-  
-  /* Shadows - Enhanced for pure black backgrounds */
-  --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.1);
-  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1);
-  --shadow-lg: 0 10px 15px rgba(255, 255, 255, 0.1);
-  --shadow-glow: 0 0 20px rgba(77, 166, 255, 0.4);
+  /* Border Colors - Exact ProductLifecycle transparency */
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
 }
 
-/* Global Styles - Based on ProductLifecycle */
-* {
+/* Base HTML and Body - ProductLifecycle Global Styles */
+html {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family);
   transition: var(--transition-normal);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Container and Layout */
-.container {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  transition: var(--transition-normal);
-}
-
-/* Navigation - Compact Style */
-.nav {
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  transition: var(--transition-normal);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-
-.nav a {
-  color: var(--text-secondary);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  text-decoration: none;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--radius-md);
-  transition: var(--transition-fast);
-}
-
-.nav a:hover {
-  background-color: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-.nav a.active {
-  background: var(--accent-primary);
-  color: var(--text-inverse);
-}
-
-/* Navigation Brand */
-.nav-brand {
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-lg);
-  color: var(--text-primary);
-}
-
-/* Navigation User Section */
-.nav-user-info {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-/* Buttons - ProductLifecycle Style */
-.btn {
-  background: var(--accent-primary);
-  color: var(--text-inverse);
-  border: none;
-  border-radius: var(--radius-md);
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-family);
-  cursor: pointer;
-  transition: var(--transition-fast);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  line-height: 1;
-}
-
-.btn:hover:not(:disabled) {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn:active:not(:disabled) {
-  background: var(--accent-active);
-  transform: translateY(0);
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Button Variants */
-.btn-secondary {
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-  border: 1px solid var(--border-default);
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background: var(--bg-hover);
-  border-color: var(--border-strong);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text-secondary);
-}
-
-.btn-ghost:hover:not(:disabled) {
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-}
-
-/* Theme Selector Dropdown */\n.theme-selector {\n  background: var(--bg-elevated);\n  border: 1px solid var(--border-default);\n  color: var(--text-primary);\n  border-radius: var(--radius-md);\n  padding: var(--spacing-xs) var(--spacing-sm);\n  font-size: var(--font-size-sm);\n  font-family: var(--font-family);\n  cursor: pointer;\n  transition: var(--transition-fast);\n  min-width: 120px;\n  box-shadow: var(--shadow-sm);\n}\n\n.theme-selector:hover {\n  border-color: var(--accent-primary);\n  box-shadow: var(--shadow-md);\n}\n\n.theme-selector:focus {\n  outline: none;\n  border-color: var(--accent-primary);\n  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);\n}\n\n.theme-selector option {\n  background: var(--bg-elevated);\n  color: var(--text-primary);\n  padding: var(--spacing-xs);\n}\n\n/* Legacy Theme Toggle Button */
-.theme-toggle {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-  color: var(--text-primary);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-sm);
-  font-size: var(--font-size-base);
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-sm);
-}
-
-.theme-toggle:hover {
-  background: var(--bg-elevated);        /* Keep elevated background */
-  border-color: var(--accent-primary);   /* #5E9EFF - Blue border on hover */
-  transform: scale(1.05);
-  box-shadow: var(--shadow-md);          /* Enhanced shadow on hover */
-}
-
-.theme-toggle:active {
-  transform: scale(0.95);
-  box-shadow: var(--shadow-sm);
-}
-
-/* Dark mode specific enhancements */
-[data-theme="dark"] .theme-toggle {
-  background: var(--bg-elevated);        /* Ensure elevated background in dark mode */
-}
-
-[data-theme="dark"] .theme-toggle:hover {
-  box-shadow: var(--shadow-glow);        /* Blue glow effect */
-}
-
-/* Cards and Surfaces - ProductLifecycle Hierarchy */
-.card,
-.dashboard-card,
-.stat-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  color: var(--text-primary);
-  transition: var(--transition-normal);
-  box-shadow: var(--shadow-sm);
-}
-
-.card:hover,
-.dashboard-card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-/* Card Content Typography */
-.card h1, .dashboard-card h1 { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0 0 var(--spacing-md) 0; }
-.card h2, .dashboard-card h2 { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); margin: 0 0 var(--spacing-md) 0; }
-.card h3, .dashboard-card h3 { font-size: var(--font-size-lg); font-weight: var(--font-weight-medium); margin: 0 0 var(--spacing-sm) 0; }
-.card p, .dashboard-card p { font-size: var(--font-size-base); line-height: var(--line-height-normal); margin: 0 0 var(--spacing-md) 0; }
-.card .text-secondary, .dashboard-card .text-secondary { color: var(--text-secondary); font-size: var(--font-size-sm); }
-
-/* Status Elements */
-.tier-badge {
-  background: var(--status-success);
-  color: var(--text-inverse);
-}
-
-.progress-bar {
-  background: var(--border-default);
-}
-
-.progress-fill {
-  background: var(--status-success);
-}
-
-/* Flash Messages */
-.flash-message {
-  background: var(--status-error-bg);
-  color: var(--status-error);
-  border: 1px solid var(--border-default);
-}
-
-/* Scrollbar Styling */
+/* Scrollbar styling - ProductLifecycle Style */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -365,7 +132,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-strong);
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -378,7 +145,7 @@ body {
   color: var(--text-inverse);
 }
 
-/* Focus Styles */
+/* Focus styles */
 :focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
@@ -395,7 +162,400 @@ a:hover {
   color: var(--accent-hover);
 }
 
-/* Utility Classes */
+/* Code blocks */
+code, pre {
+  font-family: var(--font-mono);
+  background-color: var(--bg-elevated);
+  border-radius: var(--border-radius-sm);
+  padding: 2px var(--spacing-xxs);
+  font-size: var(--font-size-sm);
+}
+
+pre {
+  padding: var(--spacing-sm);
+  overflow-x: auto;
+}
+
+/* Navigation - ProductLifecycle Style with Exact Measurements */
+.nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-default);
+  padding: var(--spacing-xs) var(--spacing-base);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px; /* ProductLifecycle tab height - exact match */
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+}
+
+.nav-brand {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.nav-brand:hover {
+  color: var(--accent-primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-base);
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  border-radius: var(--border-radius-base);
+  transition: var(--transition-fast);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Theme Selector - ProductLifecycle Dropdown Style */
+.theme-selector {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  min-width: 140px;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-selector:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-selector:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-color: var(--accent-primary);
+}
+
+.theme-selector option {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  padding: var(--spacing-xxs);
+  font-family: var(--font-family);
+}
+
+/* Main Content Container - ProductLifecycle Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-base);
+  flex: 1;
+  width: 100%;
+}
+
+.main-content {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: calc(100vh - 60px);
+  padding: var(--spacing-base);
+  transition: var(--transition-normal);
+}
+
+/* Root container */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Cards - ProductLifecycle Card Design with Exact Styling */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-base);
+  margin-bottom: var(--spacing-base);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  background: var(--bg-elevated);
+}
+
+.card-header {
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xxs) 0;
+  line-height: 1.4;
+}
+
+.card-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.card-content {
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+}
+
+.card-actions {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  gap: var(--spacing-xs);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Buttons - ProductLifecycle Button System with Exact Measurements */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxs) var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  border-radius: var(--border-radius-base);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-fast);
+  min-height: 32px; /* ProductLifecycle chip height */
+  gap: var(--spacing-xxs);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  background: var(--accent-active);
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-primary);
+  border-color: var(--border-default);
+}
+
+.btn-outline:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-primary);
+  color: var(--accent-hover);
+}
+
+.btn-sm {
+  padding: 1px var(--spacing-xxs); /* Badge padding from ProductLifecycle */
+  font-size: var(--font-size-xs);
+  min-height: 24px;
+  border-radius: var(--border-radius-md); /* Badge border radius */
+}
+
+.btn-lg {
+  padding: var(--spacing-xs) var(--spacing-base);
+  font-size: var(--font-size-md);
+  min-height: 40px;
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Form Elements - ProductLifecycle Style */
+.form-group {
+  margin-bottom: var(--spacing-base);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xxs);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-base);
+  transition: var(--transition-fast);
+  min-height: 40px;
+}
+
+.form-input:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-color: var(--accent-primary);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Typography Hierarchy - ProductLifecycle System */
+h1 {
+  font-size: var(--font-size-xxxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-lg) 0;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-base) 0;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+  line-height: 1.4;
+}
+
+p {
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-base) 0;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Status Elements */
+.tier-badge {
+  background: var(--status-success);
+  color: var(--text-inverse);
+  padding: var(--spacing-xxxs) var(--spacing-xs);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.progress-bar {
+  background: var(--border-default);
+  border-radius: var(--border-radius-full);
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: var(--status-success);
+  height: 100%;
+  transition: var(--transition-normal);
+}
+
+/* Flash Messages */
+.flash-message {
+  background: var(--status-error-bg);
+  color: var(--status-error);
+  border: 1px solid var(--border-default);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-base);
+}
+
+/* Utility Classes - ProductLifecycle System */
 .blur-sm { backdrop-filter: var(--blur-sm); }
 .blur-md { backdrop-filter: var(--blur-md); }
 .blur-lg { backdrop-filter: var(--blur-lg); }
@@ -408,50 +568,77 @@ a:hover {
 .transition-normal { transition: var(--transition-normal); }
 .transition-slow { transition: var(--transition-slow); }
 
-/* Age-Tier Specific Overrides */
+/* Age-Tier Specific Overrides - Maintaining Bolaquent's Educational Focus */
 .theme-playful[data-theme="dark"] {
   --accent-primary: #FF8A9B;
   --accent-hover: #FFB3C1;
-  --bg-primary: #1A1625;
-  --bg-secondary: #2D1B45;
 }
 
 .theme-educational[data-theme="dark"] {
   --accent-primary: #5E9EFF;
   --accent-hover: #7DB3FF;
-  --bg-primary: #0C1821;
-  --bg-secondary: #1E3A4A;
 }
 
 .theme-professional[data-theme="dark"] {
   --accent-primary: #4A8FE7;
   --accent-hover: #6BA3F0;
-  --bg-primary: #111827;
-  --bg-secondary: #1F2937;
 }
 
-/* Responsive Design */
+/* Responsive Design - ProductLifecycle Breakpoints */
 @media (max-width: 768px) {
-  .theme-toggle {
-    padding: 10px 14px;
-    font-size: 18px;
+  .nav {
+    padding: var(--spacing-xxs) var(--spacing-sm);
+  }
+  
+  .card {
+    padding: var(--spacing-sm);
+  }
+  
+  .theme-selector {
+    min-width: 120px;
   }
 }
 
-/* High Contrast Support */
+/* Accessibility Enhancements */
 @media (prefers-contrast: high) {
   :root {
-    --border-default: #000000;
-    --border-subtle: #000000;
-    --border-strong: #000000;
+    --border-default: var(--text-primary);
+    --border-subtle: var(--text-secondary);
+    --border-strong: var(--text-primary);
   }
 }
 
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Animations - ProductLifecycle System */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--accent-primary);
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite;
 }

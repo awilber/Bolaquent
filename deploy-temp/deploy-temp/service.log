@@ -1,0 +1,31 @@
+Creating Bolaquent vocabulary learning app...
+Flask app created with learning, auth, and admin blueprints
+Initializing database...
+Database initialized
+PORT not set, scanning for available port...
+Port 5000 is occupied, trying next...
+Port 5010 is available
+Found available port: 5010
+Starting Bolaquent on port 5010
+Multi-tiered vocabulary learning app accessible at: http://localhost:5010/
+Features: Age-based learning tiers, Progress tracking, Admin interface
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5010
+ * Running on http://192.168.1.16:5010
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 723-754-008
+127.0.0.1 - - [30/Jul/2025 01:46:58] "GET /auth/guest HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 01:47:49] "GET /auth/guest HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 01:48:31] "[32mPOST /auth/start-guest HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 01:48:31] "[31m[1mPOST /learning/dashboard HTTP/1.1[0m" 405 -
+127.0.0.1 - - [30/Jul/2025 01:48:42] "[32mPOST /auth/start-guest HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jul/2025 01:49:46] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 01:50:31] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 01:50:49] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 01:51:13] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2025 01:51:18] "GET /auth/login HTTP/1.1" 200 -

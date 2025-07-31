@@ -1,0 +1,457 @@
+/* Bolaquent Theme System - Based on ProductLifecycle Architecture */
+
+/* Base CSS Variables for Light Theme */
+:root {
+  /* Colors - Light Theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-elevated: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --bg-hover: rgba(0, 0, 0, 0.05);
+  
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.60);
+  --text-muted: rgba(0, 0, 0, 0.38);
+  --text-inverse: #ffffff;
+  
+  --accent-primary: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-active: #1d4ed8;
+  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  
+  --status-success: #10b981;
+  --status-success-bg: rgba(16, 185, 129, 0.15);
+  --status-warning: #f59e0b;
+  --status-warning-bg: rgba(245, 158, 11, 0.15);
+  --status-error: #ef4444;
+  --status-error-bg: rgba(239, 68, 68, 0.15);
+  --status-info: #3b82f6;
+  --status-info-bg: rgba(59, 130, 246, 0.15);
+  
+  --border-default: rgba(0, 0, 0, 0.12);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  
+  /* Effects */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(16px);
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+  
+  --transition-fast: all 0.15s ease;
+  --transition-normal: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+  
+  /* Typography - Exact ProductLifecycle */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', Menlo, Monaco, Consolas, monospace;
+  
+  /* Font Sizes - ProductLifecycle Scale */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  
+  /* Font Weights - ProductLifecycle */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights - ProductLifecycle */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Spacing - Ultra Compact Scale */
+  --spacing-xs: 1px;
+  --spacing-sm: 2px;
+  --spacing-md: 4px;
+  --spacing-lg: 6px;
+  --spacing-xl: 8px;
+  --spacing-2xl: 12px;
+  --spacing-3xl: 16px;
+  
+  /* Border Radius - ProductLifecycle */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+/* Dark Theme - Pure Black Theme with High Contrast */
+[data-theme="dark"] {
+  /* Background - Pure black focused theme */
+  --bg-primary: #000000;       /* Pure black background */
+  --bg-secondary: #111111;     /* Near-black secondary */
+  --bg-elevated: #1a1a1a;      /* Elevated surfaces - subtle gray */
+  --bg-overlay: rgba(0, 0, 0, 0.9);
+  --bg-hover: rgba(255, 255, 255, 0.1);
+  
+  /* Text - Maximum contrast for black backgrounds */
+  --text-primary: #ffffff;     /* Pure white primary text */
+  --text-secondary: #e0e0e0;   /* Light gray secondary text */
+  --text-muted: #a0a0a0;       /* Medium gray muted text */
+  --text-inverse: #000000;     /* Black text on light backgrounds */
+  
+  /* Accent - High contrast blue system */
+  --accent-primary: #4da6ff;   /* Bright blue for black backgrounds */
+  --accent-hover: #66b3ff;     /* Lighter blue on hover */
+  --accent-active: #3399ff;    /* Darker blue when pressed */
+  --accent-gradient: linear-gradient(135deg, #4da6ff 0%, #9966ff 100%);
+  
+  /* Status - High contrast semantic colors */
+  --status-success: #4ade80;   /* Bright green */
+  --status-success-bg: rgba(74, 222, 128, 0.2);
+  --status-warning: #fbbf24;   /* Bright yellow */
+  --status-warning-bg: rgba(251, 191, 36, 0.2);
+  --status-error: #f87171;     /* Bright red */
+  --status-error-bg: rgba(248, 113, 113, 0.2);
+  --status-info: #4da6ff;      /* Bright blue */
+  --status-info-bg: rgba(77, 166, 255, 0.2);
+  
+  /* Borders - High contrast borders for black theme */
+  --border-default: #333333;   /* Medium gray border */
+  --border-subtle: #222222;    /* Subtle border */
+  --border-strong: #555555;    /* Strong border for emphasis */
+  
+  /* Shadows - Enhanced for pure black backgrounds */
+  --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.1);
+  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 10px 15px rgba(255, 255, 255, 0.1);
+  --shadow-glow: 0 0 20px rgba(77, 166, 255, 0.4);
+}
+
+/* Global Styles - Based on ProductLifecycle */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: var(--transition-normal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container and Layout */
+.container {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: var(--transition-normal);
+}
+
+/* Navigation - Compact Style */
+.nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: var(--transition-normal);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav a {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.nav a:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav a.active {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+/* Navigation Brand */
+.nav-brand {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+}
+
+/* Navigation User Section */
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Buttons - ProductLifecycle Style */
+.btn {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active:not(:disabled) {
+  background: var(--accent-active);
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button Variants */
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* Theme Selector Dropdown */\n.theme-selector {\n  background: var(--bg-elevated);\n  border: 1px solid var(--border-default);\n  color: var(--text-primary);\n  border-radius: var(--radius-md);\n  padding: var(--spacing-xs) var(--spacing-sm);\n  font-size: var(--font-size-sm);\n  font-family: var(--font-family);\n  cursor: pointer;\n  transition: var(--transition-fast);\n  min-width: 120px;\n  box-shadow: var(--shadow-sm);\n}\n\n.theme-selector:hover {\n  border-color: var(--accent-primary);\n  box-shadow: var(--shadow-md);\n}\n\n.theme-selector:focus {\n  outline: none;\n  border-color: var(--accent-primary);\n  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);\n}\n\n.theme-selector option {\n  background: var(--bg-elevated);\n  color: var(--text-primary);\n  padding: var(--spacing-xs);\n}\n\n/* Legacy Theme Toggle Button */
+.theme-toggle {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-base);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-elevated);        /* Keep elevated background */
+  border-color: var(--accent-primary);   /* #5E9EFF - Blue border on hover */
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);          /* Enhanced shadow on hover */
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Dark mode specific enhancements */
+[data-theme="dark"] .theme-toggle {
+  background: var(--bg-elevated);        /* Ensure elevated background in dark mode */
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  box-shadow: var(--shadow-glow);        /* Blue glow effect */
+}
+
+/* Cards and Surfaces - ProductLifecycle Hierarchy */
+.card,
+.dashboard-card,
+.stat-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  color: var(--text-primary);
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover,
+.dashboard-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Card Content Typography */
+.card h1, .dashboard-card h1 { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); margin: 0 0 var(--spacing-md) 0; }
+.card h2, .dashboard-card h2 { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); margin: 0 0 var(--spacing-md) 0; }
+.card h3, .dashboard-card h3 { font-size: var(--font-size-lg); font-weight: var(--font-weight-medium); margin: 0 0 var(--spacing-sm) 0; }
+.card p, .dashboard-card p { font-size: var(--font-size-base); line-height: var(--line-height-normal); margin: 0 0 var(--spacing-md) 0; }
+.card .text-secondary, .dashboard-card .text-secondary { color: var(--text-secondary); font-size: var(--font-size-sm); }
+
+/* Status Elements */
+.tier-badge {
+  background: var(--status-success);
+  color: var(--text-inverse);
+}
+
+.progress-bar {
+  background: var(--border-default);
+}
+
+.progress-fill {
+  background: var(--status-success);
+}
+
+/* Flash Messages */
+.flash-message {
+  background: var(--status-error-bg);
+  color: var(--status-error);
+  border: 1px solid var(--border-default);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-default);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Links */
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Utility Classes */
+.blur-sm { backdrop-filter: var(--blur-sm); }
+.blur-md { backdrop-filter: var(--blur-md); }
+.blur-lg { backdrop-filter: var(--blur-lg); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.transition-fast { transition: var(--transition-fast); }
+.transition-normal { transition: var(--transition-normal); }
+.transition-slow { transition: var(--transition-slow); }
+
+/* Age-Tier Specific Overrides */
+.theme-playful[data-theme="dark"] {
+  --accent-primary: #FF8A9B;
+  --accent-hover: #FFB3C1;
+  --bg-primary: #1A1625;
+  --bg-secondary: #2D1B45;
+}
+
+.theme-educational[data-theme="dark"] {
+  --accent-primary: #5E9EFF;
+  --accent-hover: #7DB3FF;
+  --bg-primary: #0C1821;
+  --bg-secondary: #1E3A4A;
+}
+
+.theme-professional[data-theme="dark"] {
+  --accent-primary: #4A8FE7;
+  --accent-hover: #6BA3F0;
+  --bg-primary: #111827;
+  --bg-secondary: #1F2937;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .theme-toggle {
+    padding: 10px 14px;
+    font-size: 18px;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --border-default: #000000;
+    --border-subtle: #000000;
+    --border-strong: #000000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
