@@ -70,14 +70,14 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
   
-  /* Spacing - ProductLifecycle Scale */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
-  --spacing-3xl: 64px;
+  /* Spacing - Compact Scale */
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
   
   /* Border Radius - ProductLifecycle */
   --radius-sm: 4px;
@@ -86,41 +86,41 @@
   --radius-xl: 12px;
 }
 
-/* Dark Theme - Exact ProductLifecycle linear-dark colors */
+/* Dark Theme - Popular Black Theme (GitHub Dark/VS Code Dark) */
 [data-theme="dark"] {
-  /* Background - Exact ProductLifecycle mapping */
-  --bg-primary: #121212;    /* Dark grey background */
-  --bg-secondary: #1E1E1E;  /* Cards and containers */
-  --bg-elevated: #252525;   /* Elevated surfaces (buttons, modals) */
-  --bg-overlay: rgba(0, 0, 0, 0.7);
-  --bg-hover: rgba(255, 255, 255, 0.05);
+  /* Background - True black theme */
+  --bg-primary: #000000;    /* Pure black background */
+  --bg-secondary: #0d1117;  /* GitHub dark secondary */
+  --bg-elevated: #161b22;   /* Elevated surfaces */
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  --bg-hover: rgba(255, 255, 255, 0.08);
   
-  /* Text - Exact ProductLifecycle contrast ratios */
-  --text-primary: rgba(255, 255, 255, 0.87);   /* High emphasis white */
-  --text-secondary: rgba(255, 255, 255, 0.60); /* Medium emphasis */
-  --text-muted: rgba(255, 255, 255, 0.38);     /* Low emphasis/disabled */
-  --text-inverse: #121212;  /* Dark text on light backgrounds */
+  /* Text - High contrast for black backgrounds */
+  --text-primary: #f0f6fc;     /* GitHub dark primary text */
+  --text-secondary: #8b949e;   /* GitHub dark secondary text */
+  --text-muted: #6e7681;       /* GitHub dark muted text */
+  --text-inverse: #000000;     /* Black text on light backgrounds */
   
-  /* Accent - ProductLifecycle blue system */
-  --accent-primary: #5E9EFF;   /* Slightly desaturated blue */
-  --accent-hover: #7DB3FF;     /* Lighter on hover */
-  --accent-active: #4A8FE7;    /* Darker when pressed */
-  --accent-gradient: linear-gradient(135deg, #5E9EFF 0%, #9D7EFF 100%);
+  /* Accent - GitHub/VS Code blue system */
+  --accent-primary: #58a6ff;   /* GitHub blue */
+  --accent-hover: #79c0ff;     /* Lighter blue on hover */
+  --accent-active: #388bfd;    /* Darker blue when pressed */
+  --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
   
-  /* Status - ProductLifecycle semantic colors */
-  --status-success: #4ADE80;  /* Lighter green for dark mode */
-  --status-success-bg: rgba(74, 222, 128, 0.15);
-  --status-warning: #FBBF24;  /* Softer yellow */
-  --status-warning-bg: rgba(251, 191, 36, 0.15);
-  --status-error: #F87171;    /* Softer red */
-  --status-error-bg: rgba(248, 113, 113, 0.15);
-  --status-info: #60A5FA;     /* Lighter blue */
-  --status-info-bg: rgba(96, 165, 250, 0.15);
+  /* Status - GitHub semantic colors */
+  --status-success: #3fb950;   /* GitHub green */
+  --status-success-bg: rgba(63, 185, 80, 0.15);
+  --status-warning: #d29922;   /* GitHub yellow */
+  --status-warning-bg: rgba(210, 153, 34, 0.15);
+  --status-error: #f85149;     /* GitHub red */
+  --status-error-bg: rgba(248, 81, 73, 0.15);
+  --status-info: #58a6ff;      /* GitHub blue */
+  --status-info-bg: rgba(88, 166, 255, 0.15);
   
-  /* Borders - ProductLifecycle subtle borders */
-  --border-default: rgba(255, 255, 255, 0.12);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  /* Borders - GitHub style borders */
+  --border-default: #30363d;   /* GitHub dark border */
+  --border-subtle: #21262d;    /* Subtle border */
+  --border-strong: #484f58;    /* Strong border for emphasis */
   
   /* Shadows - Enhanced for dark mode depth */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -266,7 +266,7 @@ body {
   color: var(--text-primary);
 }
 
-/* Theme Toggle Button - ProductLifecycle Style */
+/* Theme Selector Dropdown */\n.theme-selector {\n  background: var(--bg-elevated);\n  border: 1px solid var(--border-default);\n  color: var(--text-primary);\n  border-radius: var(--radius-md);\n  padding: var(--spacing-xs) var(--spacing-sm);\n  font-size: var(--font-size-sm);\n  font-family: var(--font-family);\n  cursor: pointer;\n  transition: var(--transition-fast);\n  min-width: 120px;\n  box-shadow: var(--shadow-sm);\n}\n\n.theme-selector:hover {\n  border-color: var(--accent-primary);\n  box-shadow: var(--shadow-md);\n}\n\n.theme-selector:focus {\n  outline: none;\n  border-color: var(--accent-primary);\n  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);\n}\n\n.theme-selector option {\n  background: var(--bg-elevated);\n  color: var(--text-primary);\n  padding: var(--spacing-xs);\n}\n\n/* Legacy Theme Toggle Button */
 .theme-toggle {
   background: var(--bg-elevated);
   border: 1px solid var(--border-default);
