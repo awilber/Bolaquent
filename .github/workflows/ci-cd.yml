@@ -117,7 +117,7 @@ jobs:
         chmod 600 private_key.pem
         
         # Deploy application using S3 download approach
-        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.89.117.72 << EOF
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << EOF
           # Stop existing application
           pkill -f "python.*app.py" || true
           sleep 3
@@ -157,8 +157,8 @@ jobs:
         sleep 15
         
         # Test the deployment
-        curl -I http://54.89.117.72/ || echo "⚠️ Checking port 5000..."
-        curl -I http://54.89.117.72:5000/ || echo "⚠️ Service may still be starting up"
+        curl -I http://54.161.222.239/ || echo "⚠️ Checking port 5000..."
+        curl -I http://54.161.222.239:5000/ || echo "⚠️ Service may still be starting up"
 
   notify:
     needs: [deploy]
@@ -170,7 +170,7 @@ jobs:
       run: |
         if [ "${{ needs.deploy.result }}" == "success" ]; then
           echo "✅ Bolaquent deployed successfully to AWS"
-          echo "🌐 Live at: http://54.89.117.72:5000"
+          echo "🌐 Live at: http://54.161.222.239/"
         else
           echo "❌ Deployment failed - check logs"
         fi
