@@ -86,7 +86,7 @@ jobs:
         head -3 deploy/static/css/themes.css
         
         cd deploy
-        pip install -r requirements.txt -t .
+        # Don't install packages into deployment directory - use venv on server instead
         rm -rf .git .github __pycache__ *.pyc deploy
         
         # Final verification before zipping
