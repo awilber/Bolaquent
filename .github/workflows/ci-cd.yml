@@ -74,11 +74,25 @@ jobs:
     - name: Create deployment package
       run: |
         mkdir -p deploy
-        cp -r * deploy/ 2>/dev/null || true
-        cp -r .[^.]* deploy/ 2>/dev/null || true
+        # Explicitly copy all necessary files and directories
+        cp -r app.py config.py models.py requirements.txt deploy/
+        cp -r routes/ templates/ static/ docs/ deploy/
+        cp -r *.py *.txt *.md deploy/ 2>/dev/null || true
+        
+        # Verify critical theme files are copied
+        echo "🔍 Verifying theme files in deployment package:"
+        ls -la deploy/static/css/
+        echo "📄 Checking themes.css header:"
+        head -3 deploy/static/css/themes.css
+        
         cd deploy
         pip install -r requirements.txt -t .
         rm -rf .git .github __pycache__ *.pyc deploy
+        
+        # Final verification before zipping
+        echo "🔍 Final package contents:"
+        find . -name "*.css" -o -name "*.js" | sort
+        
         zip -r ../bolaquent-deploy.zip .
     
     - name: Upload deployment artifact
@@ -118,18 +132,28 @@ jobs:
         
         # Deploy application using S3 download approach
         ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << EOF
-          # Stop existing application
+          # Stop existing application and clear cache
           pkill -f "python.*app.py" || true
-          sleep 3
+          sleep 5
           
-          # Clean up and setup
-          rm -rf bolaquent-app
+          # Aggressive cleanup - remove all old versions
+          rm -rf bolaquent-app* bolaquent-*.zip
+          rm -rf __pycache__ .pytest_cache
+          
+          # Create fresh directory
           mkdir -p bolaquent-app
           cd bolaquent-app
           
-          # Download from S3 instead of SCP
+          # Download latest deployment from S3
+          echo "📦 Downloading deployment: $DEPLOY_FILE"
           aws s3 cp s3://bolaquent-deployments/$DEPLOY_FILE ./bolaquent-deploy.zip --region us-east-1
           unzip -o bolaquent-deploy.zip
+          
+          # Verify theme files are present
+          echo "🔍 Verifying theme files in deployed package:"
+          ls -la static/css/
+          echo "📄 Checking deployed themes.css header:"
+          head -3 static/css/themes.css
           
           # Install dependencies
           python3 -m pip install --user -r requirements.txt
@@ -143,6 +167,11 @@ jobs:
           curl -f http://localhost:5000/ && echo "✅ App on 5000" || echo "⚠️ Port 5000 failed"
           curl -f http://localhost:5010/ && echo "✅ App on 5010" || echo "⚠️ Port 5010 failed"
           curl -f http://localhost:5020/ && echo "✅ App on 5020" || echo "⚠️ Port 5020 failed"
+          
+          # Verify deployed version has ProductLifecycle themes
+          echo "🔍 Verifying deployed version has correct theme system:"
+          curl -s http://localhost:5000/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected"
+          curl -I http://localhost:5000/static/css/additional-themes.css || echo "⚠️ Additional themes file missing"
         EOF
         
         # Clean up
