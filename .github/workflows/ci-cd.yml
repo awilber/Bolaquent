@@ -75,7 +75,7 @@ jobs:
       run: |
         mkdir -p deploy
         # Explicitly copy all necessary files and directories
-        cp -r app.py config.py models.py requirements.txt deploy/
+        cp -r app.py config.py models.py requirements.txt requirements-prod.txt deploy/
         cp -r routes/ templates/ static/ docs/ deploy/
         cp -r *.py *.txt *.md deploy/ 2>/dev/null || true
         
@@ -160,8 +160,8 @@ jobs:
           echo "📄 Checking deployed themes.css header:"
           head -3 static/css/themes.css
           
-          # Install dependencies
-          python3 -m pip install --user -r requirements.txt
+          # Install production dependencies only (Python 3.7 compatible)
+          python3 -m pip install --user -r requirements-prod.txt
           
           # Start application on multiple ports for reliability
           nohup python3 app.py > app.log 2>&1 &

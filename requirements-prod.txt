@@ -1,0 +1,11 @@
+# Production requirements - Python 3.7 compatible
+Flask==3.1.0
+Flask-Cors==4.0.0
+Flask-SQLAlchemy==3.1.1
+blinker==1.9.0
+click==8.1.8
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+SQLAlchemy==2.0.41
+Werkzeug==3.1.3
