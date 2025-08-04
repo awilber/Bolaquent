@@ -135,17 +135,29 @@ jobs:
           # Stop existing application and clear cache
           echo "🔄 Stopping existing Flask applications..."
           pkill -f "python.*app.py" || true
+          pkill -f "Flask" || true
+          pkill -f "bolaquent" || true
           sleep 3
           
-          # Force kill any remaining processes
-          ps aux | grep "python.*app.py" | grep -v grep | awk '{print \$2}' | xargs -r kill -9 || true 
+          # Force kill any remaining processes using port 5000
+          lsof -ti:5000 | xargs -r kill -9 || true
           sleep 2
           
-          # Verify no Flask processes are running
-          if ps aux | grep "python.*app.py" | grep -v grep; then
+          # Force kill any remaining Flask processes
+          ps aux | grep -E "(python.*app.py|Flask|venv.*python)" | grep -v grep | awk '{print \$2}' | xargs -r kill -9 || true 
+          sleep 2
+          
+          # Verify no Flask processes are running and port 5000 is free
+          if ps aux | grep -E "(python.*app.py|Flask)" | grep -v grep; then
             echo "⚠️ Flask processes still running after cleanup"
           else
             echo "✅ All Flask processes stopped"
+          fi
+          
+          if lsof -i:5000; then
+            echo "⚠️ Port 5000 still in use"
+          else
+            echo "✅ Port 5000 is free"
           fi
           
           # Aggressive cleanup - remove all old versions
