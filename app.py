@@ -4,6 +4,8 @@ from config import Config
 from models import db, AgeTier, VocabularyWord
 import os
 
+# Force deployment with ProductLifecycle theme system
+
 
 def create_app():
     app = Flask(__name__)
