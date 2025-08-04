@@ -612,7 +612,7 @@ if __name__ == "__main__":
     print("Features: Age-based learning tiers, Progress tracking, Admin interface")
 
     # Production deployment optimization
-    if os.environ.get('FLASK_ENV') == 'production':
+    if os.environ.get("FLASK_ENV") == "production":
         print("Running in production mode with socket reuse enabled")
         # Use port 5001 in production to avoid common port conflicts
         prod_port = 5001 if port == 5000 else port
