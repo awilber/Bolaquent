@@ -172,20 +172,25 @@ jobs:
           echo "📄 Checking deployed themes.css header:"
           head -3 static/css/themes.css
           
+          # Create virtual environment for clean package isolation
+          echo "🐍 Creating virtual environment..."
+          python3 -m venv venv
+          source venv/bin/activate
+          
           # Install production dependencies only (Python 3.7 compatible)
           echo "📦 Installing Python dependencies..."
-          python3 -m pip install --user -r requirements-prod.txt
+          pip install -r requirements-prod.txt
           echo "✅ Dependencies installed"
           
           # Test Flask app can import before starting
           echo "🔍 Testing Flask app import..."
-          python3 -c "import app; print('✅ Flask app imports successfully')" || echo "❌ Flask import failed"
+          python -c "import app; print('✅ Flask app imports successfully')" || echo "❌ Flask import failed"
           
           # Start application with enhanced logging
           echo "🚀 Starting Flask application..."
           export FLASK_ENV=production
           export PORT=5000
-          nohup python3 app.py > app.log 2>&1 &
+          nohup ./venv/bin/python app.py > app.log 2>&1 &
           APP_PID=\$!
           echo \$APP_PID > app.pid
           echo "📝 Started Flask app with PID: \$APP_PID"
