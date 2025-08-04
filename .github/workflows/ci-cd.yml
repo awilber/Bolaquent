@@ -139,10 +139,12 @@ jobs:
           pkill -f "bolaquent" || true
           sleep 3
           
-          # Kill processes using port 5000 with multiple methods
-          echo "🔪 Killing processes on port 5000..."
+          # Kill processes using ports 5000 and 5001 with multiple methods
+          echo "🔪 Killing processes on ports 5000 and 5001..."
           lsof -ti:5000 | xargs -r kill -9 || true
+          lsof -ti:5001 | xargs -r kill -9 || true
           fuser -k 5000/tcp || true
+          fuser -k 5001/tcp || true
           sleep 3
           
           # Force kill any remaining Flask processes with broader patterns
@@ -152,22 +154,33 @@ jobs:
           # Final aggressive verification and cleanup
           echo "🔍 Final verification and cleanup..."
           
-          # If port 5000 is still in use, try one more aggressive cleanup
-          if lsof -i:5000; then
-            echo "⚠️ Port 5000 still in use - final aggressive cleanup..."
+          # If ports 5000/5001 are still in use, try one more aggressive cleanup
+          PORTS_IN_USE=""
+          if lsof -i:5000; then PORTS_IN_USE="$PORTS_IN_USE 5000"; fi
+          if lsof -i:5001; then PORTS_IN_USE="$PORTS_IN_USE 5001"; fi
+          
+          if [ -n "$PORTS_IN_USE" ]; then
+            echo "⚠️ Ports$PORTS_IN_USE still in use - final aggressive cleanup..."
             lsof -ti:5000 | xargs -r kill -9 || true
+            lsof -ti:5001 | xargs -r kill -9 || true
             fuser -k 5000/tcp || true
+            fuser -k 5001/tcp || true
             sleep 5
             
             # Check one more time
-            if lsof -i:5000; then
-              echo "❌ Failed to free port 5000 - deployment may fail"
-              lsof -i:5000
+            STILL_IN_USE=""
+            if lsof -i:5000; then STILL_IN_USE="$STILL_IN_USE 5000"; fi
+            if lsof -i:5001; then STILL_IN_USE="$STILL_IN_USE 5001"; fi
+            
+            if [ -n "$STILL_IN_USE" ]; then
+              echo "⚠️ Ports$STILL_IN_USE still in use - Flask will use port 5001 in production"
+              lsof -i:5000 || true
+              lsof -i:5001 || true
             else
-              echo "✅ Port 5000 finally freed"
+              echo "✅ All ports freed"
             fi
           else
-            echo "✅ Port 5000 is free"
+            echo "✅ Ports 5000 and 5001 are free"
           fi
           
           # Final process check
@@ -238,17 +251,18 @@ jobs:
             exit 1
           fi
           
-          # Test application endpoints
+          # Test application endpoints (production uses port 5001)
           sleep 5
           echo "🔍 Testing application endpoints..."
+          curl -f http://localhost:5001/ && echo "✅ App on 5001 (production)" || echo "⚠️ Port 5001 failed"
           curl -f http://localhost:5000/ && echo "✅ App on 5000" || echo "⚠️ Port 5000 failed"
           curl -f http://localhost:5010/ && echo "✅ App on 5010" || echo "⚠️ Port 5010 failed"
-          curl -f http://localhost:5020/ && echo "✅ App on 5020" || echo "⚠️ Port 5020 failed"
           
-          # Verify deployed version has ProductLifecycle themes
+          # Verify deployed version has ProductLifecycle themes (check production port)
           echo "🔍 Verifying deployed version has correct theme system:"
-          curl -s http://localhost:5000/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected"
-          curl -I http://localhost:5000/static/css/additional-themes.css || echo "⚠️ Additional themes file missing"
+          curl -s http://localhost:5001/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected on 5001"
+          curl -s http://localhost:5000/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected on 5000"
+          curl -I http://localhost:5001/static/css/additional-themes.css || echo "⚠️ Additional themes file missing on 5001"
         EOF
         
         # Clean up
@@ -262,9 +276,10 @@ jobs:
         # Wait for deployment to complete
         sleep 15
         
-        # Test the deployment
-        curl -I http://54.161.222.239/ || echo "⚠️ Checking port 5000..."
-        curl -I http://54.161.222.239:5000/ || echo "⚠️ Service may still be starting up"
+        # Test the deployment (check both ports)
+        curl -I http://54.161.222.239/ || echo "⚠️ Checking nginx on port 80..."
+        curl -I http://54.161.222.239:5001/ || echo "⚠️ Checking Flask on port 5001 (production)..."
+        curl -I http://54.161.222.239:5000/ || echo "⚠️ Checking Flask on port 5000..."
 
   notify:
     needs: [deploy]
