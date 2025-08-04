@@ -140,6 +140,11 @@ jobs:
           rm -rf bolaquent-app* bolaquent-*.zip
           rm -rf __pycache__ .pytest_cache
           
+          # Configure AWS credentials for S3 access
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region us-east-1
+          
           # Create fresh directory
           mkdir -p bolaquent-app
           cd bolaquent-app
