@@ -139,25 +139,43 @@ jobs:
           pkill -f "bolaquent" || true
           sleep 3
           
-          # Force kill any remaining processes using port 5000
+          # Kill processes using port 5000 with multiple methods
+          echo "🔪 Killing processes on port 5000..."
           lsof -ti:5000 | xargs -r kill -9 || true
-          sleep 2
+          fuser -k 5000/tcp || true
+          sleep 3
           
-          # Force kill any remaining Flask processes
-          ps aux | grep -E "(python.*app.py|Flask|venv.*python)" | grep -v grep | awk '{print \$2}' | xargs -r kill -9 || true 
-          sleep 2
+          # Force kill any remaining Flask processes with broader patterns
+          ps aux | grep -E "(python.*app.py|Flask|venv.*python|bolaquent)" | grep -v grep | awk '{print \$2}' | xargs -r kill -9 || true 
+          sleep 3
           
-          # Verify no Flask processes are running and port 5000 is free
-          if ps aux | grep -E "(python.*app.py|Flask)" | grep -v grep; then
-            echo "⚠️ Flask processes still running after cleanup"
-          else
-            echo "✅ All Flask processes stopped"
-          fi
+          # Final aggressive verification and cleanup
+          echo "🔍 Final verification and cleanup..."
           
+          # If port 5000 is still in use, try one more aggressive cleanup
           if lsof -i:5000; then
-            echo "⚠️ Port 5000 still in use"
+            echo "⚠️ Port 5000 still in use - final aggressive cleanup..."
+            lsof -ti:5000 | xargs -r kill -9 || true
+            fuser -k 5000/tcp || true
+            sleep 5
+            
+            # Check one more time
+            if lsof -i:5000; then
+              echo "❌ Failed to free port 5000 - deployment may fail"
+              lsof -i:5000
+            else
+              echo "✅ Port 5000 finally freed"
+            fi
           else
             echo "✅ Port 5000 is free"
+          fi
+          
+          # Final process check
+          if ps aux | grep -E "(python.*app.py|Flask)" | grep -v grep; then
+            echo "⚠️ Some Flask processes still running - will be replaced"
+            ps aux | grep -E "(python.*app.py|Flask)" | grep -v grep
+          else
+            echo "✅ All Flask processes stopped"
           fi
           
           # Aggressive cleanup - remove all old versions
