@@ -133,8 +133,20 @@ jobs:
         # Deploy application using S3 download approach
         ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << EOF
           # Stop existing application and clear cache
+          echo "🔄 Stopping existing Flask applications..."
           pkill -f "python.*app.py" || true
-          sleep 5
+          sleep 3
+          
+          # Force kill any remaining processes
+          ps aux | grep "python.*app.py" | grep -v grep | awk '{print \$2}' | xargs -r kill -9 || true 
+          sleep 2
+          
+          # Verify no Flask processes are running
+          if ps aux | grep "python.*app.py" | grep -v grep; then
+            echo "⚠️ Flask processes still running after cleanup"
+          else
+            echo "✅ All Flask processes stopped"
+          fi
           
           # Aggressive cleanup - remove all old versions
           rm -rf bolaquent-app* bolaquent-*.zip
@@ -161,14 +173,39 @@ jobs:
           head -3 static/css/themes.css
           
           # Install production dependencies only (Python 3.7 compatible)
+          echo "📦 Installing Python dependencies..."
           python3 -m pip install --user -r requirements-prod.txt
+          echo "✅ Dependencies installed"
           
-          # Start application on multiple ports for reliability
+          # Test Flask app can import before starting
+          echo "🔍 Testing Flask app import..."
+          python3 -c "import app; print('✅ Flask app imports successfully')" || echo "❌ Flask import failed"
+          
+          # Start application with enhanced logging
+          echo "🚀 Starting Flask application..."
+          export FLASK_ENV=production
+          export PORT=5000
           nohup python3 app.py > app.log 2>&1 &
-          echo \$! > app.pid
+          APP_PID=\$!
+          echo \$APP_PID > app.pid
+          echo "📝 Started Flask app with PID: \$APP_PID"
           
-          # Wait and test
-          sleep 15
+          # Wait and monitor startup
+          echo "⏳ Waiting for Flask app to start..."
+          sleep 10
+          
+          # Check if process is still running
+          if ps -p \$APP_PID > /dev/null; then
+            echo "✅ Flask process \$APP_PID is running"
+          else
+            echo "❌ Flask process died - checking logs:"
+            cat app.log
+            exit 1
+          fi
+          
+          # Test application endpoints
+          sleep 5
+          echo "🔍 Testing application endpoints..."
           curl -f http://localhost:5000/ && echo "✅ App on 5000" || echo "⚠️ Port 5000 failed"
           curl -f http://localhost:5010/ && echo "✅ App on 5010" || echo "⚠️ Port 5010 failed"
           curl -f http://localhost:5020/ && echo "✅ App on 5020" || echo "⚠️ Port 5020 failed"
