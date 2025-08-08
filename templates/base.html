@@ -67,51 +67,172 @@
             color: var(--text-primary);
         }
         
+        /* Modern Material Design Navigation Bar */
         .nav { 
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border-subtle);
             color: var(--text-primary); 
-            padding: var(--spacing-md); 
+            padding: 0 24px; /* Material Design standard container padding */
             margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-md) calc(-1 * var(--spacing-lg)); 
             border-radius: var(--radius-md) var(--radius-md) 0 0; 
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
-            backdrop-filter: blur(8px);
+            min-height: 64px; /* Material Design desktop standard */
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Consistent spacing between nav items */
+            flex: 1;
         }
         
         .nav a { 
             color: var(--text-secondary); 
             text-decoration: none; 
-            margin-right: var(--spacing-md); 
-            padding: var(--spacing-xs) var(--spacing-sm);
+            padding: 8px 16px; /* Material Design touch target */
             border-radius: var(--radius-md);
-            font-size: var(--font-size-sm);
+            font-size: 14px; /* Material Design nav font size */
             font-weight: var(--font-weight-medium);
-            transition: var(--transition-fast);
+            transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); /* Material easing */
+            position: relative;
+            white-space: nowrap;
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .nav a:hover { 
-            background-color: var(--bg-hover);
+            background: var(--bg-hover);
             color: var(--text-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav a:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
         }
         
         .nav a.active {
             background: var(--accent-primary);
             color: var(--text-inverse);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 2px;
+            background: var(--accent-primary);
+            border-radius: 1px;
         }
         
         .nav-user-info {
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
+            gap: 16px; /* Increased spacing for better visual hierarchy */
+            font-size: 14px;
+        }
+        
+        .nav-user-info span {
+            color: var(--text-primary);
+            font-weight: var(--font-weight-medium);
         }
         
         .nav-brand {
             font-weight: var(--font-weight-semibold);
-            font-size: var(--font-size-lg);
+            font-size: 18px; /* Slightly larger for brand prominence */
             color: var(--text-primary);
+            margin-right: 24px;
+        }
+        
+        /* Theme Selector Enhancement */
+        .theme-selector {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-md);
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: var(--font-weight-medium);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .theme-selector:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+        
+        .theme-selector:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Mobile Responsive Navigation */
+        @media (max-width: 768px) {
+            .nav {
+                min-height: 56px; /* Material Design mobile standard */
+                padding: 0 16px;
+                flex-wrap: wrap;
+            }
+            
+            .nav-main {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .nav-main::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+                min-height: 36px;
+            }
+            
+            .nav-brand {
+                font-size: 16px;
+                margin-right: 16px;
+            }
+            
+            .nav-user-info {
+                gap: 12px;
+                font-size: 13px;
+            }
+            
+            .nav-user-info span {
+                display: none; /* Hide username on mobile for space */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0 12px;
+            }
+            
+            .nav a {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+            
+            .theme-selector {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
         }
         
         .btn { 
@@ -178,36 +299,33 @@
     {% block hero_background %}{% endblock %}
     <div class="container">
         <nav class="nav">
-            <a href="{{ url_for('index') }}">🏠 Home</a>
-            {% if session.user_id or session.is_guest %}
-                <a href="{{ url_for('learning.dashboard') }}">📊 Dashboard</a>
-                <a href="{{ url_for('learning.vocabulary') }}">📚 Vocabulary</a>
-                <a href="{{ url_for('learning.practice') }}">🎯 Practice</a>
-                <a href="{{ url_for('learning.achievements') }}">🏆 Achievements</a>
-                <a href="{{ url_for('admin.dashboard') }}">⚙️ Admin</a>
-                <div class="nav-user-info">
+            <div class="nav-main">
+                <span class="nav-brand">Bolaquent</span>
+                <a href="{{ url_for('index') }}">🏠 Home</a>
+                {% if session.user_id or session.is_guest %}
+                    <a href="{{ url_for('learning.dashboard') }}">📊 Dashboard</a>
+                    <a href="{{ url_for('learning.vocabulary') }}">📚 Vocabulary</a>
+                    <a href="{{ url_for('learning.practice') }}">🎯 Practice</a>
+                    <a href="{{ url_for('learning.achievements') }}">🏆 Achievements</a>
+                    <a href="{{ url_for('admin.dashboard') }}">⚙️ Admin</a>
+                {% else %}
+                    <a href="{{ url_for('auth.demo') }}">🚀 Try Demo</a>
+                    <a href="{{ url_for('auth.login') }}">🔐 Login</a>
+                    <a href="{{ url_for('auth.register') }}">📝 Register</a>
+                {% endif %}
+            </div>
+            <div class="nav-user-info">
+                {% if session.user_id or session.is_guest %}
                     <span>Hello, {{ session.username }}!</span>
-                    <select id="theme-selector" class="theme-selector" onchange="changeTheme(this.value)">
-                        <option value="dark">GitHub Dark</option>
-                        <option value="dracula">Dracula</option>
-                        <option value="catppuccin-mocha">Catppuccin Mocha</option>
-                        <option value="tokyo-night">Tokyo Night</option>
-                    </select>
                     <a href="{{ url_for('auth.logout') }}">👋 Logout</a>
-                </div>
-            {% else %}
-                <a href="{{ url_for('auth.demo') }}">🚀 Try Demo</a>
-                <a href="{{ url_for('auth.login') }}">🔐 Login</a>
-                <a href="{{ url_for('auth.register') }}">📝 Register</a>
-                <div class="nav-user-info">
-                    <select id="theme-selector" class="theme-selector" onchange="changeTheme(this.value)">
-                        <option value="dark">GitHub Dark</option>
-                        <option value="dracula">Dracula</option>
-                        <option value="catppuccin-mocha">Catppuccin Mocha</option>
-                        <option value="tokyo-night">Tokyo Night</option>
-                    </select>
-                </div>
-            {% endif %}
+                {% endif %}
+                <select id="theme-selector" class="theme-selector" onchange="changeTheme(this.value)" aria-label="Select theme">
+                    <option value="dark">GitHub Dark</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="catppuccin-mocha">Catppuccin Mocha</option>
+                    <option value="tokyo-night">Tokyo Night</option>
+                </select>
+            </div>
         </nav>
         
         {% with messages = get_flashed_messages() %}
