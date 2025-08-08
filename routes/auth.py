@@ -138,7 +138,7 @@ def start_guest_session():
 def demo():
     """Unified demo access - shows all age tiers to choose from"""
     tier_param = request.args.get("tier", type=int)
-    
+
     # If tier is specified in URL, go directly to that tier
     if tier_param:
         try:
@@ -174,7 +174,7 @@ def demo():
                 "🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface."
             )
             return redirect(url_for("learning.dashboard"))
-    
+
     # No tier specified - show selection page
     return redirect(url_for("auth.guest_login"))
 

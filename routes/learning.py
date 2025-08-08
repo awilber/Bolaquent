@@ -22,10 +22,10 @@ def dashboard():
             "obj",
             (object,),
             {
-                "username": session.get("username", "Guest User"), 
+                "username": session.get("username", "Guest User"),
                 "tier_id": tier_id,
                 "age": session.get("age", 8),  # Default age for demo users
-                "age_tier": None  # Mock users don't have age tier relationships
+                "age_tier": None,  # Mock users don't have age tier relationships
             },
         )
         user = mock_user
