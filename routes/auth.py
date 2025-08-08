@@ -136,48 +136,47 @@ def start_guest_session():
 
 @bp.route("/demo")
 def demo():
-    """Instant demo access - no questions asked"""
+    """Unified demo access - shows all age tiers to choose from"""
     tier_param = request.args.get("tier", type=int)
-
-    try:
-        if tier_param:
-            # Use specified tier
+    
+    # If tier is specified in URL, go directly to that tier
+    if tier_param:
+        try:
             demo_tier = AgeTier.query.get(tier_param)
-        else:
-            # Default to middle-tier (Educational) for demo
-            demo_tier = AgeTier.query.filter_by(name="Elementary").first()
+            if not demo_tier:
+                demo_tier = AgeTier.query.first()  # Fallback
 
-        if not demo_tier:
-            demo_tier = AgeTier.query.first()  # Fallback to any tier
+            tier_id = demo_tier.id if demo_tier else 3
+            tier_name = demo_tier.name if demo_tier else "Elementary"
 
-        tier_id = demo_tier.id if demo_tier else 3
-        tier_name = demo_tier.name if demo_tier else "Elementary"
+            session["user_id"] = "demo"
+            session["username"] = "Demo User"
+            session["tier_id"] = tier_id
+            session["is_demo"] = True
 
-        session["user_id"] = "demo"
-        session["username"] = "Demo User"
-        session["tier_id"] = tier_id
-        session["is_demo"] = True
+            log_demo_access(tier_name, tier_id, "direct_demo")
 
-        log_demo_access(tier_name, tier_id, "direct_demo")
+            flash(
+                f"🎉 Welcome to Bolaquent! You're exploring the {tier_name} tier. "
+                f"No signup required - just start learning!"
+            )
+            return redirect(url_for("learning.dashboard"))
 
-        flash(
-            f"🎉 Welcome to Bolaquent! You're exploring the {tier_name} tier. "
-            f"No signup required - just start learning!"
-        )
-
-    except Exception as e:
-        log_error(e, "demo_setup")
-        # Fallback demo session even if database fails
-        session["user_id"] = "demo"
-        session["username"] = "Demo User"
-        session["tier_id"] = 3
-        session["is_demo"] = True
-        log_demo_access("Elementary", 3, "fallback_demo")
-        flash(
-            "🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface."
-        )
-
-    return redirect(url_for("learning.dashboard"))
+        except Exception as e:
+            log_error(e, "demo_setup")
+            # Fallback demo session even if database fails
+            session["user_id"] = "demo"
+            session["username"] = "Demo User"
+            session["tier_id"] = 3
+            session["is_demo"] = True
+            log_demo_access("Elementary", 3, "fallback_demo")
+            flash(
+                "🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface."
+            )
+            return redirect(url_for("learning.dashboard"))
+    
+    # No tier specified - show selection page
+    return redirect(url_for("auth.guest_login"))
 
 
 @bp.route("/quick")

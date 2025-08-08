@@ -1,83 +1,88 @@
-/* Hero Background System for Bolaquent
-   Professional educational photography with optimized overlays */
+/* New Simple Hero Background System - Reliable Approach */
 
-/* Base Hero System - Full Screen Implementation */
-.hero-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-/* Override container constraints for hero pages */
+/* Apply hero backgrounds directly to body elements instead of separate divs */
 body.hero-page {
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
+/* Homepage - Learning & Growth */
+body.hero-page.hero-learning {
+    background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Dashboard - Focused Study */
+body.hero-page.hero-focus {
+    background-image: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Vocabulary - Language & Words */
+body.hero-page.hero-vocabulary {
+    background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Practice - Interactive Learning */
+body.hero-page.hero-practice {
+    background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Achievements - Success & Celebration */
+body.hero-page.hero-achievement {
+    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Admin - Professional Management */
+body.hero-page.hero-admin {
+    background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Welcome/Auth - Welcoming Learning Environment */
+body.hero-page.hero-welcome {
+    background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Container adjustments for hero pages */
 body.hero-page .container {
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
     border-radius: 0 !important;
     min-height: 100vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
     display: flex;
     flex-direction: column;
-}
-
-/* Hero content positioning for full-screen display */
-.hero-content-wrapper {
     position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
-.hero-overlay {
-    position: absolute;
+/* Dark overlay for better text readability */
+body.hero-page::before {
+    content: '';
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
-    backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: white;
-    max-width: 1200px;
-    padding: 3rem;
-    margin: 0 auto;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 16px;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Navigation bar for hero pages */
+/* Navigation styling for hero pages */
 body.hero-page .nav {
     position: relative;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.6) !important;
+    background: rgba(0, 0, 0, 0.7) !important;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0 !important;
+    border-radius: 0 !important;
 }
 
 body.hero-page .nav a {
@@ -93,129 +98,45 @@ body.hero-page .nav .nav-brand {
     color: white !important;
 }
 
-body.hero-page .nav-user-info {
-    color: white !important;
-}
-
+body.hero-page .nav-user-info,
 body.hero-page .nav-user-info span {
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Educational Photography Backgrounds with Gradient Fallbacks */
-
-/* Primary Homepage Hero - Children Learning & Growth */
-.hero-learning {
-    background: 
-        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-    /* Fallback for offline/loading */
-    background-image:
-        radial-gradient(circle at 20% 80%, rgba(120, 205, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 206, 84, 0.3) 0%, transparent 50%),
-        linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Content wrapper positioning */
+.hero-content-wrapper {
+    position: relative;
+    z-index: 5;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
 }
 
-/* Secondary Hero - Library & Books */
-.hero-knowledge {
-    background:
-        url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-    /* Fallback */
-    background-image:
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 255, 255, 0.03) 2px,
-            rgba(255, 255, 255, 0.03) 4px
-        );
+/* Hero content styling with better contrast */
+.hero-content {
+    position: relative;
+    z-index: 6;
+    text-align: center;
+    color: white;
+    max-width: 1200px;
+    padding: 3rem;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Early Childhood Learning - Colorful Classroom */
-.hero-early-learning {
-    background:
-        url('https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Elementary Age - School Environment */
-.hero-elementary {
-    background:
-        url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Teen Learning - Modern Study */
-.hero-teen {
-    background:
-        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Adult Learning - Professional Development */
-.hero-adult {
-    background:
-        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Login/Auth Pages - Welcoming Learning Environment */
-.hero-welcome {
-    background: 
-        url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-    /* Fallback */
-    background-image:
-        radial-gradient(ellipse at center, rgba(251, 189, 8, 0.3) 0%, transparent 50%),
-        linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
-}
-
-/* Dashboard/Learning Pages - Focused Study */
-.hero-focus {
-    background:
-        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-    /* Fallback */
-    background-image:
-        radial-gradient(circle at 30% 70%, rgba(168, 85, 247, 0.4) 0%, transparent 50%);
-}
-
-/* Practice Pages - Interactive Learning */
-.hero-practice {
-    background:
-        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Vocabulary Pages - Language & Words */
-.hero-vocabulary {
-    background:
-        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Achievement Pages - Success & Celebration */
-.hero-achievement {
-    background:
-        url('https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Admin Pages - Professional Management */
-.hero-admin {
-    background:
-        url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-}
-
-/* Error Pages - Supportive & Encouraging */
-.hero-support {
-    background:
-        url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
-    /* Fallback */
-    background-image:
-        repeating-conic-gradient(
-            from 0deg at 50% 50%,
-            transparent 0deg,
-            rgba(255, 255, 255, 0.05) 90deg,
-            transparent 180deg
-        );
-}
-
-/* Content Overlays */
 .hero-content h1 {
     font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 800;
     line-height: 1.1;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
     margin-bottom: 1.5rem;
     color: white;
 }
@@ -224,7 +145,7 @@ body.hero-page .nav-user-info span {
     font-size: clamp(1.25rem, 4vw, 2rem);
     font-weight: 600;
     opacity: 0.95;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
     margin-bottom: 2rem;
     color: white;
 }
@@ -232,9 +153,56 @@ body.hero-page .nav-user-info span {
 .hero-content p {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     opacity: 0.9;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
     line-height: 1.6;
     margin-bottom: 2rem;
+    color: white;
+}
+
+/* Feature Cards in Hero */
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    max-width: 1000px;
+}
+
+.hero-feature-card {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.hero-feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.hero-feature-description {
+    opacity: 0.9;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     color: white;
 }
 
@@ -259,6 +227,8 @@ body.hero-page .nav-user-info span {
     gap: 0.75rem;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     text-shadow: none;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-btn-primary {
@@ -268,7 +238,7 @@ body.hero-page .nav-user-info span {
 }
 
 .hero-btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
@@ -279,110 +249,10 @@ body.hero-page .nav-user-info span {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.hero-btn-primary:hover {
-    background: linear-gradient(45deg, #ffffff 0%, #ffffff 100%);
-    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
-}
-
-.hero-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
-}
-
-/* Feature Cards in Hero */
-.hero-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
-    max-width: 1000px;
-}
-
-.hero-feature-card {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
-    border-radius: 16px;
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.hero-feature-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.hero-feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.hero-feature-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero-feature-description {
-    opacity: 0.9;
-    line-height: 1.6;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Age Tier Showcase */
-.hero-tiers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-    max-width: 1200px;
-}
-
-.hero-tier-badge {
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 1.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.hero-tier-badge:hover {
-    transform: translateY(-4px);
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-}
-
-.hero-tier-age {
-    font-weight: 800;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #fbbf24;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.hero-tier-name {
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-.hero-tier-desc {
-    font-size: 0.9rem;
-    opacity: 0.85;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-}
-
 /* Mobile Optimizations */
 @media (max-width: 768px) {
-    .hero-background {
+    body.hero-page {
         background-attachment: scroll; /* Better mobile performance */
-        min-height: 100vh;
     }
     
     .hero-content {
@@ -407,21 +277,13 @@ body.hero-page .nav-user-info span {
         margin-top: 3rem;
     }
     
-    .hero-tiers {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .hero-tier-badge {
-        padding: 1rem 0.75rem;
+    .hero-content-wrapper {
+        min-height: calc(100vh - 56px);
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-tiers {
-        grid-template-columns: 1fr;
-    }
-    
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -429,42 +291,25 @@ body.hero-page .nav-user-info span {
     .hero-content h2 {
         font-size: 1.25rem;
     }
+    
+    .hero-content {
+        padding: 1.25rem;
+    }
 }
 
 /* Performance and Accessibility */
 @media (prefers-reduced-motion: reduce) {
     .hero-btn,
-    .hero-feature-card,
-    .hero-tier-badge {
+    .hero-feature-card {
         transition: none;
     }
     
     .hero-btn:hover,
-    .hero-feature-card:hover,
-    .hero-tier-badge:hover {
+    .hero-feature-card:hover {
         transform: none;
     }
     
-    .hero-background {
+    body.hero-page {
         background-attachment: scroll;
-    }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    .hero-overlay {
-        background: linear-gradient(
-            135deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.9) 100%
-        );
-    }
-    
-    .hero-content {
-        text-shadow: none;
-    }
-    
-    .hero-btn {
-        border-width: 3px;
     }
 }

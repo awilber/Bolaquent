@@ -108,7 +108,8 @@ html {
   box-sizing: border-box;
 }
 
-body {
+/* Base body styles - exclude hero pages */
+body:not(.hero-page) {
   margin: 0;
   padding: 0;
   background-color: var(--bg-primary);
@@ -118,6 +119,14 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Hero page base styles - minimal styles to avoid conflicts */
+body.hero-page {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  min-height: 100vh;
 }
 
 /* Scrollbar styling - ProductLifecycle Style */

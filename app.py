@@ -36,8 +36,8 @@ def create_app():
     def index():
         try:
             log_request("index", "GET", session.get("username"))
-            if "user_id" in session:
-                return redirect(url_for("learning.dashboard"))
+            # Only redirect to dashboard if user specifically requests it
+            # Allow homepage to be shown to all users for marketing/demo purposes
             return render_template("index.html")
         except Exception as e:
             log_error(e, "index_route")
@@ -46,8 +46,8 @@ def create_app():
     # Quick access routes for demos
     @app.route("/demo")
     def quick_demo_redirect():
-        """Direct demo access from root level"""
-        return redirect(url_for("auth.demo"))
+        """Direct demo access from root level - shows tier selection"""
+        return redirect(url_for("auth.guest_login"))
 
     @app.route("/try")
     def try_app():

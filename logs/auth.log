@@ -1,0 +1,4 @@
+[2025-08-08 10:47:35,237] WARNING in logger (/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/utils/logger.py:78): Failed login: {'username': 'testuser11', 'age': 11, 'session_type': 'regular', 'ip': '127.0.0.1', 'user_agent': 'curl/8.1.2', 'timestamp': '2025-08-08T14:47:35.237807'}, Error: (sqlite3.IntegrityError) NOT NULL constraint failed: users.email
+[SQL: INSERT INTO users (username, email, age, tier_id, created_at, last_active) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('testuser11', None, 11, 4, '2025-08-08 14:47:35.237155', '2025-08-08 14:47:35.237162')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
