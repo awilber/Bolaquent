@@ -15,7 +15,7 @@ def create_app():
     # Initialize extensions
     db.init_app(app)
     CORS(app)
-    
+
     # Setup comprehensive logging
     logger = setup_logging(app)
 
@@ -35,33 +35,33 @@ def create_app():
     @app.route("/")
     def index():
         try:
-            log_request('index', 'GET', session.get('username'))
+            log_request("index", "GET", session.get("username"))
             if "user_id" in session:
                 return redirect(url_for("learning.dashboard"))
             return render_template("index.html")
         except Exception as e:
-            log_error(e, 'index_route')
+            log_error(e, "index_route")
             return render_template("index.html")  # Fail gracefully
-    
+
     # Quick access routes for demos
     @app.route("/demo")
     def quick_demo_redirect():
         """Direct demo access from root level"""
         return redirect(url_for("auth.demo"))
-    
+
     @app.route("/try")
     def try_app():
         """Alternative demo entry point"""
         return redirect(url_for("auth.quick"))
-    
+
     @app.errorhandler(404)
     def not_found(error):
-        log_error(error, '404_error')
+        log_error(error, "404_error")
         return render_template("404.html"), 404
-    
+
     @app.errorhandler(500)
     def server_error(error):
-        log_error(error, '500_error')
+        log_error(error, "500_error")
         return render_template("500.html"), 500
 
     @app.route("/init-db")

@@ -11,12 +11,12 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         age = request.form.get("age", type=int)
-        
+
         log_debug(f"Login attempt: username='{username}', age={age}")
-        
+
         # Check for bypass option
-        if os.environ.get('BYPASS_LOGIN') == 'true' or username == 'bypass':
-            log_demo_access("Bypass", 3, 'bypass_login')
+        if os.environ.get("BYPASS_LOGIN") == "true" or username == "bypass":
+            log_demo_access("Bypass", 3, "bypass_login")
             session["user_id"] = "bypass"
             session["username"] = username or "Bypass User"
             session["tier_id"] = 3  # Elementary tier
@@ -30,7 +30,9 @@ def login():
                 user = User.query.filter_by(username=username).first()
                 if not user:
                     # Auto-assign age tier based on age
-                    tier = AgeTier.query.filter(AgeTier.min_age <= age, AgeTier.max_age >= age).first()
+                    tier = AgeTier.query.filter(
+                        AgeTier.min_age <= age, AgeTier.max_age >= age
+                    ).first()
 
                     if not tier:
                         # Default to elementary tier if no match
@@ -43,17 +45,17 @@ def login():
                 session["user_id"] = user.id
                 session["username"] = user.username
                 session["tier_id"] = user.tier_id
-                
-                log_auth_attempt(username, age, True, session_type='regular')
+
+                log_auth_attempt(username, age, True, session_type="regular")
                 return redirect(url_for("learning.dashboard"))
-                
+
             except Exception as e:
-                log_error(e, 'login_process')
-                log_auth_attempt(username, age, False, error=str(e), session_type='regular')
+                log_error(e, "login_process")
+                log_auth_attempt(username, age, False, error=str(e), session_type="regular")
                 flash(f"Login error: {str(e)}. Try using 'demo' mode instead.")
         else:
             error_msg = "Please provide both username and age"
-            log_auth_attempt(username, age, False, error=error_msg, session_type='regular')
+            log_auth_attempt(username, age, False, error=error_msg, session_type="regular")
             flash(error_msg)
 
     return render_template("auth/login.html")
@@ -136,7 +138,7 @@ def start_guest_session():
 def demo():
     """Instant demo access - no questions asked"""
     tier_param = request.args.get("tier", type=int)
-    
+
     try:
         if tier_param:
             # Use specified tier
@@ -150,29 +152,31 @@ def demo():
 
         tier_id = demo_tier.id if demo_tier else 3
         tier_name = demo_tier.name if demo_tier else "Elementary"
-        
+
         session["user_id"] = "demo"
         session["username"] = "Demo User"
         session["tier_id"] = tier_id
         session["is_demo"] = True
-        
-        log_demo_access(tier_name, tier_id, 'direct_demo')
-        
+
+        log_demo_access(tier_name, tier_id, "direct_demo")
+
         flash(
             f"🎉 Welcome to Bolaquent! You're exploring the {tier_name} tier. "
             f"No signup required - just start learning!"
         )
-        
+
     except Exception as e:
-        log_error(e, 'demo_setup')
+        log_error(e, "demo_setup")
         # Fallback demo session even if database fails
         session["user_id"] = "demo"
         session["username"] = "Demo User"
         session["tier_id"] = 3
         session["is_demo"] = True
-        log_demo_access("Elementary", 3, 'fallback_demo')
-        flash("🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface.")
-    
+        log_demo_access("Elementary", 3, "fallback_demo")
+        flash(
+            "🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface."
+        )
+
     return redirect(url_for("learning.dashboard"))
 
 
@@ -183,8 +187,8 @@ def quick_demo():
     session["username"] = "Quick Demo"
     session["tier_id"] = 3  # Elementary
     session["is_demo"] = True
-    
-    log_demo_access("Elementary", 3, 'quick_demo')
+
+    log_demo_access("Elementary", 3, "quick_demo")
     flash("🚀 Quick Demo Active! Exploring Elementary tier vocabulary.")
-    
+
     return redirect(url_for("learning.dashboard"))
