@@ -1,0 +1,52 @@
+ERROR:root:code for hash md5 was not found.
+Traceback (most recent call last):
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 147, in <module>
+    globals()[__func_name] = __get_hash(__func_name)
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type md5
+ERROR:root:code for hash sha1 was not found.
+Traceback (most recent call last):
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 147, in <module>
+    globals()[__func_name] = __get_hash(__func_name)
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type sha1
+ERROR:root:code for hash sha224 was not found.
+Traceback (most recent call last):
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 147, in <module>
+    globals()[__func_name] = __get_hash(__func_name)
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type sha224
+ERROR:root:code for hash sha256 was not found.
+Traceback (most recent call last):
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 147, in <module>
+    globals()[__func_name] = __get_hash(__func_name)
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type sha256
+ERROR:root:code for hash sha384 was not found.
+Traceback (most recent call last):
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 147, in <module>
+    globals()[__func_name] = __get_hash(__func_name)
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type sha384
+ERROR:root:code for hash sha512 was not found.
+Traceback (most recent call last):
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 147, in <module>
+    globals()[__func_name] = __get_hash(__func_name)
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/hashlib.py", line 97, in __get_builtin_constructor
+    raise ValueError('unsupported hash type ' + name)
+ValueError: unsupported hash type sha512
+Traceback (most recent call last):
+  File "app.py", line 1, in <module>
+    from flask import Flask, render_template, redirect, url_for, session
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/site-packages/flask/__init__.py", line 14, in <module>
+    from jinja2 import escape
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/site-packages/jinja2/__init__.py", line 9, in <module>
+    from .bccache import BytecodeCache
+  File "/Users/arlonwilber/.pyenv/versions/2.7.18/lib/python2.7/site-packages/jinja2/bccache.py", line 15, in <module>
+    from hashlib import sha1
+ImportError: cannot import name sha1
