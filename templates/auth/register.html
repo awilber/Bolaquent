@@ -2,14 +2,20 @@
 
 {% block title %}Join Bolaquent - Register{% endblock %}
 
+{% block body_class %}hero-page hero-welcome{% endblock %}
+
 {% block content %}
-<div class="registration-container">
-    <!-- Header with Contrast Panel -->
-    <div style="background: var(--bg-elevated); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid var(--border-default); box-shadow: var(--shadow-md);">
-        <h2 style="margin: 0; color: var(--text-primary);">🎓 Join Bolaquent!</h2>
-    </div>
-    
-    <div class="tier-preview">
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
+        <!-- Header with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h2 style="margin: 0; color: white;">🎓 Join Bolaquent!</h2>
+        </div>
+        <!-- Registration Content with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="registration-container" style="max-width: none; margin: 0; padding: 0;">
+                
+                <div class="tier-preview" style="background: transparent; border: none; padding: 0; margin: 20px 0;">
         <h3>Choose Your Learning Adventure</h3>
         <div class="tier-options">
             <div class="tier-card" data-ages="2-4" data-tier="1">
@@ -93,9 +99,12 @@
         </button>
     </form>
     
-    <p class="login-link">
-        Already have an account? <a href="{{ url_for('auth.login') }}">Sign in here</a>
-    </p>
+                <p class="login-link" style="color: white;">
+                    Already have an account? <a href="{{ url_for('auth.login') }}" style="color: rgba(255,255,255,0.9);">Sign in here</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style>

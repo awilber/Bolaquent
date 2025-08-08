@@ -34,7 +34,7 @@ body.hero-page.hero-practice {
 
 /* Achievements - Success & Celebration */
 body.hero-page.hero-achievement {
-    background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+    background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
 }
 
 /* Admin - Professional Management */
@@ -249,11 +249,40 @@ body.hero-page .nav-user-info span {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Mobile Optimizations */
+/* Mobile Optimizations - Hero Background Scaling */
 @media (max-width: 768px) {
     body.hero-page {
         background-attachment: scroll; /* Better mobile performance */
+        background-size: cover; /* Still cover but with adjusted position */
+        background-position: center 20%; /* Show more of image top on mobile */
     }
+}
+
+/* Tablet-specific adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    body.hero-page {
+        background-position: center 30%; /* Slight adjustment for tablet */
+    }
+}
+
+/* Small mobile specific - prevent over-cropping */
+@media (max-width: 480px) {
+    body.hero-page {
+        background-size: cover;
+        background-position: center 25%; /* Show more content on small screens */
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+    body.hero-page {
+        background-size: cover;
+        background-position: center center; /* Center for landscape */
+    }
+}
+
+/* Additional mobile layout optimizations */
+@media (max-width: 768px) {
     
     .hero-content {
         padding: 1.5rem;

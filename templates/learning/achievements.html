@@ -26,9 +26,10 @@
         </div>
 
 <div class="achievements-container">
-    <!-- Achievement Stats -->
-    <div class="achievement-stats">
-        <div class="stats-grid">
+    <!-- Achievement Stats with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="achievement-stats">
+            <div class="stats-grid">
             <div class="stat-card earned">
                 <div class="stat-number">{{ achievements.earned|length if achievements.earned else 0 }}</div>
                 <div class="stat-label">{% if user.tier_id <= 2 %}Prizes Won{% else %}Earned{% endif %}</div>
@@ -44,8 +45,9 @@
         </div>
     </div>
 
-    <!-- Progress Overview -->
-    <div class="progress-overview">
+    <!-- Progress Overview with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="progress-overview" style="background: transparent; border: none; padding: 0; margin: 0;">
         {% if user.tier_id <= 2 %}
             <h3>🎯 Your Learning Journey</h3>
         {% elif user.tier_id <= 4 %}
@@ -89,7 +91,8 @@
 
     <!-- Earned Achievements -->
     {% if achievements and achievements.earned %}
-        <div class="achievements-section">
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="achievements-section" style="margin: 0;">
             {% if user.tier_id <= 2 %}
                 <h3>🎉 Prizes You've Won!</h3>
             {% elif user.tier_id <= 4 %}
@@ -118,7 +121,8 @@
 
     <!-- Available Achievements -->
     {% if achievements and achievements.available %}
-        <div class="achievements-section">
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="achievements-section" style="margin: 0;">
             {% if user.tier_id <= 2 %}
                 <h3>🎁 More Prizes to Win!</h3>
             {% elif user.tier_id <= 4 %}
@@ -152,7 +156,8 @@
 
     <!-- Default achievements if none exist -->
     {% if not achievements or (not achievements.earned and not achievements.available) %}
-        <div class="achievements-section">
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="achievements-section" style="margin: 0;">
             {% if user.tier_id <= 2 %}
                 <h3>🎁 Prizes to Win!</h3>
             {% else %}
@@ -215,8 +220,9 @@
         </div>
     {% endif %}
 
-    <!-- Quick Actions -->
-    <div class="achievement-actions">
+    <!-- Quick Actions with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="achievement-actions" style="margin: 0;">
         <a href="{{ url_for('learning.practice') }}" class="btn btn-primary">
             {% if user.tier_id <= 2 %}🎮 Play to Win More!{% else %}Practice to Earn{% endif %}
         </a>
@@ -228,6 +234,7 @@
         {% if user.tier_id >= 4 %}
             <button class="btn btn-secondary" onclick="shareAchievements()">Share Progress</button>
         {% endif %}
+        </div>
     </div>
     </div>
 </div>

@@ -2,166 +2,961 @@ Creating Bolaquent vocabulary learning app...
 Flask app created with learning, auth, and admin blueprints
 Initializing database...
 Database initialized
-Using allocated port: 5025
-Starting Bolaquent on port 5025
-Multi-tiered vocabulary learning app accessible at: http://localhost:5025/
+Using allocated port: 5030
+Starting Bolaquent on port 5030
+Multi-tiered vocabulary learning app accessible at: http://localhost:5030/
 Features: Age-based learning tiers, Progress tracking, Admin interface
  * Serving Flask app 'app'
  * Debug mode: on
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5025
- * Running on http://192.168.1.16:5025
+ * Running on http://127.0.0.1:5030
+ * Running on http://192.168.1.16:5030
 [33mPress CTRL+C to quit[0m
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 723-754-008
-127.0.0.1 - - [29/Jul/2025 21:11:39] "HEAD / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:11:42] "HEAD / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:11:51] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:13] "HEAD / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:49] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:49] "GET /static/css/themes.css HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:49] "GET /static/css/dashboard.css HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "GET /auth/register HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "GET /auth/register HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:14:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:15:11] "GET /auth/register HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:15:14] "[32mHEAD /auth/demo HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:15:18] "[32mHEAD /auth/demo HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:16:07] "[35m[1mPOST /auth/register HTTP/1.1[0m" 500 -
-Traceback (most recent call last):
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.IntegrityError: NOT NULL constraint failed: users.email
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
-    return self.wsgi_app(environ, start_response)
-           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
-    response = self.handle_exception(e)
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ~^^^^^^^^^^^^^^^^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask_cors/extension.py", line 176, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-                                                ~^^^^^^^^^^^^^^^^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/routes/auth.py", line 66, in register
-    db.session.commit()
-    ~~~~~~~~~~~~~~~~~^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
-    return self._proxied.commit()
-           ~~~~~~~~~~~~~~~~~~~~^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
-    trans.commit(_to_root=True)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "<string>", line 2, in commit
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
-    self._prepare_impl()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "<string>", line 2, in _prepare_impl
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
-    ret_value = fn(self, *arg, **kw)
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
-    self.session.flush()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4345, in flush
-    self._flush(objects)
-    ~~~~~~~~~~~^^^^^^^^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4480, in _flush
-    with util.safe_reraise():
-         ~~~~~~~~~~~~~~~~~^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
-    raise exc_value.with_traceback(exc_tb)
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 4441, in _flush
-    flush_context.execute()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
-    rec.execute(self)
-    ~~~~~~~~~~~^^^^^^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
-    util.preloaded.orm_persistence.save_obj(
-    ^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
-    _emit_insert_statements(
-    ^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
-    result = connection.execute(
-    
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-    
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
-    return connection._execute_clauseelement(
-    
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-    
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-    
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ^
-  File "/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: users.email
-[SQL: INSERT INTO users (username, email, age, tier_id, created_at, last_active) VALUES (?, ?, ?, ?, ?, ?)]
-[parameters: ('testuser999', None, 25, 6, '2025-07-30 01:16:07.366934', '2025-07-30 01:16:07.367011')]
-(Background on this error at: https://sqlalche.me/e/20/gkpj)
-127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/dashboard HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/vocabulary HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/practice HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:16:29] "[32mHEAD /learning/achievements HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "GET /static/css/themes.css HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "GET /static/css/dashboard.css HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "GET /auth/register HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:04] "[32mGET /auth/demo HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:18:04] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:18:04] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:04] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:04] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "[32mGET / HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "GET /auth/login HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "GET /auth/register HTTP/1.1" 200 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:18:06] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
-127.0.0.1 - - [29/Jul/2025 21:22:51] "HEAD / HTTP/1.1" 200 -
+ * Debugger PIN: 802-535-929
+127.0.0.1 - - [08/Aug/2025 14:39:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:39:30] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:30] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:30] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:30] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:30] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:32] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:39:32] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:32] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:32] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:32] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:32] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:35] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:39:35] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:35] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:35] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:35] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:35] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:40] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:40] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:40] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:40] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:39:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:40:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:40:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:41:17] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:17] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:41:17] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:41:17] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:41:17] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:41:17] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:41:24] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:41:37] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:43:57] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:43:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:45:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:45:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:46:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:46:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:46:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:47:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:47:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:48:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:49:06] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:49:06] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:49:06] "GET /auth/guest HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:50:50] "[32mGET /learning/dashboard HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 14:51:01] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 14:51:01] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:16] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:16] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:16] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:16] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:16] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:16] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:51:20] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:20] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:51:20] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:51:20] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:51:20] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:51:20] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:51:36] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:36] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:36] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:51:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:52:34] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:53:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:11] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:11] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:11] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:11] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:11] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:13] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:13] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:13] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:13] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:13] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:13] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:15] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:15] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:15] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:15] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:15] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:15] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:17] "GET /auth/guest HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:17] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:17] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:17] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:17] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:17] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:20] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:20] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:20] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:20] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:20] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:20] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:22] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:22] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:22] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:22] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:22] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:22] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:24] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:24] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:24] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:24] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:24] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:24] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:25] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:25] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:25] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:25] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:25] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:25] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:27] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:53:27] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:27] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:27] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:27] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:53:27] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:54:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:08] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:08] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:08] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:08] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:08] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:54:10] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:10] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:10] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:10] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:10] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:10] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:11] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:54:11] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:11] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:11] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:11] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:54:11] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:56:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:56:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:57:00] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:00] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:00] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:00] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:00] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:00] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:57:05] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:05] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:05] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:05] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:05] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:05] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:11] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:11] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:11] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:11] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:11] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:13] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:13] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:13] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:13] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:13] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:13] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:14] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:14] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:14] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:14] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:14] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:14] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:15] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:15] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:15] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:15] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:15] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:15] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:28] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:28] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:28] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:28] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:28] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:31] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:57:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 14:59:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:59:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:59:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 14:59:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:27] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:00:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:40] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:40] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:40] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:40] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:40] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:41] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:41] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:41] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:41] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:41] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:41] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:42] "GET /auth/register HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "GET /auth/guest HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:43] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:44] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:44] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:44] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:44] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:44] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:44] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:45] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:45] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:45] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:45] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:45] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:45] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:46] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:46] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:46] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:46] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:46] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:46] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:47] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:47] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:47] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:47] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:47] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:47] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:48] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:00:48] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:48] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:48] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:48] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:00:48] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:01:45] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:45] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:45] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:45] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:45] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:46] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:58] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:01:58] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:58] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:58] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:58] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:01:58] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:30] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:30] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:30] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:30] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:30] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:30] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:03:32] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:32] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:32] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:32] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:32] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:32] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:33] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:33] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:33] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:34] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:34] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:34] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:36] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:03:36] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:36] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:36] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:36] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:03:36] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:04:18] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:04:22] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:04:26] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:04:40] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:05:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "[32mGET /learning/achievements HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "GET /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:06:21] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:06:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:07:49] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:07:49] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:07:49] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:07:49] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:07:49] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:07:49] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:09:52] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:52] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:52] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:52] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:52] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:52] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:09:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:09:57] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:09:57] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:09:57] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:09:57] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:09:57] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:00] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:00] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:00] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:00] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:00] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:00] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:10:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:12] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:12] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:12] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:12] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:12] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:10:16] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:10:16] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:16] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:16] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:16] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:16] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:10:53] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:11:01] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:11:15] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:11:20] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:11:24] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:12:38] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:12:56] "[32mHEAD /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:13:00] "[32mHEAD /learning/achievements HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:13:04] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:13:04] "HEAD /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:13:14] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:13:18] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:13:22] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:14:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:14:54] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:54] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:54] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:54] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:14:54] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 15:14:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:14:56] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:56] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:56] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:56] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:14:56] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:45:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:45:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:01] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:02] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 15:58:02] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:58:02] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:58:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:58:02] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 15:58:02] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:00:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:00:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:12] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:12] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:12] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:12] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:12] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:05:13] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:13] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:13] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:13] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:13] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:13] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:14] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:14] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:14] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:14] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:14] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:14] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:16] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:16] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:16] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:16] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:16] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:16] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:05:18] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:18] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:18] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:18] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:05:18] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:10:23] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:10:27] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:11:35] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:35] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:35] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:35] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:35] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:35] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:41] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:41] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:41] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:41] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:41] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:41] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:47] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:11:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:50] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:50] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:50] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:50] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:50] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:54] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:54] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:54] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:54] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:54] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:54] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:58] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:11:58] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:58] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:58] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:58] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:11:58] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:02] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:02] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:02] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:02] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:06] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:06] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:06] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:06] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:06] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:06] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:10] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:10] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:10] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:10] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:10] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:10] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:14] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:14] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:14] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:14] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:14] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:18] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:18] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:18] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:18] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:18] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:18] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:22] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:22] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:22] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:22] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:22] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:22] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:26] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:26] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:26] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:26] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:26] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:30] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:30] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:30] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:30] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:30] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:30] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:34] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:34] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:34] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:34] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:34] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:34] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:38] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:38] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:38] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:38] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:38] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:42] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:42] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:42] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:42] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:42] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:42] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:46] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:12:46] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:46] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:46] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:46] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:12:46] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:13:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:14] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:14] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:14] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:14] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:14] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:18] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:18] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:18] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:18] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:18] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:18] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:22] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:22] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:22] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:22] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:22] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:22] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:26] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:26] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:26] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:26] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:26] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:30] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:30] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:30] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:30] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:30] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:30] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:34] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:34] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:34] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:34] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:34] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:34] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:38] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:38] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:38] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:38] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:38] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:42] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:43] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:43] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:43] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:43] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:43] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:47] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:47] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:47] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:47] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:47] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:47] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:51] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:51] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:51] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:51] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:51] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:54] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:54] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:54] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:54] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:54] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:54] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:58] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:13:58] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:58] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:58] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:58] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:13:58] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:14:03] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:03] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:03] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:03] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:03] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:07] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:14:07] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:07] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:07] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:07] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:07] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:11] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:14:11] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:11] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:11] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:11] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:11] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:14:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:14:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:15:05] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:05] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:05] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:05] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:05] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:05] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:09] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:09] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:09] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:09] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:09] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:09] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:13] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:13] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:13] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:13] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:13] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:13] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:17] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:17] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:17] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:17] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:17] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:17] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:21] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:21] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:21] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:21] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:21] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:21] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:26] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:15:26] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:26] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:26] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:26] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:15:26] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:17:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:17:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "[32mGET /auth/demo?tier=1 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:55] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:59] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:18:59] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:59] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:59] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:59] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:18:59] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:00] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:19:01] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:01] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:01] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:01] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:01] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:02] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:19:02] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:02] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:02] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:02] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:02] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:03] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:19:03] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:03] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:03] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:03] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:03] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:08] "GET /admin/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:19:08] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:08] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:08] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:08] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:19:08] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:26:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:26:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:28:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:28:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:24] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:24] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:24] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:24] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:24] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:31:28] "GET /learning/achievements HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:28] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:28] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:28] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:28] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:28] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:30] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:30] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:30] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:30] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:30] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:30] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:31] "GET /learning/vocabulary HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:31] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:31] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:31] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:31] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:31] "[36mGET /static/js/theme-manager.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:35] "[36mGET /static/css/themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:35] "[36mGET /static/css/additional-themes.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:35] "[36mGET /static/css/dashboard.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:35] "[36mGET /static/css/hero-backgrounds.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [08/Aug/2025 16:31:35] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:41] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:46] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:31:51] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:55] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:57] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:33:59] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:04] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "[32mGET /auth/demo?tier=4 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "GET /learning/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:05] "GET /static/js/theme-manager.js HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:09] "GET /learning/practice HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:10] "GET /static/css/themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:10] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+127.0.0.1 - - [08/Aug/2025 16:34:10] "GET /static/css/additional-themes.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:10] "GET /static/css/hero-backgrounds.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:10] "GET /static/css/dashboard.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Aug/2025 16:34:10] "GET /static/js/theme-manager.js HTTP/1.1" 200 -

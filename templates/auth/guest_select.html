@@ -2,17 +2,23 @@
 
 {% block title %}Demo - Choose Your Level - Bolaquent{% endblock %}
 
-{% block content %}
-<!-- Header with Contrast Panel -->
-<div style="background: var(--bg-elevated); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid var(--border-default); box-shadow: var(--shadow-md);">
-    <h2 style="margin: 0 0 1rem 0; color: var(--text-primary);">🎉 Try Bolaquent Demo</h2>
-    <p style="margin: 0; color: var(--text-secondary); font-size: 1.1em;">
-        Choose your age tier to experience personalized vocabulary learning. 
-        <strong>No registration required - just pick and start!</strong>
-    </p>
-</div>
+{% block body_class %}hero-page hero-welcome{% endblock %}
 
-<form method="POST" action="{{ url_for('auth.start_guest_session') }}" id="guest-form">
+{% block content %}
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
+        <!-- Header with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h2 style="margin: 0 0 1rem 0; color: white;">🎉 Try Bolaquent Demo</h2>
+            <p style="margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
+                Choose your age tier to experience personalized vocabulary learning. 
+                <strong>No registration required - just pick and start!</strong>
+            </p>
+        </div>
+
+        <!-- Tier Selection with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <form method="POST" action="{{ url_for('auth.start_guest_session') }}" id="guest-form">
     <div class="age-tiers" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
         <div class="tier-card playful" onclick="selectTier(1, 3)" data-tier="1" style="border: 3px solid transparent; border-radius: 16px; padding: 20px; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); cursor: pointer; text-align: center; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);">
             <div style="font-size: 2.5em; margin-bottom: 10px;">🧸</div>
@@ -82,14 +88,17 @@
         <button type="submit" class="btn btn-primary" id="continue-btn" disabled style="padding: 15px 30px; font-size: 1.2em; background: #6b7280; color: white; border: none; border-radius: 8px; cursor: not-allowed; transition: all 0.3s ease;">
             Continue as Guest
         </button>
-    </div>
-</form>
+            </div>
+            </form>
+        </div>
 
-<!-- Footer with Contrast Panel -->
-<div style="background: var(--bg-elevated); padding: 1.5rem; border-radius: 12px; margin-top: 2rem; border: 1px solid var(--border-default); text-align: center;">
-    <p style="margin: 0; color: var(--text-secondary);">
-        <a href="{{ url_for('auth.login') }}" style="color: var(--accent-primary); text-decoration: none;">← Back to Login</a>
-    </p>
+        <!-- Footer with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
+            <p style="margin: 0; color: rgba(255, 255, 255, 0.9);">
+                <a href="{{ url_for('auth.login') }}" style="color: rgba(255, 255, 255, 0.9); text-decoration: none;">← Back to Login</a>
+            </p>
+        </div>
+    </div>
 </div>
 
 <script>
