@@ -12,13 +12,61 @@
         <!-- Age Tiers List (Original Structure) -->
         <div style="max-width: 600px; margin: 0 auto; text-align: left;">
             <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); margin-bottom: 1.5rem;">🎯 Age-Appropriate Learning Tiers:</h3>
-            <ul style="font-size: 1.1em; line-height: 1.8; color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">
-                <li style="margin-bottom: 0.5rem;"><span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 2-4</span> Early Verbal - Sensory learning and repetition</li>
-                <li style="margin-bottom: 0.5rem;"><span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 4-6</span> Preschool - Language explosion and social play</li>
-                <li style="margin-bottom: 0.5rem;"><span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 6-10</span> Elementary - Logical thinking with concrete concepts</li>
-                <li style="margin-bottom: 0.5rem;"><span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 11-14</span> Middle School - Abstract thinking development</li>
-                <li style="margin-bottom: 0.5rem;"><span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 15-18</span> High School - Advanced reasoning and goals</li>
-                <li style="margin-bottom: 0.5rem;"><span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 18+</span> Adult - Self-directed specialized learning</li>
+            <ul style="font-size: 1.1em; line-height: 1.8; color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=1) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 2-4</span> 
+                        Early Verbal - Sensory learning and repetition
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=2) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 4-6</span> 
+                        Preschool - Language explosion and social play
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=3) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 6-10</span> 
+                        Elementary - Logical thinking with concrete concepts
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=4) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 11-14</span> 
+                        Middle School - Abstract thinking development
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=5) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 15-18</span> 
+                        High School - Advanced reasoning and goals
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=6) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 18+</span> 
+                        Adult - Self-directed specialized learning
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
             </ul>
         </div>
         

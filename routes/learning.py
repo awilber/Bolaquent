@@ -21,7 +21,12 @@ def dashboard():
         mock_user = type(
             "obj",
             (object,),
-            {"username": session.get("username", "Guest User"), "tier_id": tier_id},
+            {
+                "username": session.get("username", "Guest User"), 
+                "tier_id": tier_id,
+                "age": session.get("age", 8),  # Default age for demo users
+                "age_tier": None  # Mock users don't have age tier relationships
+            },
         )
         user = mock_user
     else:

@@ -2,3 +2,7 @@
 [SQL: INSERT INTO users (username, email, age, tier_id, created_at, last_active) VALUES (?, ?, ?, ?, ?, ?)]
 [parameters: ('testuser11', None, 11, 4, '2025-08-08 14:47:35.237155', '2025-08-08 14:47:35.237162')]
 (Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2025-08-08 13:56:17,965] WARNING in logger (/Users/arlonwilber/Library/CloudStorage/GoogleDrive-awilber@wiredtriangle.com/Shared drives/AW/Personal/Projects/Bolaquent/utils/logger.py:78): Failed login: {'username': 'testuser2', 'age': 3, 'session_type': 'regular', 'ip': '127.0.0.1', 'user_agent': 'curl/8.1.2', 'timestamp': '2025-08-08T17:56:17.965042'}, Error: (sqlite3.IntegrityError) NOT NULL constraint failed: users.email
+[SQL: INSERT INTO users (username, email, age, tier_id, created_at, last_active) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('testuser2', None, 3, 1, '2025-08-08 17:56:17.963519', '2025-08-08 17:56:17.963525')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

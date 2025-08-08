@@ -64,7 +64,7 @@
                 <div class="big-number">{{ learned_words }}</div>
                 <p>Words You Know!</p>
                 <div class="progress-celebration">
-                    {% for i in range(min(5, learned_words)) %}🌟{% endfor %}
+                    {% for i in range(5 if learned_words >= 5 else learned_words) %}🌟{% endfor %}
                 </div>
             {% else %}
                 <p><strong>Words Mastered:</strong> {{ learned_words }} / {{ total_words }}</p>
