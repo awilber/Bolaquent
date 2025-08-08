@@ -23,7 +23,7 @@
     
     <style>
         /* Override inline styles to use CSS variables - ProductLifecycle Style */
-        body { 
+        body:not(.hero-page) { 
             font-family: var(--font-family); 
             font-size: var(--font-size-base);
             line-height: var(--line-height-normal);
@@ -36,7 +36,18 @@
             flex-direction: column;
         }
         
-        .container { 
+        /* Base styles for hero pages - let hero-backgrounds.css handle the rest */
+        body.hero-page {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            margin: 0;
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        /* Container styles for regular pages */
+        body:not(.hero-page) .container { 
             max-width: 1200px; 
             margin: 0 auto; 
             background: var(--bg-secondary);
@@ -48,6 +59,12 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+        }
+        
+        /* Container for hero pages - transparent, full width */
+        body.hero-page .container {
+            /* Let hero-backgrounds.css handle container styling */
+            color: var(--text-primary);
         }
         
         .nav { 
@@ -158,6 +175,7 @@
     </style>
 </head>
 <body class="{% block body_class %}{% endblock %}">
+    {% block hero_background %}{% endblock %}
     <div class="container">
         <nav class="nav">
             <a href="{{ url_for('index') }}">🏠 Home</a>
