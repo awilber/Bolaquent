@@ -3,9 +3,21 @@
 {% block title %}Login - Bolaquent{% endblock %}
 
 {% block content %}
-<h2>🔐 Login to Bolaquent</h2>
+<div style="max-width: 500px; margin: 0 auto;">
+    <!-- Instant Demo Access -->
+    <div style="background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; text-align: center;">
+        <h3 style="color: white; margin-bottom: 1rem;">⚡ Skip Login - Try Instantly!</h3>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">Experience Bolaquent immediately without any forms</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/demo" style="background: rgba(255,255,255,0.95); color: #10b981; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700;">✨ Full Demo</a>
+            <a href="/try" style="background: rgba(255,255,255,0.1); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3);">⚡ Quick Try</a>
+        </div>
+        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">Username 'bypass' also works ⬇️</p>
+    </div>
 
-<form method="POST" style="max-width: 400px; margin: 20px 0;">
+    <h2 style="text-align: center; margin-bottom: 1.5rem;">🔐 Or Login Normally</h2>
+
+    <form method="POST" style="max-width: 400px; margin: 0 auto;">
     <div style="margin-bottom: 15px;">
         <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
         <input type="text" id="username" name="username" required 
@@ -32,6 +44,7 @@
 <p style="margin-top: 20px; text-align: center;">
     Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>
 </p>
+</div>
 
 <style>
 .btn-secondary:hover {

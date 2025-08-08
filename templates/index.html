@@ -19,14 +19,65 @@
     
     <div style="margin: 40px 0;">
         {% if not session.user_id %}
-            <a href="{{ url_for('auth.register') }}" class="btn" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
-                🚀 Get Started
-            </a>
-            <a href="{{ url_for('auth.login') }}" class="btn" style="font-size: 1.2em; padding: 12px 24px; margin: 10px; background: #64748b;">
-                🔐 Login
-            </a>
+            <!-- Prominent Demo Access -->
+            <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">🎉 Try Bolaquent Instantly!</h3>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">No signup required - explore the full vocabulary learning experience right now!</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/demo" class="btn-demo-primary">✨ Full Demo</a>
+                    <a href="/try" class="btn-demo-secondary">⚡ Quick Try</a>
+                    <a href="/auth/demo?tier=6" class="btn-demo-secondary">🎓 Adult Level</a>
+                </div>
+            </div>
+            
+            <!-- Traditional Options -->
+            <div style="opacity: 0.8;">
+                <p style="margin-bottom: 1rem; color: var(--text-secondary);">Or create an account:</p>
+                <a href="{{ url_for('auth.register') }}" class="btn" style="font-size: 1.1em; padding: 10px 20px; margin: 8px;">
+                    🚀 Register
+                </a>
+                <a href="{{ url_for('auth.login') }}" class="btn" style="font-size: 1.1em; padding: 10px 20px; margin: 8px; background: #64748b;">
+                    🔐 Login
+                </a>
+            </div>
         {% endif %}
     </div>
+
+<style>
+.btn-demo-primary {
+    background: rgba(255,255,255,0.95);
+    color: #3b82f6;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-demo-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-demo-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background: white;
+}
+
+.btn-demo-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+}
+</style>
     
     <div style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 8px;">
         <h3>✨ Features:</h3>

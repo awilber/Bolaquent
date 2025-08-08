@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from models import db, User, AgeTier
+from utils.logger import log_auth_attempt, log_demo_access, log_error, log_debug
+import os
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -9,29 +11,50 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         age = request.form.get("age", type=int)
+        
+        log_debug(f"Login attempt: username='{username}', age={age}")
+        
+        # Check for bypass option
+        if os.environ.get('BYPASS_LOGIN') == 'true' or username == 'bypass':
+            log_demo_access("Bypass", 3, 'bypass_login')
+            session["user_id"] = "bypass"
+            session["username"] = username or "Bypass User"
+            session["tier_id"] = 3  # Elementary tier
+            session["is_demo"] = True
+            flash("Login bypassed - full access granted for testing!")
+            return redirect(url_for("learning.dashboard"))
 
         if username and age:
-            # Find or create user
-            user = User.query.filter_by(username=username).first()
-            if not user:
-                # Auto-assign age tier based on age
-                tier = AgeTier.query.filter(AgeTier.min_age <= age, AgeTier.max_age >= age).first()
+            try:
+                # Find or create user
+                user = User.query.filter_by(username=username).first()
+                if not user:
+                    # Auto-assign age tier based on age
+                    tier = AgeTier.query.filter(AgeTier.min_age <= age, AgeTier.max_age >= age).first()
 
-                if not tier:
-                    # Default to elementary tier if no match
-                    tier = AgeTier.query.filter_by(name="Elementary").first()
+                    if not tier:
+                        # Default to elementary tier if no match
+                        tier = AgeTier.query.filter_by(name="Elementary").first()
 
-                user = User(username=username, age=age, tier_id=tier.id if tier else 3)
-                db.session.add(user)
-                db.session.commit()
+                    user = User(username=username, age=age, tier_id=tier.id if tier else 3)
+                    db.session.add(user)
+                    db.session.commit()
 
-            session["user_id"] = user.id
-            session["username"] = user.username
-            session["tier_id"] = user.tier_id
-
-            return redirect(url_for("learning.dashboard"))
+                session["user_id"] = user.id
+                session["username"] = user.username
+                session["tier_id"] = user.tier_id
+                
+                log_auth_attempt(username, age, True, session_type='regular')
+                return redirect(url_for("learning.dashboard"))
+                
+            except Exception as e:
+                log_error(e, 'login_process')
+                log_auth_attempt(username, age, False, error=str(e), session_type='regular')
+                flash(f"Login error: {str(e)}. Try using 'demo' mode instead.")
         else:
-            flash("Please provide both username and age")
+            error_msg = "Please provide both username and age"
+            log_auth_attempt(username, age, False, error=error_msg, session_type='regular')
+            flash(error_msg)
 
     return render_template("auth/login.html")
 
@@ -111,26 +134,57 @@ def start_guest_session():
 
 @bp.route("/demo")
 def demo():
-    # Create a demo session without requiring registration
+    """Instant demo access - no questions asked"""
     tier_param = request.args.get("tier", type=int)
+    
+    try:
+        if tier_param:
+            # Use specified tier
+            demo_tier = AgeTier.query.get(tier_param)
+        else:
+            # Default to middle-tier (Educational) for demo
+            demo_tier = AgeTier.query.filter_by(name="Elementary").first()
 
-    if tier_param:
-        # Use specified tier
-        demo_tier = AgeTier.query.get(tier_param)
-    else:
-        # Default to middle-tier (Educational) for demo
-        demo_tier = AgeTier.query.filter_by(name="Elementary").first()
+        if not demo_tier:
+            demo_tier = AgeTier.query.first()  # Fallback to any tier
 
-    if not demo_tier:
-        demo_tier = AgeTier.query.first()  # Fallback to any tier
+        tier_id = demo_tier.id if demo_tier else 3
+        tier_name = demo_tier.name if demo_tier else "Elementary"
+        
+        session["user_id"] = "demo"
+        session["username"] = "Demo User"
+        session["tier_id"] = tier_id
+        session["is_demo"] = True
+        
+        log_demo_access(tier_name, tier_id, 'direct_demo')
+        
+        flash(
+            f"🎉 Welcome to Bolaquent! You're exploring the {tier_name} tier. "
+            f"No signup required - just start learning!"
+        )
+        
+    except Exception as e:
+        log_error(e, 'demo_setup')
+        # Fallback demo session even if database fails
+        session["user_id"] = "demo"
+        session["username"] = "Demo User"
+        session["tier_id"] = 3
+        session["is_demo"] = True
+        log_demo_access("Elementary", 3, 'fallback_demo')
+        flash("🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface.")
+    
+    return redirect(url_for("learning.dashboard"))
 
-    session["user_id"] = "demo"
-    session["username"] = "Demo User"
-    session["tier_id"] = demo_tier.id if demo_tier else 3
+
+@bp.route("/quick")
+def quick_demo():
+    """Ultra-fast demo access for impatient users"""
+    session["user_id"] = "quick"
+    session["username"] = "Quick Demo"
+    session["tier_id"] = 3  # Elementary
     session["is_demo"] = True
-
-    tier_name = demo_tier.name if demo_tier else "Elementary"
-    flash(
-        f"Welcome to the Bolaquent demo! You're experiencing the {tier_name} learning tier. Explore all features without creating an account."
-    )
+    
+    log_demo_access("Elementary", 3, 'quick_demo')
+    flash("🚀 Quick Demo Active! Exploring Elementary tier vocabulary.")
+    
     return redirect(url_for("learning.dashboard"))

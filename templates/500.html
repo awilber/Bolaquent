@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Bolaquent{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <h1>⚠️ Temporary Hiccup</h1>
+        <p>Something went wrong on our end, but don't worry!</p>
+        
+        <div class="error-actions">
+            <h3>Try these backup options:</h3>
+            <div class="demo-links">
+                <a href="/demo" class="btn-primary">🎉 Demo Mode</a>
+                <a href="/auth/quick" class="btn-secondary">⚡ Quick Access</a>
+                <a href="/" class="btn-secondary">🔄 Refresh</a>
+            </div>
+        </div>
+        
+        <div class="error-help">
+            <h4>What happened?</h4>
+            <p>The app encountered an error, but our demo modes should still work perfectly! 
+            All demo features are designed to work even when the database is unavailable.</p>
+            
+            <h4>Guaranteed to work:</h4>
+            <ul>
+                <li>✅ Demo vocabulary browsing</li>
+                <li>✅ Theme switching</li>
+                <li>✅ UI exploration</li>
+                <li>✅ All tier demonstrations</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.error-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.demo-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-primary);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.error-help {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.error-help h4 {
+    color: var(--accent-primary);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.error-help ul {
+    margin: 0.5rem 0 0 1rem;
+}
+</style>
+{% endblock %}
