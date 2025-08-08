@@ -587,7 +587,19 @@ def create_app():
         from flask import request
 
         # Skip auth for public routes
-        public_routes = ["index", "auth.login", "auth.register", "static", "init_db"]
+        public_routes = [
+            "index",
+            "auth.login",
+            "auth.register",
+            "auth.demo",
+            "auth.quick",
+            "auth.guest_login",
+            "auth.start_guest_session",
+            "static",
+            "init_db",
+            "quick_demo_redirect",
+            "try_app",
+        ]
         if request.endpoint in public_routes:
             return
 
