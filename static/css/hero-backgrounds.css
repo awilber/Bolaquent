@@ -37,21 +37,29 @@
     margin: 0 auto;
 }
 
-/* Learning-themed backgrounds using CSS gradients and patterns 
-   (Production-ready without external image dependencies) */
+/* Educational Photography Backgrounds with Gradient Fallbacks */
 
-/* Primary Homepage Hero - Learning Growth Theme */
+/* Primary Homepage Hero - Children Learning & Growth */
 .hero-learning {
     background: 
+        linear-gradient(rgba(59, 130, 246, 0.75), rgba(139, 92, 246, 0.75)),
+        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+    /* Fallback for offline/loading */
+    background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.75), rgba(139, 92, 246, 0.75)),
         radial-gradient(circle at 20% 80%, rgba(120, 205, 255, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 206, 84, 0.3) 0%, transparent 50%),
         linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-/* Secondary Hero - Books and Knowledge */
+/* Secondary Hero - Library & Books */
 .hero-knowledge {
     background:
-        linear-gradient(45deg, rgba(73, 160, 157, 0.9), rgba(21, 101, 192, 0.9)),
+        linear-gradient(rgba(73, 160, 157, 0.85), rgba(21, 101, 192, 0.85)),
+        url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+    /* Fallback */
+    background-image:
+        linear-gradient(rgba(73, 160, 157, 0.85), rgba(21, 101, 192, 0.85)),
         repeating-linear-gradient(
             90deg,
             transparent,
@@ -61,24 +69,93 @@
         );
 }
 
-/* Login/Auth Pages - Warm Welcome */
+/* Early Childhood Learning - Colorful Classroom */
+.hero-early-learning {
+    background:
+        linear-gradient(rgba(251, 189, 8, 0.8), rgba(245, 101, 101, 0.8)),
+        url('https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Elementary Age - School Environment */
+.hero-elementary {
+    background:
+        linear-gradient(rgba(34, 197, 94, 0.8), rgba(59, 130, 246, 0.8)),
+        url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Teen Learning - Modern Study */
+.hero-teen {
+    background:
+        linear-gradient(rgba(139, 92, 246, 0.8), rgba(236, 72, 153, 0.8)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Adult Learning - Professional Development */
+.hero-adult {
+    background:
+        linear-gradient(rgba(15, 118, 110, 0.8), rgba(29, 78, 216, 0.8)),
+        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Login/Auth Pages - Welcoming Learning Environment */
 .hero-welcome {
     background: 
+        linear-gradient(rgba(251, 189, 8, 0.8), rgba(245, 87, 108, 0.8)),
+        url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+    /* Fallback */
+    background-image:
+        linear-gradient(rgba(251, 189, 8, 0.8), rgba(245, 87, 108, 0.8)),
         radial-gradient(ellipse at center, rgba(251, 189, 8, 0.3) 0%, transparent 50%),
         linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
 }
 
-/* Dashboard/Learning Pages - Focus Theme */
+/* Dashboard/Learning Pages - Focused Study */
 .hero-focus {
     background:
-        linear-gradient(45deg, rgba(56, 189, 248, 0.8), rgba(99, 102, 241, 0.8)),
+        linear-gradient(rgba(56, 189, 248, 0.8), rgba(99, 102, 241, 0.8)),
+        url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+    /* Fallback */
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.8), rgba(99, 102, 241, 0.8)),
         radial-gradient(circle at 30% 70%, rgba(168, 85, 247, 0.4) 0%, transparent 50%);
 }
 
-/* Error Pages - Supportive Theme */
+/* Practice Pages - Interactive Learning */
+.hero-practice {
+    background:
+        linear-gradient(rgba(245, 101, 101, 0.8), rgba(251, 189, 8, 0.8)),
+        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Vocabulary Pages - Language & Words */
+.hero-vocabulary {
+    background:
+        linear-gradient(rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8)),
+        url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Achievement Pages - Success & Celebration */
+.hero-achievement {
+    background:
+        linear-gradient(rgba(34, 197, 94, 0.8), rgba(251, 189, 8, 0.8)),
+        url('https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Admin Pages - Professional Management */
+.hero-admin {
+    background:
+        linear-gradient(rgba(71, 85, 105, 0.85), rgba(30, 41, 59, 0.85)),
+        url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+}
+
+/* Error Pages - Supportive & Encouraging */
 .hero-support {
     background:
-        linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(101, 163, 13, 0.8)),
+        linear-gradient(rgba(16, 185, 129, 0.8), rgba(101, 163, 13, 0.8)),
+        url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+    /* Fallback */
+    background-image:
+        linear-gradient(rgba(16, 185, 129, 0.8), rgba(101, 163, 13, 0.8)),
         repeating-conic-gradient(
             from 0deg at 50% 50%,
             transparent 0deg,

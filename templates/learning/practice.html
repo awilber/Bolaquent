@@ -3,20 +3,23 @@
 {% block title %}Practice - Bolaquent{% endblock %}
 
 {% block content %}
-<!-- Age-Appropriate Header -->
-{% if user.tier_id <= 2 %}
-    <div class="playful-header">
-        <h2>🎯 Let's Practice Together!</h2>
-        <div class="mascot">🌟</div>
-        <p>Time to practice your amazing words!</p>
-    </div>
-{% elif user.tier_id <= 4 %}
-    <h2>🎯 Practice Session</h2>
-    <p>Ready to test your vocabulary skills?</p>
-{% else %}
-    <h2>📝 Vocabulary Practice</h2>
-    <p>Focused training session for vocabulary mastery</p>
-{% endif %}
+<div class="hero-background hero-practice">
+    <div class="hero-overlay"></div>
+    <div style="position: relative; z-index: 2; padding: 2rem;">
+        <!-- Age-Appropriate Header -->
+        {% if user.tier_id <= 2 %}
+            <div class="playful-header" style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
+                <h2>🎯 Let's Practice Together!</h2>
+                <div class="mascot">🌟</div>
+                <p>Time to practice your amazing words!</p>
+            </div>
+        {% elif user.tier_id <= 4 %}
+            <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">🎯 Practice Session</h2>
+            <p style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">Ready to test your vocabulary skills?</p>
+        {% else %}
+            <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">📝 Vocabulary Practice</h2>
+            <p style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">Focused training session for vocabulary mastery</p>
+        {% endif %}
 
 <div class="practice-container">
     {% if words %}
@@ -138,6 +141,8 @@
             </a>
         </div>
     {% endif %}
+    </div>
+</div>
 </div>
 
 <style>

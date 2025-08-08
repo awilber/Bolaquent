@@ -3,9 +3,12 @@
 {% block title %}Admin Dashboard - Bolaquent{% endblock %}
 
 {% block content %}
-<div class="admin-dashboard">
-    <h2>⚙️ Administration Dashboard</h2>
-    <p>Manage users, vocabulary, and system settings</p>
+<div class="hero-background hero-admin">
+    <div class="hero-overlay"></div>
+    <div style="position: relative; z-index: 2; padding: 2rem;">
+        <div class="admin-dashboard">
+            <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">⚙️ Administration Dashboard</h2>
+            <p style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">Manage users, vocabulary, and system settings</p>
 
     <!-- System Stats -->
     <div class="admin-stats">
@@ -150,7 +153,9 @@
                 ⚠️ Full System Reset
             </button>
         </div>
+        </div>
     </div>
+</div>
 </div>
 
 <style>
