@@ -131,7 +131,7 @@ jobs:
         chmod 600 private_key.pem
         
         # Deploy application using S3 download approach
-        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << EOF
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.89.117.172 << EOF
           # Stop existing application and clear cache
           echo "🔄 Stopping existing Flask applications..."
           pkill -f "python.*app.py" || true
@@ -229,10 +229,11 @@ jobs:
           echo "🔍 Testing Flask app import..."
           python -c "import app; print('✅ Flask app imports successfully')" || echo "❌ Flask import failed"
           
-          # Start application with enhanced logging
+          # Start application with enhanced logging and external access
           echo "🚀 Starting Flask application..."
           export FLASK_ENV=production
           export PORT=5000
+          export FLASK_HOST=0.0.0.0
           nohup ./venv/bin/python app.py > app.log 2>&1 &
           APP_PID=\$!
           echo \$APP_PID > app.pid
@@ -271,15 +272,15 @@ jobs:
     - name: Verify deployment
       run: |
         echo "Deployment completed to EC2 instance i-0332d1b2863b08d95"
-        echo "Application should be accessible at http://54.89.117.172:5000"
+        echo "Application should be accessible at http://54.89.117.172/"
         
         # Wait for deployment to complete
         sleep 15
         
         # Test the deployment (check both ports)
-        curl -I http://54.161.222.239/ || echo "⚠️ Checking nginx on port 80..."
-        curl -I http://54.161.222.239:5001/ || echo "⚠️ Checking Flask on port 5001 (production)..."
-        curl -I http://54.161.222.239:5000/ || echo "⚠️ Checking Flask on port 5000..."
+        curl -I http://54.89.117.172/ || echo "⚠️ Checking nginx on port 80..."
+        curl -I http://54.89.117.172:5001/ || echo "⚠️ Checking Flask on port 5001 (production)..."
+        curl -I http://54.89.117.172:5000/ || echo "⚠️ Checking Flask on port 5000..."
 
   notify:
     needs: [deploy]
@@ -291,7 +292,7 @@ jobs:
       run: |
         if [ "${{ needs.deploy.result }}" == "success" ]; then
           echo "✅ Bolaquent deployed successfully to AWS"
-          echo "🌐 Live at: http://54.161.222.239/"
+          echo "🌐 Live at: http://54.89.117.172/"
         else
           echo "❌ Deployment failed - check logs"
         fi
