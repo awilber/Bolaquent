@@ -1,109 +1,110 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="text-align: center; padding: 40px 0;">
-    <h1 style="color: #2563eb; font-size: 3em; margin-bottom: 20px;">🎓 Bolaquent</h1>
-    <h2 style="color: #64748b; margin-bottom: 40px;">Multi-Tiered Vocabulary & Grammar Learning</h2>
-    
-    <div style="max-width: 600px; margin: 0 auto; text-align: left;">
-        <h3>🎯 Age-Appropriate Learning Tiers:</h3>
-        <ul style="font-size: 1.1em; line-height: 1.6;">
-            <li><span class="tier-badge">Ages 2-4</span> Early Verbal - Sensory learning and repetition</li>
-            <li><span class="tier-badge">Ages 4-6</span> Preschool - Language explosion and social play</li>
-            <li><span class="tier-badge">Ages 6-10</span> Elementary - Logical thinking with concrete concepts</li>
-            <li><span class="tier-badge">Ages 11-14</span> Middle School - Abstract thinking development</li>
-            <li><span class="tier-badge">Ages 15-18</span> High School - Advanced reasoning and goals</li>
-            <li><span class="tier-badge">Ages 18+</span> Adult - Self-directed specialized learning</li>
-        </ul>
-    </div>
-    
-    <div style="margin: 40px 0;">
-        {% if not session.user_id %}
-            <!-- Prominent Demo Access -->
-            <div style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
-                <h3 style="color: white; margin-bottom: 1rem;">🎉 Try Bolaquent Instantly!</h3>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">No signup required - explore the full vocabulary learning experience right now!</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="/demo" class="btn-demo-primary">✨ Full Demo</a>
-                    <a href="/try" class="btn-demo-secondary">⚡ Quick Try</a>
-                    <a href="/auth/demo?tier=6" class="btn-demo-secondary">🎓 Adult Level</a>
-                </div>
+<div class="hero-background hero-learning">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>🎓 Bolaquent</h1>
+        <h2>Transform Learning Through Age-Appropriate Vocabulary</h2>
+        <p>From early verbal development to advanced academics - personalized learning experiences for every stage of cognitive growth.</p>
+        
+        <!-- Age Tiers Showcase -->
+        <div class="hero-tiers">
+            <div class="hero-tier-badge">
+                <div class="hero-tier-age">Ages 2-4</div>
+                <div class="hero-tier-name">Early Verbal</div>
+                <div class="hero-tier-desc">Sensory learning and repetition</div>
             </div>
-            
-            <!-- Traditional Options -->
-            <div style="opacity: 0.8;">
-                <p style="margin-bottom: 1rem; color: var(--text-secondary);">Or create an account:</p>
-                <a href="{{ url_for('auth.register') }}" class="btn" style="font-size: 1.1em; padding: 10px 20px; margin: 8px;">
-                    🚀 Register
-                </a>
-                <a href="{{ url_for('auth.login') }}" class="btn" style="font-size: 1.1em; padding: 10px 20px; margin: 8px; background: #64748b;">
-                    🔐 Login
-                </a>
+            <div class="hero-tier-badge">
+                <div class="hero-tier-age">Ages 4-6</div>
+                <div class="hero-tier-name">Preschool</div>
+                <div class="hero-tier-desc">Language explosion and social play</div>
             </div>
-        {% endif %}
-    </div>
-
-<style>
-.btn-demo-primary {
-    background: rgba(255,255,255,0.95);
-    color: #3b82f6;
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.btn-demo-secondary {
-    background: rgba(255,255,255,0.1);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-demo-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    background: white;
-}
-
-.btn-demo-secondary:hover {
-    background: rgba(255,255,255,0.2);
-    transform: translateY(-1px);
-}
-</style>
-    
-    <div style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 8px;">
-        <h3>✨ Features:</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-            <div>
-                <strong>🧠 Pedagogically-Based Tiers</strong><br>
-                Learning stages based on cognitive development research
+            <div class="hero-tier-badge">
+                <div class="hero-tier-age">Ages 6-10</div>
+                <div class="hero-tier-name">Elementary</div>
+                <div class="hero-tier-desc">Logical thinking with concrete concepts</div>
             </div>
-            <div>
-                <strong>🎮 Age-Appropriate Gamification</strong><br>
-                Engagement mechanics tailored for each age group
+            <div class="hero-tier-badge">
+                <div class="hero-tier-age">Ages 11-14</div>
+                <div class="hero-tier-name">Middle School</div>
+                <div class="hero-tier-desc">Abstract thinking development</div>
             </div>
-            <div>
-                <strong>📈 Adaptive Progression</strong><br>
-                Difficulty scales with learner advancement
+            <div class="hero-tier-badge">
+                <div class="hero-tier-age">Ages 15-18</div>
+                <div class="hero-tier-name">High School</div>
+                <div class="hero-tier-desc">Advanced reasoning and goals</div>
             </div>
-            <div>
-                <strong>🌍 Multi-Platform Access</strong><br>
-                Available across all devices and platforms
+            <div class="hero-tier-badge">
+                <div class="hero-tier-age">Ages 18+</div>
+                <div class="hero-tier-name">Adult</div>
+                <div class="hero-tier-desc">Self-directed specialized learning</div>
             </div>
         </div>
-    </div>
-    
-    <div style="margin-top: 20px; color: #64748b;">
-        <a href="{{ url_for('init_db') }}" style="color: #64748b;">Initialize Database</a> |
-        <a href="/admin" style="color: #64748b;">Admin Panel</a>
+        
+        <!-- Hero Call-to-Action -->
+        {% if not session.user_id %}
+            <div class="hero-cta">
+                <a href="/demo" class="hero-btn hero-btn-primary">
+                    ✨ <span>Try Full Demo</span>
+                </a>
+                <a href="/try" class="hero-btn hero-btn-secondary">
+                    ⚡ <span>Quick Start</span>
+                </a>
+                <a href="/auth/demo?tier=6" class="hero-btn hero-btn-secondary">
+                    🎓 <span>Adult Level</span>
+                </a>
+            </div>
+            
+            <!-- Secondary Options -->
+            <div style="margin-top: 3rem; opacity: 0.8;">
+                <p style="margin-bottom: 1.5rem; font-size: 1rem;">Or create an account for personalized tracking:</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="{{ url_for('auth.register') }}" style="color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.75rem 1.5rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 25px; transition: all 0.3s ease; backdrop-filter: blur(10px);" 
+                       onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.5)'"
+                       onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.3)'">
+                        🚀 Register
+                    </a>
+                    <a href="{{ url_for('auth.login') }}" style="color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.75rem 1.5rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 25px; transition: all 0.3s ease; backdrop-filter: blur(10px);"
+                       onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.5)'"
+                       onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.3)'">
+                        🔐 Login
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
+        
+        <!-- Feature Highlights -->
+        <div class="hero-features">
+            <div class="hero-feature-card">
+                <div class="hero-feature-icon">🧠</div>
+                <div class="hero-feature-title">Cognitive Development</div>
+                <div class="hero-feature-description">Learning stages scientifically based on cognitive development research and pedagogical best practices.</div>
+            </div>
+            <div class="hero-feature-card">
+                <div class="hero-feature-icon">🎮</div>
+                <div class="hero-feature-title">Age-Appropriate Engagement</div>
+                <div class="hero-feature-description">Gamification mechanics and UI themes tailored specifically for each developmental stage.</div>
+            </div>
+            <div class="hero-feature-card">
+                <div class="hero-feature-icon">📈</div>
+                <div class="hero-feature-title">Adaptive Learning</div>
+                <div class="hero-feature-description">Difficulty automatically adjusts as learners advance, ensuring optimal challenge and growth.</div>
+            </div>
+            <div class="hero-feature-card">
+                <div class="hero-feature-icon">🌍</div>
+                <div class="hero-feature-title">Cross-Platform</div>
+                <div class="hero-feature-description">Seamless experience across all devices - mobile, tablet, and desktop with responsive design.</div>
+            </div>
+        </div>
+        
+        <!-- Admin Links -->
+        <div style="margin-top: 4rem; opacity: 0.6;">
+            <a href="{{ url_for('init_db') }}" style="color: rgba(255,255,255,0.7); margin: 0 1rem; text-decoration: none;">Initialize Database</a>
+            <span style="color: rgba(255,255,255,0.5);">|</span>
+            <a href="/admin" style="color: rgba(255,255,255,0.7); margin: 0 1rem; text-decoration: none;">Admin Panel</a>
+        </div>
     </div>
 </div>
 {% endblock %}

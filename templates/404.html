@@ -3,101 +3,36 @@
 {% block title %}Page Not Found - Bolaquent{% endblock %}
 
 {% block content %}
-<div class="error-container">
-    <div class="error-content">
-        <h1>🤔 Page Not Found</h1>
-        <p>The page you're looking for doesn't exist, but that's okay!</p>
+<div class="hero-background hero-support">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 style="font-size: 3rem;">🤔 Page Not Found</h1>
+        <h2>The page you're looking for doesn't exist, but that's okay!</h2>
         
-        <div class="error-actions">
-            <h3>Try these instead:</h3>
-            <div class="demo-links">
-                <a href="/demo" class="btn-primary">🎉 Try Demo</a>
-                <a href="/auth/quick" class="btn-secondary">⚡ Quick Demo</a>
-                <a href="/" class="btn-secondary">🏠 Home</a>
-            </div>
+        <p style="margin-bottom: 2rem;">Let's get you back to learning with these instant access options:</p>
+        
+        <div class="hero-cta">
+            <a href="/demo" class="hero-btn hero-btn-primary">
+                🎉 <span>Try Demo</span>
+            </a>
+            <a href="/try" class="hero-btn hero-btn-secondary">
+                ⚡ <span>Quick Demo</span>
+            </a>
+            <a href="/" class="hero-btn hero-btn-secondary">
+                🏠 <span>Home</span>
+            </a>
         </div>
         
-        <div class="error-help">
-            <p>Having trouble? These work instantly:</p>
-            <ul>
-                <li><code>/demo</code> - Full vocabulary demo</li>
-                <li><code>/try</code> - Quick access demo</li>
-                <li><code>/auth/demo</code> - Alternative demo entry</li>
-                <li><code>/auth/quick</code> - Fast demo mode</li>
+        <div style="margin-top: 3rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.2);">
+            <p style="margin-bottom: 1rem; font-weight: 600;">💡 Direct access URLs that always work:</p>
+            <ul style="text-align: left; list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/demo</code> - Full vocabulary experience</li>
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/try</code> - Quick access demo</li>
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/auth/demo</code> - Alternative demo entry</li>
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/auth/quick</code> - Ultra-fast demo mode</li>
             </ul>
         </div>
     </div>
 </div>
 
-<style>
-.error-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh;
-    padding: 2rem;
-}
-
-.error-content {
-    text-align: center;
-    max-width: 500px;
-}
-
-.error-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-}
-
-.demo-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: var(--accent-primary);
-    color: white;
-}
-
-.btn-secondary {
-    background: var(--bg-elevated);
-    color: var(--text-primary);
-    border: 1px solid var(--accent-primary);
-}
-
-.btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.error-help {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: var(--bg-secondary);
-    border-radius: 8px;
-    text-align: left;
-}
-
-.error-help ul {
-    margin: 1rem 0 0 1rem;
-}
-
-.error-help code {
-    background: var(--bg-elevated);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
-}
-</style>
 {% endblock %}

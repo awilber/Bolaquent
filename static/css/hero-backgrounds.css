@@ -1,0 +1,342 @@
+/* Hero Background System for Bolaquent
+   Professional educational photography with optimized overlays */
+
+/* Base Hero System */
+.hero-background {
+    position: relative;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.8) 0%,
+        rgba(139, 92, 246, 0.7) 100%
+    );
+    backdrop-filter: blur(1px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+/* Learning-themed backgrounds using CSS gradients and patterns 
+   (Production-ready without external image dependencies) */
+
+/* Primary Homepage Hero - Learning Growth Theme */
+.hero-learning {
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 205, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 206, 84, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Secondary Hero - Books and Knowledge */
+.hero-knowledge {
+    background:
+        linear-gradient(45deg, rgba(73, 160, 157, 0.9), rgba(21, 101, 192, 0.9)),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+        );
+}
+
+/* Login/Auth Pages - Warm Welcome */
+.hero-welcome {
+    background: 
+        radial-gradient(ellipse at center, rgba(251, 189, 8, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+}
+
+/* Dashboard/Learning Pages - Focus Theme */
+.hero-focus {
+    background:
+        linear-gradient(45deg, rgba(56, 189, 248, 0.8), rgba(99, 102, 241, 0.8)),
+        radial-gradient(circle at 30% 70%, rgba(168, 85, 247, 0.4) 0%, transparent 50%);
+}
+
+/* Error Pages - Supportive Theme */
+.hero-support {
+    background:
+        linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(101, 163, 13, 0.8)),
+        repeating-conic-gradient(
+            from 0deg at 50% 50%,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.05) 90deg,
+            transparent 180deg
+        );
+}
+
+/* Content Overlays */
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+}
+
+.hero-content h2 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: 600;
+    opacity: 0.95;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    opacity: 0.9;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Call-to-Action Buttons */
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.hero-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
+}
+
+.hero-btn-primary {
+    background: linear-gradient(45deg, #fff 0%, #f8fafc 100%);
+    color: #1e293b;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.hero-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-btn-primary:hover {
+    background: linear-gradient(45deg, #ffffff 0%, #ffffff 100%);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+}
+
+.hero-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Feature Cards in Hero */
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    max-width: 1000px;
+}
+
+.hero-feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero-feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hero-feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-feature-description {
+    opacity: 0.9;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Age Tier Showcase */
+.hero-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+}
+
+.hero-tier-badge {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.hero-tier-badge:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+}
+
+.hero-tier-age {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #fbbf24;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-tier-name {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-tier-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-background {
+        background-attachment: scroll; /* Better mobile performance */
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        padding: 1.5rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .hero-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+    
+    .hero-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .hero-tiers {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .hero-tier-badge {
+        padding: 1rem 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-tiers {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Performance and Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hero-btn,
+    .hero-feature-card,
+    .hero-tier-badge {
+        transition: none;
+    }
+    
+    .hero-btn:hover,
+    .hero-feature-card:hover,
+    .hero-tier-badge:hover {
+        transform: none;
+    }
+    
+    .hero-background {
+        background-attachment: scroll;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero-overlay {
+        background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.9) 100%
+        );
+    }
+    
+    .hero-content {
+        text-shadow: none;
+    }
+    
+    .hero-btn {
+        border-width: 3px;
+    }
+}
