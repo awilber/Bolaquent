@@ -1,16 +1,49 @@
 /* Hero Background System for Bolaquent
    Professional educational photography with optimized overlays */
 
-/* Base Hero System */
+/* Base Hero System - Full Screen Implementation */
 .hero-background {
-    position: relative;
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+/* Override container constraints for hero pages */
+body.hero-page {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+}
+
+body.hero-page .container {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+}
+
+/* Hero content positioning for full-screen display */
+.hero-content-wrapper {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .hero-overlay {
@@ -29,12 +62,42 @@
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: white;
     max-width: 1200px;
     padding: 2rem;
     margin: 0 auto;
+}
+
+/* Navigation bar for hero pages */
+body.hero-page .nav {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.hero-page .nav a {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.hero-page .nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+body.hero-page .nav .nav-brand {
+    color: white !important;
+}
+
+body.hero-page .nav-user-info {
+    color: white !important;
+}
+
+body.hero-page .nav-user-info span {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Educational Photography Backgrounds with Gradient Fallbacks */

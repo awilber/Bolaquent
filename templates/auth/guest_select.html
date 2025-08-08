@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Learn as a Guest - Bolaquent{% endblock %}
+{% block title %}Demo - Choose Your Level - Bolaquent{% endblock %}
 
 {% block content %}
-<h2>👤 Learn as a Guest</h2>
+<h2>🎉 Try Bolaquent Demo</h2>
 <p style="margin-bottom: 30px; color: #64748b; font-size: 1.1em;">
-    Select your age range to get started with age-appropriate vocabulary learning. 
-    <strong>No registration required!</strong>
+    Choose your age tier to experience personalized vocabulary learning. 
+    <strong>No registration required - just pick and start!</strong>
 </p>
 
 <form method="POST" action="{{ url_for('auth.start_guest_session') }}" id="guest-form">

@@ -2,10 +2,14 @@
 
 {% block title %}Vocabulary - Bolaquent{% endblock %}
 
+{% block body_class %}hero-page{% endblock %}
+
 {% block content %}
 <div class="hero-background hero-vocabulary">
     <div class="hero-overlay"></div>
-    <div style="position: relative; z-index: 2; padding: 2rem;">
+</div>
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
         <!-- Age-Appropriate Header -->
         {% if user.tier_id <= 2 %}
             <div class="playful-header" style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
@@ -147,7 +151,6 @@
         </div>
     {% endif %}
     </div>
-</div>
 </div>
 
 <style>

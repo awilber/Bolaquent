@@ -2,17 +2,24 @@
 
 {% block title %}Dashboard - Bolaquent{% endblock %}
 
+{% block body_class %}hero-page{% endblock %}
+
 {% block content %}
-<!-- Age-Appropriate Header -->
+<div class="hero-background hero-focus">
+    <div class="hero-overlay"></div>
+</div>
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
+        <!-- Age-Appropriate Header -->
 {% if user.tier_id <= 2 %}
-    <div class="playful-header">
+    <div class="playful-header" style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
         <h2>🌟 {{ user.username }}'s Learning Adventure! 🌟</h2>
         <div class="mascot">🦄</div>
     </div>
 {% elif user.tier_id <= 4 %}
-    <h2>📊 {{ user.username }}'s Learning Dashboard</h2>
+    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">📊 {{ user.username }}'s Learning Dashboard</h2>
 {% else %}
-    <h2>📈 Learning Analytics Dashboard</h2>
+    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">📈 Learning Analytics Dashboard</h2>
 {% endif %}
 
 <!-- Profile and Progress Section -->
@@ -171,5 +178,6 @@
             <p>Set specific vocabulary goals for your career or interests. Use spaced repetition for long-term retention.</p>
         {% endif %}
     {% endif %}
+    </div>
 </div>
 {% endblock %}
