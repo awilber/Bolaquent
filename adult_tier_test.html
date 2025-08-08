@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-professional" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Dashboard - Bolaquent</title>
+    
+    <!-- Mobile App Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Bolaquent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Performance Optimization -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="/static/css/themes.css">
+    <link rel="stylesheet" href="/static/css/additional-themes.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/hero-backgrounds.css">
+    <script src="/static/js/theme-manager.js"></script>
+    
+    <style>
+        /* Override inline styles to use CSS variables - ProductLifecycle Style */
+        body:not(.hero-page) { 
+            font-family: var(--font-family); 
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            margin: 0; 
+            padding: var(--spacing-md); 
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Base styles for hero pages - let hero-backgrounds.css handle the rest */
+        body.hero-page {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            margin: 0;
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        /* Container styles for regular pages */
+        body:not(.hero-page) .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg); 
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-default);
+            color: var(--text-primary);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Container for hero pages - transparent, full width */
+        body.hero-page .container {
+            /* Let hero-backgrounds.css handle container styling */
+            color: var(--text-primary);
+        }
+        
+        /* Modern Material Design Navigation Bar */
+        .nav { 
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary); 
+            padding: 0 24px; /* Material Design standard container padding */
+            margin: calc(-1 * var(--spacing-lg)) calc(-1 * var(--spacing-lg)) var(--spacing-md) calc(-1 * var(--spacing-lg)); 
+            border-radius: var(--radius-md) var(--radius-md) 0 0; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 64px; /* Material Design desktop standard */
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Consistent spacing between nav items */
+            flex: 1;
+        }
+        
+        .nav a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            padding: 8px 16px; /* Material Design touch target */
+            border-radius: var(--radius-md);
+            font-size: 14px; /* Material Design nav font size */
+            font-weight: var(--font-weight-medium);
+            transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); /* Material easing */
+            position: relative;
+            white-space: nowrap;
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav a:hover { 
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav a:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+        
+        .nav a.active {
+            background: var(--accent-primary);
+            color: var(--text-inverse);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 2px;
+            background: var(--accent-primary);
+            border-radius: 1px;
+        }
+        
+        .nav-user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px; /* Increased spacing for better visual hierarchy */
+            font-size: 14px;
+        }
+        
+        .nav-user-info span {
+            color: var(--text-primary);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .nav-brand {
+            font-weight: var(--font-weight-semibold);
+            font-size: 18px; /* Slightly larger for brand prominence */
+            color: var(--text-primary);
+            margin-right: 24px;
+        }
+        
+        /* Theme Selector Enhancement */
+        .theme-selector {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-md);
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: var(--font-weight-medium);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .theme-selector:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+        
+        .theme-selector:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Mobile Responsive Navigation */
+        @media (max-width: 768px) {
+            .nav {
+                min-height: 56px; /* Material Design mobile standard */
+                padding: 0 16px;
+                flex-wrap: wrap;
+            }
+            
+            .nav-main {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .nav-main::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+                min-height: 36px;
+            }
+            
+            .nav-brand {
+                font-size: 16px;
+                margin-right: 16px;
+            }
+            
+            .nav-user-info {
+                gap: 12px;
+                font-size: 13px;
+            }
+            
+            .nav-user-info span {
+                display: none; /* Hide username on mobile for space */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0 12px;
+            }
+            
+            .nav a {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+            
+            .theme-selector {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+        }
+        
+        .btn { 
+            background: var(--accent-primary); 
+            color: var(--text-inverse); 
+            padding: var(--spacing-xs) var(--spacing-sm); 
+            border: none; 
+            border-radius: var(--radius-md); 
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            font-family: var(--font-family);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            line-height: 1;
+        }
+        
+        .btn:hover:not(:disabled) { 
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn:active:not(:disabled) {
+            background: var(--accent-active);
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .tier-badge { 
+            background: var(--status-success); 
+            color: var(--text-inverse); 
+            padding: var(--spacing-xs) var(--spacing-xs); 
+            border-radius: var(--radius-sm); 
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .progress-bar { 
+            background: var(--border-default); 
+            height: 20px; 
+            border-radius: 10px; 
+            overflow: hidden; 
+        }
+        
+        .progress-fill { 
+            background: var(--status-success); 
+            height: 100%; 
+            transition: var(--transition-normal); 
+        }
+    </style>
+</head>
+<body class="hero-page hero-focus">
+    
+    <div class="container">
+        <nav class="nav">
+            <div class="nav-main">
+                <span class="nav-brand">Bolaquent</span>
+                <a href="/">🏠 Home</a>
+                
+                    <a href="/learning/dashboard">📊 Dashboard</a>
+                    <a href="/learning/vocabulary">📚 Vocabulary</a>
+                    <a href="/learning/practice">🎯 Practice</a>
+                    <a href="/learning/achievements">🏆 Achievements</a>
+                    <a href="/admin/">⚙️ Admin</a>
+                
+            </div>
+            <div class="nav-user-info">
+                
+                    <span>Hello, Demo User!</span>
+                    <a href="/auth/logout">👋 Logout</a>
+                
+                <select id="theme-selector" class="theme-selector" onchange="changeTheme(this.value)" aria-label="Select theme">
+                    <option value="dark">GitHub Dark</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="catppuccin-mocha">Catppuccin Mocha</option>
+                    <option value="tokyo-night">Tokyo Night</option>
+                </select>
+            </div>
+        </nav>
+        
+        
+            
+                
+                    <div class="flash-message" style="background: var(--status-info-bg); color: var(--status-info); padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid var(--border-default);">
+                        🎉 Welcome to Bolaquent! You&#39;re exploring the Adult tier. No signup required - just start learning!
+                    </div>
+                
+            
+        
+        
+        
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
+        <!-- Age-Appropriate Header -->
+
+    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">📈 Learning Analytics Dashboard</h2>
+
+
+<!-- Profile and Progress Section -->
+<div class="dashboard-grid">
+    <div class="dashboard-card profile-card">
+        
+            <h3>📋 User Profile</h3>
+        
+        
+        <div class="profile-info">
+            <p><strong>Name:</strong> Demo User</p>
+            <p><strong>Age:</strong> 8 years old</p>
+            <p><strong>Learning Tier:</strong> 
+                <span class="tier-badge">
+                    🎓 Professional
+                    
+                </span>
+            </p>
+            
+        </div>
+    </div>
+    
+    <div class="dashboard-card progress-card">
+        
+            <h3>📊 Learning Analytics</h3>
+        
+        
+        <div class="progress-stats">
+            
+                <p><strong>Words Mastered:</strong> 8 / 10</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80.0%;"></div>
+                </div>
+                <p class="progress-text">80.0% Complete</p>
+            
+        </div>
+        
+        
+            <div class="detailed-stats">
+                <!-- Professional tier gets detailed analytics -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">80.0%</div>
+                        <div class="stat-label">Completion Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Words Mastered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Remaining</div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+<!-- Quick Actions Section -->
+<div class="quick-actions">
+    
+        <h3>📋 Learning Activities</h3>
+    
+    
+    <div class="action-grid">
+        <a href="/learning/practice" class="action-btn practice-btn">
+            
+                <div class="action-icon">📝</div>
+                <div class="action-title">Practice Session</div>
+                <div class="action-desc">Focused vocabulary training</div>
+            
+        </a>
+        
+        <a href="/learning/vocabulary" class="action-btn vocabulary-btn">
+            
+                <div class="action-icon">📊</div>
+                <div class="action-title">Vocabulary Bank</div>
+                <div class="action-desc">Comprehensive word database</div>
+            
+        </a>
+        
+        <a href="/learning/achievements" class="action-btn achievements-btn">
+            
+                <div class="action-icon">📈</div>
+                <div class="action-title">Performance</div>
+                <div class="action-desc">Detailed progress analytics</div>
+            
+        </a>
+    </div>
+</div>
+
+<div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0;">
+    <h4>💡 Learning Tips for Your Tier:</h4>
+    
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        // Multi-Theme Management System\n        const themes = {\n            'dark': 'GitHub Dark',\n            'dracula': 'Dracula',\n            'catppuccin-mocha': 'Catppuccin Mocha',\n            'tokyo-night': 'Tokyo Night'\n        };
+        function initializeTheme() {
+            // Default to dark mode
+            const savedTheme = localStorage.getItem('theme');
+            const theme = savedTheme || 'dark';
+            
+            console.log('Initializing theme:', theme);
+            applyTheme(theme);
+        }
+        
+        function applyTheme(theme) {
+            console.log('Applying theme:', theme);
+            
+            // Set data-theme attribute on html element
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Update theme toggle button
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+                themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+                console.log('Updated button to:', themeToggle.textContent);
+            }
+            
+            // Save preference
+            localStorage.setItem('theme', theme);
+            
+            console.log('Theme applied successfully');
+        }
+        
+        function toggleTheme() {
+            console.log('Toggle theme clicked!');
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            console.log('Switching from', currentTheme, 'to', newTheme);
+            applyTheme(newTheme);
+        }
+        
+        // Initialize immediately
+        initializeTheme();
+        
+        // Also initialize on DOM ready as backup
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM ready, re-initializing theme');
+            initializeTheme();
+        });
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        console.log('Theme system initialized');
+    </script>
+</body>
+</html>

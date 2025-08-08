@@ -3,11 +3,14 @@
 {% block title %}Demo - Choose Your Level - Bolaquent{% endblock %}
 
 {% block content %}
-<h2>🎉 Try Bolaquent Demo</h2>
-<p style="margin-bottom: 30px; color: #64748b; font-size: 1.1em;">
-    Choose your age tier to experience personalized vocabulary learning. 
-    <strong>No registration required - just pick and start!</strong>
-</p>
+<!-- Header with Contrast Panel -->
+<div style="background: var(--bg-elevated); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid var(--border-default); box-shadow: var(--shadow-md);">
+    <h2 style="margin: 0 0 1rem 0; color: var(--text-primary);">🎉 Try Bolaquent Demo</h2>
+    <p style="margin: 0; color: var(--text-secondary); font-size: 1.1em;">
+        Choose your age tier to experience personalized vocabulary learning. 
+        <strong>No registration required - just pick and start!</strong>
+    </p>
+</div>
 
 <form method="POST" action="{{ url_for('auth.start_guest_session') }}" id="guest-form">
     <div class="age-tiers" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
@@ -82,9 +85,12 @@
     </div>
 </form>
 
-<p style="text-align: center; margin-top: 20px; color: #6b7280;">
-    <a href="{{ url_for('auth.login') }}" style="color: #3b82f6; text-decoration: none;">← Back to Login</a>
-</p>
+<!-- Footer with Contrast Panel -->
+<div style="background: var(--bg-elevated); padding: 1.5rem; border-radius: 12px; margin-top: 2rem; border: 1px solid var(--border-default); text-align: center;">
+    <p style="margin: 0; color: var(--text-secondary);">
+        <a href="{{ url_for('auth.login') }}" style="color: var(--accent-primary); text-decoration: none;">← Back to Login</a>
+    </p>
+</div>
 
 <script>
 function selectTier(tierId, age) {
