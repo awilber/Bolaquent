@@ -232,14 +232,14 @@
 
 /* Professional theme enhancements */
 .theme-professional .action-btn {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
 }
 
 .theme-professional .action-btn:hover {
-    background: #ffffff;
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.1);
+    background: var(--bg-elevated);
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .theme-professional .action-icon {

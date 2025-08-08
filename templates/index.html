@@ -5,12 +5,15 @@
 {% block content %}
 <div class="hero-content-wrapper">
     <div class="hero-content">
-        <h1>🎓 Bolaquent</h1>
-        <h2>Multi-Tiered Vocabulary & Grammar Learning</h2>
-        <p>From early verbal development to advanced academics - personalized learning experiences for every stage of cognitive growth.</p>
+        <!-- Main Title Section with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 20px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h1>🎓 Bolaquent</h1>
+            <h2>Multi-Tiered Vocabulary & Grammar Learning</h2>
+            <p>From early verbal development to advanced academics - personalized learning experiences for every stage of cognitive growth.</p>
+        </div>
         
-        <!-- Age Tiers List (Original Structure) -->
-        <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+        <!-- Age Tiers List with Enhanced Contrast Panel -->
+        <div style="max-width: 650px; margin: 0 auto; text-align: left; background: rgba(0, 0, 0, 0.8); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15);">
             <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); margin-bottom: 1.5rem;">🎯 Age-Appropriate Learning Tiers:</h3>
             <ul style="font-size: 1.1em; line-height: 1.8; color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); list-style: none; padding-left: 0;">
                 <li style="margin-bottom: 0.5rem;">
@@ -109,7 +112,7 @@
         </div>
         
         <!-- Admin Links -->
-        <div style="margin-top: 3rem; opacity: 0.8;">
+        <div style="margin-top: 3rem; background: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 12px; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
             <a href="{{ url_for('init_db') }}" style="color: rgba(255,255,255,0.9); margin: 0 1rem; text-decoration: none; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">Initialize Database</a>
             <span style="color: rgba(255,255,255,0.7);">|</span>
             <a href="/admin" style="color: rgba(255,255,255,0.9); margin: 0 1rem; text-decoration: none; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">Admin Panel</a>

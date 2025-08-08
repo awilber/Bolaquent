@@ -7,17 +7,19 @@
 {% block content %}
 <div class="hero-content-wrapper">
     <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
-        <!-- Age-Appropriate Header -->
+        <!-- Age-Appropriate Header with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
 {% if user.tier_id <= 2 %}
-    <div class="playful-header" style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">
+    <div class="playful-header" style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); background: none; padding: 0; border: none;">
         <h2>🌟 {{ user.username }}'s Learning Adventure! 🌟</h2>
         <div class="mascot">🦄</div>
     </div>
 {% elif user.tier_id <= 4 %}
-    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">📊 {{ user.username }}'s Learning Dashboard</h2>
+    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0;">📊 {{ user.username }}'s Learning Dashboard</h2>
 {% else %}
-    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">📈 Learning Analytics Dashboard</h2>
+    <h2 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0;">📈 Learning Analytics Dashboard</h2>
 {% endif %}
+        </div>
 
 <!-- Profile and Progress Section -->
 <div class="dashboard-grid">
