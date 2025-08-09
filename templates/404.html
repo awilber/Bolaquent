@@ -2,9 +2,11 @@
 
 {% block title %}Page Not Found - Bolaquent{% endblock %}
 
+{% block body_class %}hero-page hero-support{% endblock %}
+
 {% block content %}
-<div class="hero-background hero-support">
-    <div class="hero-overlay"></div>
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
     <div class="hero-content">
         <!-- Error Header with Contrast Panel -->
         <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
@@ -34,6 +36,7 @@
                 <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/auth/quick</code> - Ultra-fast demo mode</li>
             </ul>
         </div>
+    </div>
     </div>
 </div>
 
