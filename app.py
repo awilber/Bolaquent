@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, session
 from flask_cors import CORS
 from config import Config
 from models import db, AgeTier, VocabularyWord
-from utils.logger import setup_logging, log_error, log_request
 import os
 
 # Force deployment with ProductLifecycle theme system
