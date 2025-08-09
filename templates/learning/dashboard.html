@@ -160,7 +160,7 @@
     </div>
 </div>
 
-<div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0;">
+<div style="background: rgba(255, 243, 199, 0.9); padding: 15px; border-radius: 8px; margin: 20px 0; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
     <h4>💡 Learning Tips for {{ user.age_tier.name if user.age_tier else 'Your' }} Tier:</h4>
     {% if user.age_tier %}
         {% if user.tier_id == 1 %}
@@ -177,6 +177,7 @@
             <p>Set specific vocabulary goals for your career or interests. Use spaced repetition for long-term retention.</p>
         {% endif %}
     {% endif %}
+    </div>
     </div>
 </div>
 {% endblock %}
