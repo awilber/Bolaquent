@@ -15,8 +15,7 @@ def create_app():
     db.init_app(app)
     CORS(app)
 
-    # Setup comprehensive logging
-    logger = setup_logging(app)
+    # Logging removed for simplified deployment
 
     # Create upload directory
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
@@ -34,12 +33,10 @@ def create_app():
     @app.route("/")
     def index():
         try:
-            log_request("index", "GET", session.get("username"))
             # Only redirect to dashboard if user specifically requests it
             # Allow homepage to be shown to all users for marketing/demo purposes
             return render_template("index.html")
         except Exception as e:
-            log_error(e, "index_route")
             return render_template("index.html")  # Fail gracefully
 
     # Quick access routes for demos
@@ -55,12 +52,10 @@ def create_app():
 
     @app.errorhandler(404)
     def not_found(error):
-        log_error(error, "404_error")
         return render_template("404.html"), 404
 
     @app.errorhandler(500)
     def server_error(error):
-        log_error(error, "500_error")
         return render_template("500.html"), 500
 
     @app.route("/init-db")
