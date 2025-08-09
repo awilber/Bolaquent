@@ -259,6 +259,45 @@ jobs:
           curl -f http://localhost:5000/ && echo "✅ App on 5000" || echo "⚠️ Port 5000 failed"
           curl -f http://localhost:5010/ && echo "✅ App on 5010" || echo "⚠️ Port 5010 failed"
           
+          # Fix nginx configuration to proxy to correct port
+          echo "🔧 Fixing nginx configuration..."
+          sudo tee /etc/nginx/sites-available/default > /dev/null << 'NGINXEOF'
+        server {
+            listen 80 default_server;
+            listen [::]:80 default_server;
+            
+            server_name _;
+            
+            location / {
+                proxy_pass http://127.0.0.1:5000;
+                proxy_set_header Host \$host;
+                proxy_set_header X-Real-IP \$remote_addr;
+                proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto \$scheme;
+                proxy_buffering off;
+                proxy_http_version 1.1;
+                proxy_connect_timeout 5s;
+                proxy_send_timeout 60s;
+                proxy_read_timeout 60s;
+            }
+            
+            location /static/ {
+                alias /home/ec2-user/bolaquent-app/static/;
+                expires 1y;
+                add_header Cache-Control "public, immutable";
+            }
+        }
+        NGINXEOF
+          
+          # Test and reload nginx
+          sudo nginx -t && sudo systemctl reload nginx || echo "⚠️ Nginx reload failed"
+          sudo systemctl enable nginx
+          sudo systemctl start nginx
+          
+          # Test nginx proxy
+          sleep 3
+          curl -I http://localhost/ && echo "✅ Nginx proxy working" || echo "⚠️ Nginx proxy needs troubleshooting"
+          
           # Verify deployed version has ProductLifecycle themes (check production port)
           echo "🔍 Verifying deployed version has correct theme system:"
           curl -s http://localhost:5001/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected on 5001"
