@@ -74,19 +74,37 @@
         </div>
         
         <!-- Call-to-Action Buttons -->
-        {% if not session.user_id %}
-            <div class="hero-cta" style="margin-top: 3rem;">
+        <div class="hero-cta" style="margin-top: 3rem;">
+            {% if session.user_id %}
+                <!-- User has access - show main learning features -->
+                <a href="{{ url_for('learning.dashboard') }}" class="hero-btn hero-btn-primary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    📊 Learning Dashboard
+                </a>
+                <a href="{{ url_for('learning.vocabulary') }}" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    📚 Vocabulary
+                </a>
+                <a href="{{ url_for('learning.practice') }}" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    🎯 Practice
+                </a>
+            {% else %}
+                <!-- Fallback if session setup failed -->
                 <a href="{{ url_for('auth.register') }}" class="hero-btn hero-btn-primary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
                     🚀 Get Started
                 </a>
                 <a href="{{ url_for('auth.login') }}" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
                     🔐 Login
                 </a>
-                <a href="/demo" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
-                    ✨ Try Demo
-                </a>
+            {% endif %}
+            
+            <!-- Optional login for registered users -->
+            <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; opacity: 0.8;">
+                    💡 Want to save your progress? 
+                    <a href="{{ url_for('auth.login') }}" style="color: #fbbf24; text-decoration: none;">Login here</a> 
+                    or <a href="{{ url_for('auth.register') }}" style="color: #fbbf24; text-decoration: none;">create an account</a>
+                </p>
             </div>
-        {% endif %}
+        </div>
 
         <!-- Features Grid (Original Style) -->
         <div style="margin-top: 3rem; padding: 2rem; background: rgba(0, 0, 0, 0.6); border-radius: 16px; backdrop-filter: blur(12px);">

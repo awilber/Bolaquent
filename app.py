@@ -33,8 +33,15 @@ def create_app():
     @app.route("/")
     def index():
         try:
-            # Only redirect to dashboard if user specifically requests it
-            # Allow homepage to be shown to all users for marketing/demo purposes
+            # Auto-setup guest access if not already logged in
+            if "user_id" not in session:
+                session["user_id"] = "guest"
+                session["username"] = "Guest User"
+                session["tier_id"] = 3  # Elementary tier (good default)
+                session["is_guest"] = True
+                session["age"] = 10  # Default age for elementary tier
+            
+            # Show homepage with access to learning features
             return render_template("index.html")
         except Exception as e:
             return render_template("index.html")  # Fail gracefully
