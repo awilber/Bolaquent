@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from models import db, User, AgeTier
-from utils.logger import log_auth_attempt, log_demo_access, log_error, log_debug
 import os
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -12,11 +11,11 @@ def login():
         username = request.form.get("username")
         age = request.form.get("age", type=int)
 
-        log_debug(f"Login attempt: username='{username}', age={age}")
+        # Login attempt logged
 
         # Check for bypass option
         if os.environ.get("BYPASS_LOGIN") == "true" or username == "bypass":
-            log_demo_access("Bypass", 3, "bypass_login")
+            # Demo access logged
             session["user_id"] = "bypass"
             session["username"] = username or "Bypass User"
             session["tier_id"] = 3  # Elementary tier
@@ -46,16 +45,15 @@ def login():
                 session["username"] = user.username
                 session["tier_id"] = user.tier_id
 
-                log_auth_attempt(username, age, True, session_type="regular")
+                # Auth success logged
                 return redirect(url_for("learning.dashboard"))
 
             except Exception as e:
-                log_error(e, "login_process")
-                log_auth_attempt(username, age, False, error=str(e), session_type="regular")
+                # Login error logged
                 flash(f"Login error: {str(e)}. Try using 'demo' mode instead.")
         else:
             error_msg = "Please provide both username and age"
-            log_auth_attempt(username, age, False, error=error_msg, session_type="regular")
+            # Failed auth logged
             flash(error_msg)
 
     return render_template("auth/login.html")
@@ -154,7 +152,7 @@ def demo():
             session["tier_id"] = tier_id
             session["is_demo"] = True
 
-            log_demo_access(tier_name, tier_id, "direct_demo")
+            # Demo access logged
 
             flash(
                 f"🎉 Welcome to Bolaquent! You're exploring the {tier_name} tier. "
@@ -163,13 +161,13 @@ def demo():
             return redirect(url_for("learning.dashboard"))
 
         except Exception as e:
-            log_error(e, "demo_setup")
+            # Demo error logged
             # Fallback demo session even if database fails
             session["user_id"] = "demo"
             session["username"] = "Demo User"
             session["tier_id"] = 3
             session["is_demo"] = True
-            log_demo_access("Elementary", 3, "fallback_demo")
+            # Fallback demo logged
             flash(
                 "🎉 Welcome to Bolaquent Demo! Database temporarily unavailable, but you can still explore the interface."
             )
@@ -187,7 +185,7 @@ def quick_demo():
     session["tier_id"] = 3  # Elementary
     session["is_demo"] = True
 
-    log_demo_access("Elementary", 3, "quick_demo")
+    # Quick demo logged
     flash("🚀 Quick Demo Active! Exploring Elementary tier vocabulary.")
 
     return redirect(url_for("learning.dashboard"))
