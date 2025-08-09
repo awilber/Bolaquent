@@ -650,8 +650,7 @@ if __name__ == "__main__":
     # Production deployment optimization
     if os.environ.get("FLASK_ENV") == "production":
         print("Running in production mode with socket reuse enabled")
-        # Use port 5001 in production to avoid common port conflicts
-        prod_port = 5001 if port == 5000 else port
-        app.run(debug=False, host="0.0.0.0", port=prod_port, use_reloader=False)
+        # Always respect the PORT environment variable in production
+        app.run(debug=False, host="0.0.0.0", port=port, use_reloader=False)
     else:
         app.run(debug=True, host="0.0.0.0", port=port)
