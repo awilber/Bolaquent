@@ -298,11 +298,15 @@ jobs:
           sleep 3
           curl -I http://localhost/ && echo "✅ Nginx proxy working" || echo "⚠️ Nginx proxy needs troubleshooting"
           
-          # Verify deployed version has ProductLifecycle themes (check production port)
+          # EMERGENCY FIX: Run nginx configuration fix
+          echo "🚨 Running emergency nginx fix..."
+          chmod +x deployment/emergency-fix.sh
+          ./deployment/emergency-fix.sh
+          
+          # Verify deployed version has ProductLifecycle themes
           echo "🔍 Verifying deployed version has correct theme system:"
-          curl -s http://localhost:5001/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected on 5001"
           curl -s http://localhost:5000/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected on 5000"
-          curl -I http://localhost:5001/static/css/additional-themes.css || echo "⚠️ Additional themes file missing on 5001"
+          curl -I http://localhost:5000/static/css/additional-themes.css || echo "⚠️ Additional themes file missing"
         EOF
         
         # Clean up
