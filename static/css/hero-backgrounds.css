@@ -47,6 +47,11 @@ body.hero-page.hero-welcome {
     background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
 }
 
+/* Error Pages - Support & Help */
+body.hero-page.hero-support {
+    background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
 /* Container adjustments for hero pages */
 body.hero-page .container {
     background: transparent !important;
@@ -254,11 +259,32 @@ body.hero-page .nav-user-info span {
     body.hero-page {
         background-attachment: scroll !important; /* iOS Safari fix */
         background-size: cover !important; 
-        background-position: center 20% !important; /* Show more of image top on mobile */
+        background-position: center 30% !important; /* Optimized for mobile visibility */
         /* Ensure images load on mobile */
         -webkit-background-size: cover !important;
         -moz-background-size: cover !important;
         -o-background-size: cover !important;
+    }
+
+    /* Specific mobile optimizations for different hero types */
+    body.hero-page.hero-learning {
+        background-position: center 25% !important; /* Show more of the learning environment */
+    }
+
+    body.hero-page.hero-vocabulary {
+        background-position: center 35% !important; /* Focus on book/reading area */
+    }
+
+    body.hero-page.hero-practice {
+        background-position: center 40% !important; /* Show interactive elements */
+    }
+
+    body.hero-page.hero-achievement {
+        background-position: center 20% !important; /* Show celebration/success imagery */
+    }
+
+    body.hero-page.hero-welcome {
+        background-position: center 30% !important; /* Welcoming environment focus */
     }
 }
 
