@@ -40,7 +40,7 @@ def create_app():
                 session["tier_id"] = 3  # Elementary tier (good default)
                 session["is_guest"] = True
                 session["age"] = 10  # Default age for elementary tier
-            
+
             # Show homepage with access to learning features
             return render_template("index.html")
         except Exception as e:
