@@ -298,15 +298,136 @@ jobs:
           sleep 3
           curl -I http://localhost/ && echo "✅ Nginx proxy working" || echo "⚠️ Nginx proxy needs troubleshooting"
           
-          # EMERGENCY FIX: Run nginx configuration fix
-          echo "🚨 Running emergency nginx fix..."
-          chmod +x deployment/emergency-fix.sh
-          ./deployment/emergency-fix.sh
+          # FINAL NGINX FIX - Embedded in pipeline
+          echo "🚨 FINAL FIX: Configure nginx to make http://54.161.222.239/ work"
           
-          # Verify deployed version has ProductLifecycle themes
-          echo "🔍 Verifying deployed version has correct theme system:"
-          curl -s http://localhost:5000/ | grep -E "(data-theme|theme-selector)" || echo "⚠️ Theme system not detected on 5000"
-          curl -I http://localhost:5000/static/css/additional-themes.css || echo "⚠️ Additional themes file missing"
+          # Kill ALL old Flask processes
+          sudo pkill -f "python.*app.py" || true
+          sudo pkill -f "Flask" || true
+          sudo lsof -ti:5000 | xargs -r sudo kill -9 || true
+          sudo lsof -ti:5001 | xargs -r sudo kill -9 || true
+          sleep 5
+          
+          # Remove ALL nginx configurations to start fresh
+          sudo rm -f /etc/nginx/sites-enabled/* || true
+          sudo rm -f /etc/nginx/sites-available/default || true
+          sudo rm -f /etc/nginx/conf.d/*.conf || true
+          
+          # Create definitive nginx configuration
+          sudo tee /etc/nginx/conf.d/bolaquent-final.conf > /dev/null << 'FINALCONFIG'
+        server {
+            listen 80 default_server;
+            listen [::]:80 default_server;
+            server_name _;
+            
+            # Main proxy location
+            location / {
+                proxy_pass http://127.0.0.1:5000;
+                proxy_set_header Host \$host;
+                proxy_set_header X-Real-IP \$remote_addr;
+                proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto \$scheme;
+                proxy_buffering off;
+                proxy_request_buffering off;
+                proxy_http_version 1.1;
+                proxy_connect_timeout 10s;
+                proxy_send_timeout 60s;
+                proxy_read_timeout 60s;
+                proxy_redirect off;
+            }
+            
+            # Static files
+            location /static/ {
+                alias /home/ec2-user/bolaquent-app/static/;
+                expires 1d;
+                add_header Cache-Control "public";
+            }
+            
+            # Health check
+            location /health-check {
+                return 200 "OK";
+                add_header Content-Type text/plain;
+            }
+        }
+        FINALCONFIG
+          
+          # Test nginx configuration
+          if sudo nginx -t; then
+              echo "✅ Nginx config valid"
+          else
+              echo "❌ Nginx config failed"
+              exit 1
+          fi
+          
+          # Restart nginx completely
+          sudo systemctl stop nginx || true
+          sleep 3
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
+          
+          # Verify nginx is running
+          if sudo systemctl is-active nginx >/dev/null; then
+              echo "✅ Nginx is running"
+          else
+              echo "❌ Nginx failed to start"
+              sudo systemctl status nginx
+              exit 1
+          fi
+          
+          # Start fresh Flask application with dark mode
+          echo "🚀 Starting fresh Flask application..."
+          export FLASK_ENV=production
+          export PORT=5000
+          export FLASK_HOST=0.0.0.0
+          
+          nohup ./venv/bin/python app.py > /tmp/flask-final.log 2>&1 &
+          FLASK_PID=\$!
+          echo \$FLASK_PID > /tmp/flask-final.pid
+          echo "📝 Flask started with PID: \$FLASK_PID"
+          
+          # Wait for Flask to start
+          sleep 15
+          
+          # Verify Flask is running
+          if ps -p \$FLASK_PID >/dev/null; then
+              echo "✅ Flask process running"
+          else
+              echo "❌ Flask process died"
+              cat /tmp/flask-final.log
+              exit 1
+          fi
+          
+          # Test Flask directly
+          if curl -f http://localhost:5000/ >/dev/null 2>&1; then
+              echo "✅ Flask responds on port 5000"
+          else
+              echo "❌ Flask not responding"
+              cat /tmp/flask-final.log
+              exit 1
+          fi
+          
+          # Test nginx proxy - THE CRITICAL TEST
+          sleep 5
+          if curl -f http://localhost/ >/dev/null 2>&1; then
+              echo "🎉 SUCCESS: nginx proxy working on port 80!"
+              echo "🌐 http://54.161.222.239/ should now work!"
+          else
+              echo "❌ FAILED: nginx proxy not working"
+              curl -v http://localhost/ || true
+              exit 1
+          fi
+          
+          # Verify dark mode deployment
+          echo "🌙 Checking dark mode deployment..."
+          if curl -s http://localhost:5000/ | grep -q "dark-mode"; then
+              echo "✅ Dark mode deployed successfully"
+          else
+              echo "⚠️ Dark mode not detected - but site should still work"
+          fi
+          
+          echo "📊 Final verification:"
+          echo "Port 80: \$(curl -s -o /dev/null -w '%{http_code}' http://localhost/)"
+          echo "Port 5000: \$(curl -s -o /dev/null -w '%{http_code}' http://localhost:5000/)"
         EOF
         
         # Clean up
