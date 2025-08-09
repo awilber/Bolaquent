@@ -35,6 +35,64 @@
     margin: var(--spacing-md) 0;
 }
 
+/* Dashboard Card Styles - Hero Background Compatible */
+.dashboard-card {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-card h3 {
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    margin: 0 0 1rem 0;
+}
+
+.dashboard-card p {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Page Action Button Override */
+.hero-page .action-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.hero-page .action-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hero-page .action-title,
+.hero-page .action-desc {
+    color: white;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Page Quick Actions Section */
+.hero-page .quick-actions {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+}
+
+.hero-page .quick-actions h3 {
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
 @media (max-width: 768px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
