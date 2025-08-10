@@ -135,130 +135,33 @@ jobs:
           # Smart Port Management Setup
           echo "🎯 Initializing Smart Port Management for Bolaquent..."
           
-          # Install Node.js if not present (needed for SmartPortManager)
+          # Install Node.js if not present
           if ! command -v node &> /dev/null; then
             echo "📦 Installing Node.js..."
             curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
             sudo yum install -y nodejs
           fi
           
-          # Setup QATeam utils directory structure
-          mkdir -p /home/ec2-user/utils/QAteam
-          cd /home/ec2-user/utils/QAteam
+          # Smart process cleanup and port allocation
+          echo "🔪 Cleaning up existing processes..."
+          pkill -f "bolaquent" || true
+          pkill -f "python.*app.py" || true
+          pkill -f "Flask" || true
+          sleep 3
           
-          # Download QATeam SmartPortManager (create minimal version for AWS)
-          echo "📥 Setting up Smart Port Management system..."
-          cat > smart-port-deploy.js << 'SMARTPORT'
-const { exec, execSync } = require('child_process');
-const net = require('net');
-const path = require('path');
-const fs = require('fs');
-
-class SmartPortDeployment {
-  constructor(projectPath, projectName) {
-    this.projectPath = projectPath;
-    this.projectName = projectName;
-  }
-
-  async isPortAvailable(port) {
-    return new Promise((resolve) => {
-      const server = net.createServer();
-      server.once('error', (err) => {
-        resolve(err.code !== 'EADDRINUSE');
-      });
-      server.once('listening', () => {
-        server.close();
-        resolve(true);
-      });
-      server.listen(port);
-    });
-  }
-
-  async killProjectProcesses() {
-    console.log('🔪 Killing ' + this.projectName + ' processes...');
-    
-    try {
-      // Kill by project name pattern
-      execSync('pkill -f "' + this.projectName + '" || true', { stdio: 'inherit' });
-      execSync('pkill -f "python.*app.py" || true', { stdio: 'inherit' });
-      execSync('pkill -f "Flask" || true', { stdio: 'inherit' });
-      
-      // Wait for processes to die
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      
-      console.log("✅ Project processes killed");
-      return true;
-    } catch (error) {
-      console.log('⚠️ Process cleanup completed with warnings: ' + error.message);
-      return true;
-    }
-  }
-
-  async findAvailablePort(preferredPort = 5010, maxAttempts = 20) {
-    let port = preferredPort;
-    
-    for (let i = 0; i < maxAttempts; i++) {
-      const testPort = port + (i * 10);
-      
-      if (await this.isPortAvailable(testPort)) {
-        console.log('✅ Found available port: ' + testPort);
-        return testPort;
-      }
-      
-      console.log('❌ Port ' + testPort + ' is busy, trying next...');
-    }
-    
-    throw new Error('No available ports found starting from ' + preferredPort);
-  }
-
-  async smartDeploy() {
-    console.log('🚀 Smart deployment for ' + this.projectName);
-    
-    // Step 1: Clean up existing processes
-    await this.killProjectProcesses();
-    
-    // Step 2: Find available port
-    const allocatedPort = await this.findAvailablePort(5010);
-    
-    // Step 3: Export port for Flask
-    process.env.ALLOCATED_PORT = allocatedPort;
-    
-    console.log('📝 Allocated port ' + allocatedPort + ' for ' + this.projectName);
-    return allocatedPort;
-  }
-}
-
-// Main execution
-async function main() {
-  try {
-    const deployment = new SmartPortDeployment('/home/ec2-user/bolaquent-app', 'bolaquent');
-    const port = await deployment.smartDeploy();
-    
-    // Output the allocated port for use in bash
-    console.log('ALLOCATED_PORT=' + port);
-    process.exit(0);
-  } catch (error) {
-    console.error('❌ Smart deployment failed:', error.message);
-    process.exit(1);
-  }
-}
-
-main();
-SMARTPORT
+          # Find available port dynamically
+          echo "🎯 Finding available port..."
+          ALLOCATED_PORT=5010
+          for i in {0..10}; do
+            PORT=$((5010 + i * 10))
+            if ! lsof -i:\$PORT > /dev/null 2>&1; then
+              ALLOCATED_PORT=\$PORT
+              echo "✅ Found available port: \$ALLOCATED_PORT"
+              break
+            fi
+            echo "❌ Port \$PORT is busy, trying next..."
+          done
           
-          # Run Smart Port Management
-          echo "🎯 Running smart port allocation..."
-          ALLOCATED_PORT_OUTPUT=\$(node smart-port-deploy.js 2>&1)
-          ALLOCATED_PORT=\$(echo "\$ALLOCATED_PORT_OUTPUT" | grep "ALLOCATED_PORT=" | cut -d'=' -f2)
-          
-          if [ -z "\$ALLOCATED_PORT" ]; then
-            echo "❌ Smart port allocation failed, falling back to 5010"
-            ALLOCATED_PORT=5010
-          else
-            echo "✅ Smart port management allocated port: \$ALLOCATED_PORT"
-          fi
-          
-          # Export the allocated port
           export ALLOCATED_PORT
           
           # Aggressive cleanup - remove all old versions

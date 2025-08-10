@@ -1,0 +1,97 @@
+name: Simple Bolaquent CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to AWS
+      run: |
+        # Create SSH key from secret
+        echo "${{ secrets.EC2_PRIVATE_KEY }}" > private_key.pem
+        chmod 600 private_key.pem
+        
+        # Simple deployment with smart port allocation
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << 'EOF'
+          echo "🚀 Simple deployment starting..."
+          
+          # Clean up old processes
+          pkill -f "bolaquent" || true
+          pkill -f "python.*app.py" || true
+          sleep 3
+          
+          # Clean up old files
+          rm -rf bolaquent-app-old
+          if [ -d "bolaquent-app" ]; then
+            mv bolaquent-app bolaquent-app-old
+          fi
+          
+          # Clone fresh copy
+          git clone https://github.com/awilber/Bolaquent.git bolaquent-app
+          cd bolaquent-app
+          
+          # Setup Python environment
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements-prod.txt || pip install -r requirements.txt
+          
+          # Find available port
+          ALLOCATED_PORT=5010
+          for i in {0..10}; do
+            PORT=$((5010 + i * 10))
+            if ! lsof -i:$PORT > /dev/null 2>&1; then
+              ALLOCATED_PORT=$PORT
+              echo "✅ Using port: $ALLOCATED_PORT"
+              break
+            fi
+          done
+          
+          # Start Flask with allocated port
+          export PORT=$ALLOCATED_PORT
+          export FLASK_ENV=production
+          export FLASK_HOST=0.0.0.0
+          nohup python app.py > app.log 2>&1 &
+          echo $! > app.pid
+          
+          # Wait and test
+          sleep 10
+          if curl -f http://localhost:$ALLOCATED_PORT/ > /dev/null 2>&1; then
+            echo "✅ Flask started successfully on port $ALLOCATED_PORT"
+          else
+            echo "❌ Flask failed to start"
+            cat app.log
+            exit 1
+          fi
+          
+          # Simple nginx config
+          sudo tee /etc/nginx/sites-available/default > /dev/null << NGINXEND
+server {
+    listen 80 default_server;
+    server_name _;
+    location / {
+        proxy_pass http://127.0.0.1:$ALLOCATED_PORT;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+    }
+    location /static/ {
+        alias /home/ec2-user/bolaquent-app/static/;
+    }
+}
+NGINXEND
+          
+          # Restart nginx
+          sudo nginx -t && sudo systemctl reload nginx
+          
+          echo "🎉 Deployment complete: http://54.161.222.239/"
+        EOF
+        
+        # Clean up
+        rm private_key.pem
