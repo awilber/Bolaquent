@@ -45,7 +45,8 @@
     </div>
 
     {% if words %}
-        <!-- Search and Filter -->
+        <!-- Search and Filter with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="vocab-controls">
             <div class="search-box">
                 <input type="text" id="word-search" placeholder="{% if user.tier_id <= 2 %}Find a word...{% else %}Search vocabulary...{% endif %}" onkeyup="filterWords()">
@@ -62,6 +63,7 @@
                     {% if user.tier_id <= 2 %}📝 List{% else %}List View{% endif %}
                 </button>
             </div>
+        </div>
         </div>
 
         <!-- Word Grid/List -->

@@ -709,3 +709,36 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   color: white !important;
 }
+
+/* Enhanced Mobile Text Readability */
+@media (max-width: 768px) {
+  /* Ensure all hero page text elements have sufficient contrast */
+  .hero-page .vocab-controls,
+  .hero-page .practice-modes,
+  .hero-page .practice-progress-panel,
+  .hero-page .word-card,
+  .hero-page .search-box input,
+  .hero-page .view-btn {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+  }
+  
+  /* Mobile-specific text shadows for better readability */
+  .hero-page h1, .hero-page h2, .hero-page h3, .hero-page h4,
+  .hero-page p, .hero-page span, .hero-page div {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  /* Ensure buttons and interactive elements are visible */
+  .hero-page .btn,
+  .hero-page .action-btn,
+  .hero-page .view-btn,
+  .hero-page .search-btn {
+    background: rgba(0, 0, 0, 0.9) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+  }
+}

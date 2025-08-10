@@ -40,13 +40,15 @@
             </div>
         </div>
 
+        <!-- Practice Modes with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="practice-modes">
             {% if user.tier_id <= 2 %}
-                <h3>🎮 Choose Your Game!</h3>
+                <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">🎮 Choose Your Game!</h3>
             {% elif user.tier_id <= 4 %}
-                <h3>🎯 Practice Modes</h3>
+                <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">🎯 Practice Modes</h3>
             {% else %}
-                <h3>📋 Training Options</h3>
+                <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">📋 Training Options</h3>
             {% endif %}
             
             <div class="mode-grid">
@@ -99,6 +101,7 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <!-- Practice Area -->
         <div id="practice-area" class="practice-area" style="display: none;">
@@ -116,14 +119,16 @@
             </div>
         </div>
 
-        <!-- Progress Tracking -->
-        <div class="practice-progress" style="display: none;">
+        <!-- Progress Tracking with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1); display: none;" class="practice-progress-panel">
+        <div class="practice-progress" style="display: block;">
             <div class="progress-bar">
                 <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
             </div>
-            <p class="progress-text">
+            <p class="progress-text" style="color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">
                 <span id="current-word">0</span> of <span id="total-words">{{ words|length }}</span>
             </p>
+        </div>
         </div>
 
     {% else %}
@@ -346,7 +351,7 @@ function startTyping() {
 function showPracticeArea() {
     document.querySelector('.practice-modes').style.display = 'none';
     document.getElementById('practice-area').style.display = 'block';
-    document.querySelector('.practice-progress').style.display = 'block';
+    document.querySelector('.practice-progress-panel').style.display = 'block';
     updateProgress();
 }
 
