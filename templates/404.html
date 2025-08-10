@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - Bolaquent{% endblock %}
+
+{% block body_class %}hero-page hero-support{% endblock %}
+
+{% block content %}
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
+    <div class="hero-content">
+        <!-- Error Header with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h1 style="font-size: 3rem; margin: 0 0 1rem 0;">🤔 Page Not Found</h1>
+            <h2 style="margin: 0 0 1rem 0;">The page you're looking for doesn't exist, but that's okay!</h2>
+            <p style="margin: 0;">Let's get you back to learning with these instant access options:</p>
+        </div>
+        
+        <div class="hero-cta">
+            <a href="/demo" class="hero-btn hero-btn-primary">
+                🎉 <span>Try Demo</span>
+            </a>
+            <a href="/try" class="hero-btn hero-btn-secondary">
+                ⚡ <span>Quick Demo</span>
+            </a>
+            <a href="/" class="hero-btn hero-btn-secondary">
+                🏠 <span>Home</span>
+            </a>
+        </div>
+        
+        <div style="margin-top: 3rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.2);">
+            <p style="margin-bottom: 1rem; font-weight: 600;">💡 Direct access URLs that always work:</p>
+            <ul style="text-align: left; list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/demo</code> - Full vocabulary experience</li>
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/try</code> - Quick access demo</li>
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/auth/demo</code> - Alternative demo entry</li>
+                <li style="margin-bottom: 0.5rem;">• <code style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.5rem; border-radius: 4px;">/auth/quick</code> - Ultra-fast demo mode</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

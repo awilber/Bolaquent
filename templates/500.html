@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Bolaquent{% endblock %}
+
+{% block body_class %}hero-page hero-support{% endblock %}
+
+{% block content %}
+<div class="hero-content-wrapper">
+    <div style="position: relative; z-index: 2; padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;">
+    <div class="hero-content">
+        <!-- Error Header with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h1 style="font-size: 3rem; margin: 0 0 1rem 0;">⚠️ Temporary Hiccup</h1>
+            <h2 style="margin: 0 0 1rem 0;">Something went wrong, but we've got backup options!</h2>
+            <p style="margin: 0;">Our demo modes are designed to work even when the main system is having issues:</p>
+        </div>
+        
+        <div class="hero-cta">
+            <a href="/demo" class="hero-btn hero-btn-primary">
+                🎉 <span>Demo Mode</span>
+            </a>
+            <a href="/try" class="hero-btn hero-btn-secondary">
+                ⚡ <span>Quick Access</span>
+            </a>
+            <a href="/" class="hero-btn hero-btn-secondary">
+                🔄 <span>Refresh</span>
+            </a>
+        </div>
+        
+        <div style="margin-top: 3rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.2);">
+            <h4 style="color: #fbbf24; margin-bottom: 1rem; font-size: 1.25rem;">🛡️ What happened?</h4>
+            <p style="margin-bottom: 1.5rem;">The app encountered a temporary error, but our demo modes are designed to work even when the main system is having issues!</p>
+            
+            <h4 style="color: #10b981; margin-bottom: 1rem; font-size: 1.25rem;">✅ Guaranteed to work:</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <strong>Demo vocabulary browsing</strong>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <strong>Theme switching</strong>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <strong>UI exploration</strong>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <strong>All tier demonstrations</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

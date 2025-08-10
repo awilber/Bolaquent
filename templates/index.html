@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block body_class %}hero-page hero-learning{% endblock %}
+
+{% block content %}
+<div class="hero-content-wrapper">
+    <div class="hero-content">
+        <!-- Main Title Section with Contrast Panel -->
+        <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 20px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h1>🎓 Bolaquent</h1>
+            <h2>Multi-Tiered Vocabulary & Grammar Learning</h2>
+            <p>From early verbal development to advanced academics - personalized learning experiences for every stage of cognitive growth.</p>
+        </div>
+        
+        <!-- Age Tiers List with Enhanced Contrast Panel -->
+        <div style="max-width: 650px; margin: 0 auto; text-align: left; background: rgba(0, 0, 0, 0.8); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15);">
+            <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); margin-bottom: 1.5rem;">🎯 Age-Appropriate Learning Tiers:</h3>
+            <ul style="font-size: 1.1em; line-height: 1.8; color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=1) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 2-4</span> 
+                        Early Verbal - Sensory learning and repetition
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=2) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 4-6</span> 
+                        Preschool - Language explosion and social play
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=3) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 6-10</span> 
+                        Elementary - Logical thinking with concrete concepts
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=4) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 11-14</span> 
+                        Middle School - Abstract thinking development
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=5) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 15-18</span> 
+                        High School - Advanced reasoning and goals
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="{{ url_for('auth.demo', tier=6) }}" style="text-decoration: none; color: white; display: block; padding: 8px 0; border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.paddingLeft='12px';" 
+                       onmouseout="this.style.background='transparent'; this.style.paddingLeft='0';">
+                        <span class="tier-badge" style="background: rgba(0, 0, 0, 0.6); color: #fbbf24; padding: 4px 12px; border-radius: 12px; margin-right: 0.5rem; font-weight: bold;">Ages 18+</span> 
+                        Adult - Self-directed specialized learning
+                        <span style="opacity: 0.7; font-size: 0.9em; margin-left: 8px;">→ Try Now</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Call-to-Action Buttons -->
+        <div class="hero-cta" style="margin-top: 3rem;">
+            {% if session.user_id %}
+                <!-- User has access - show main learning features -->
+                <a href="{{ url_for('learning.dashboard') }}" class="hero-btn hero-btn-primary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    📊 Learning Dashboard
+                </a>
+                <a href="{{ url_for('learning.vocabulary') }}" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    📚 Vocabulary
+                </a>
+                <a href="{{ url_for('learning.practice') }}" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    🎯 Practice
+                </a>
+            {% else %}
+                <!-- Fallback if session setup failed -->
+                <a href="{{ url_for('auth.register') }}" class="hero-btn hero-btn-primary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    🚀 Get Started
+                </a>
+                <a href="{{ url_for('auth.login') }}" class="hero-btn hero-btn-secondary" style="font-size: 1.2em; padding: 12px 24px; margin: 10px;">
+                    🔐 Login
+                </a>
+            {% endif %}
+            
+            <!-- Optional login for registered users -->
+            <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px;">
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.9em; opacity: 0.8;">
+                    💡 Want to save your progress? 
+                    <a href="{{ url_for('auth.login') }}" style="color: #fbbf24; text-decoration: none;">Login here</a> 
+                    or <a href="{{ url_for('auth.register') }}" style="color: #fbbf24; text-decoration: none;">create an account</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Grid (Original Style) -->
+        <div style="margin-top: 3rem; padding: 2rem; background: rgba(0, 0, 0, 0.6); border-radius: 16px; backdrop-filter: blur(12px);">
+            <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); margin-bottom: 1.5rem; text-align: center;">✨ Features:</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">
+                    <strong style="color: #fbbf24;">🧠 Pedagogically-Based Tiers</strong><br>
+                    Learning stages based on cognitive development research
+                </div>
+                <div style="color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">
+                    <strong style="color: #fbbf24;">🎮 Age-Appropriate Gamification</strong><br>
+                    Engagement mechanics tailored for each age group
+                </div>
+                <div style="color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">
+                    <strong style="color: #fbbf24;">📈 Adaptive Progression</strong><br>
+                    Difficulty scales with learner advancement
+                </div>
+                <div style="color: white; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">
+                    <strong style="color: #fbbf24;">🌍 Multi-Platform Access</strong><br>
+                    Available across all devices and platforms
+                </div>
+            </div>
+        </div>
+        
+        <!-- Admin Links -->
+        <div style="margin-top: 3rem; background: rgba(0, 0, 0, 0.6); padding: 1rem; border-radius: 12px; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <a href="{{ url_for('init_db') }}" style="color: rgba(255,255,255,0.9); margin: 0 1rem; text-decoration: none; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">Initialize Database</a>
+            <span style="color: rgba(255,255,255,0.7);">|</span>
+            <a href="/admin" style="color: rgba(255,255,255,0.9); margin: 0 1rem; text-decoration: none; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);">Admin Panel</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

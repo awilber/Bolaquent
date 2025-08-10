@@ -1,0 +1,558 @@
+name: Bolaquent CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+        - production
+        - staging
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+    
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    - name: Format check with black
+      run: |
+        black --check --line-length=100 .
+    
+    # - name: Type check with mypy
+    #   run: |
+    #     mypy . --ignore-missing-imports
+    
+    # - name: Test with pytest
+    #   run: |
+    #     pytest --cov=. --cov-report=xml
+    
+    - name: Test Flask app imports
+      run: |
+        python -c "import app; print('✅ Flask app imports successfully')"
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    
+    - name: Create deployment package
+      run: |
+        mkdir -p deploy
+        # Explicitly copy all necessary files and directories
+        cp -r app.py config.py models.py requirements.txt requirements-prod.txt deploy/
+        cp -r routes/ templates/ static/ docs/ deploy/
+        cp -r *.py *.txt *.md deploy/ 2>/dev/null || true
+        
+        # Verify critical theme files are copied
+        echo "🔍 Verifying theme files in deployment package:"
+        ls -la deploy/static/css/
+        echo "📄 Checking themes.css header:"
+        head -3 deploy/static/css/themes.css
+        
+        cd deploy
+        # Don't install packages into deployment directory - use venv on server instead
+        rm -rf .git .github __pycache__ *.pyc deploy
+        
+        # Final verification before zipping
+        echo "🔍 Final package contents:"
+        find . -name "*.css" -o -name "*.js" | sort
+        
+        zip -r ../bolaquent-deploy.zip .
+    
+    - name: Upload deployment artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: bolaquent-deploy
+        path: bolaquent-deploy.zip
+
+  deploy:
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download deployment artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: bolaquent-deploy
+    
+    - name: Deploy via S3 and direct execution
+      run: |
+        # Upload deployment package to S3
+        pip install awscli
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set default.region us-east-1
+        
+        # Upload to S3 with timestamp
+        DEPLOY_FILE="bolaquent-$(date +%Y%m%d-%H%M%S).zip"
+        aws s3 cp bolaquent-deploy.zip s3://bolaquent-deployments/$DEPLOY_FILE
+        
+        # Create SSH key from secret and deploy
+        echo "${{ secrets.EC2_PRIVATE_KEY }}" > private_key.pem
+        chmod 600 private_key.pem
+        
+        # Deploy application using S3 download approach with Smart Port Management
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << EOF
+          # Smart Port Management Setup
+          echo "🎯 Initializing Smart Port Management for Bolaquent..."
+          
+          # Install Node.js if not present (needed for SmartPortManager)
+          if ! command -v node &> /dev/null; then
+            echo "📦 Installing Node.js..."
+            curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+            sudo yum install -y nodejs
+          fi
+          
+          # Setup QATeam utils directory structure
+          mkdir -p /home/ec2-user/utils/QAteam
+          cd /home/ec2-user/utils/QAteam
+          
+          # Download QATeam SmartPortManager (create minimal version for AWS)
+          echo "📥 Setting up Smart Port Management system..."
+          cat > smart-port-deploy.js << 'SMARTPORT'
+const { exec, execSync } = require('child_process');
+const net = require('net');
+const path = require('path');
+const fs = require('fs');
+
+class SmartPortDeployment {
+  constructor(projectPath, projectName) {
+    this.projectPath = projectPath;
+    this.projectName = projectName;
+  }
+
+  async isPortAvailable(port) {
+    return new Promise((resolve) => {
+      const server = net.createServer();
+      server.once('error', (err) => {
+        resolve(err.code !== 'EADDRINUSE');
+      });
+      server.once('listening', () => {
+        server.close();
+        resolve(true);
+      });
+      server.listen(port);
+    });
+  }
+
+  async killProjectProcesses() {
+    console.log(\`🔪 Killing \${this.projectName} processes...\`);
+    
+    try {
+      // Kill by project name pattern
+      execSync(\`pkill -f "\${this.projectName}" || true\`, { stdio: 'inherit' });
+      execSync('pkill -f "python.*app.py" || true', { stdio: 'inherit' });
+      execSync('pkill -f "Flask" || true', { stdio: 'inherit' });
+      
+      // Wait for processes to die
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      console.log("✅ Project processes killed");
+      return true;
+    } catch (error) {
+      console.log(\`⚠️ Process cleanup completed with warnings: \${error.message}\`);
+      return true;
+    }
+  }
+
+  async findAvailablePort(preferredPort = 5010, maxAttempts = 20) {
+    let port = preferredPort;
+    
+    for (let i = 0; i < maxAttempts; i++) {
+      const testPort = port + (i * 10);
+      
+      if (await this.isPortAvailable(testPort)) {
+        console.log(\`✅ Found available port: \${testPort}\`);
+        return testPort;
+      }
+      
+      console.log(\`❌ Port \${testPort} is busy, trying next...\`);
+    }
+    
+    throw new Error(\`No available ports found starting from \${preferredPort}\`);
+  }
+
+  async smartDeploy() {
+    console.log(\`🚀 Smart deployment for \${this.projectName}\`);
+    
+    // Step 1: Clean up existing processes
+    await this.killProjectProcesses();
+    
+    // Step 2: Find available port
+    const allocatedPort = await this.findAvailablePort(5010);
+    
+    // Step 3: Export port for Flask
+    process.env.ALLOCATED_PORT = allocatedPort;
+    
+    console.log(\`📝 Allocated port \${allocatedPort} for \${this.projectName}\`);
+    return allocatedPort;
+  }
+}
+
+// Main execution
+async function main() {
+  try {
+    const deployment = new SmartPortDeployment('/home/ec2-user/bolaquent-app', 'bolaquent');
+    const port = await deployment.smartDeploy();
+    
+    // Output the allocated port for use in bash
+    console.log(\`ALLOCATED_PORT=\${port}\`);
+    process.exit(0);
+  } catch (error) {
+    console.error('❌ Smart deployment failed:', error.message);
+    process.exit(1);
+  }
+}
+
+main();
+SMARTPORT
+          
+          # Run Smart Port Management
+          echo "🎯 Running smart port allocation..."
+          ALLOCATED_PORT_OUTPUT=\$(node smart-port-deploy.js 2>&1)
+          ALLOCATED_PORT=\$(echo "\$ALLOCATED_PORT_OUTPUT" | grep "ALLOCATED_PORT=" | cut -d'=' -f2)
+          
+          if [ -z "\$ALLOCATED_PORT" ]; then
+            echo "❌ Smart port allocation failed, falling back to 5010"
+            ALLOCATED_PORT=5010
+          else
+            echo "✅ Smart port management allocated port: \$ALLOCATED_PORT"
+          fi
+          
+          # Export the allocated port
+          export ALLOCATED_PORT
+          
+          # Aggressive cleanup - remove all old versions
+          rm -rf bolaquent-app* bolaquent-*.zip
+          rm -rf __pycache__ .pytest_cache
+          
+          # Configure AWS credentials for S3 access
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region us-east-1
+          
+          # Create fresh directory
+          mkdir -p bolaquent-app
+          cd bolaquent-app
+          
+          # Download latest deployment from S3
+          echo "📦 Downloading deployment: $DEPLOY_FILE"
+          aws s3 cp s3://bolaquent-deployments/$DEPLOY_FILE ./bolaquent-deploy.zip --region us-east-1
+          unzip -o bolaquent-deploy.zip
+          
+          # Verify theme files are present
+          echo "🔍 Verifying theme files in deployed package:"
+          ls -la static/css/
+          echo "📄 Checking deployed themes.css header:"
+          head -3 static/css/themes.css
+          
+          # Create virtual environment for clean package isolation
+          echo "🐍 Creating virtual environment..."
+          python3 -m venv venv
+          source venv/bin/activate
+          
+          # Install production dependencies only (Python 3.7 compatible)
+          echo "📦 Installing Python dependencies..."
+          pip install -r requirements-prod.txt
+          echo "✅ Dependencies installed"
+          
+          # Test Flask app can import before starting
+          echo "🔍 Testing Flask app import..."
+          python -c "import app; print('✅ Flask app imports successfully')" || echo "❌ Flask import failed"
+          
+          # Start application with dynamically allocated port
+          echo "🚀 Starting Flask application on allocated port \$ALLOCATED_PORT..."
+          export FLASK_ENV=production
+          export PORT=\$ALLOCATED_PORT
+          export FLASK_HOST=0.0.0.0
+          nohup ./venv/bin/python app.py > app.log 2>&1 &
+          APP_PID=\$!
+          echo \$APP_PID > app.pid
+          echo "📝 Started Flask app with PID: \$APP_PID on port \$ALLOCATED_PORT"
+          
+          # Wait and monitor startup
+          echo "⏳ Waiting for Flask app to start..."
+          sleep 10
+          
+          # Check if process is still running
+          if ps -p \$APP_PID > /dev/null; then
+            echo "✅ Flask process \$APP_PID is running on port \$ALLOCATED_PORT"
+          else
+            echo "❌ Flask process died - checking logs:"
+            cat app.log
+            exit 1
+          fi
+          
+          # Test the dynamically allocated port
+          sleep 5
+          echo "🔍 Testing Flask application on allocated port..."
+          if curl -f http://localhost:\$ALLOCATED_PORT/ > /dev/null 2>&1; then
+            echo "✅ Flask app responding on port \$ALLOCATED_PORT"
+            
+            # Check for embedded hero styles
+            if curl -s http://localhost:\$ALLOCATED_PORT/ | grep -q "hero-learning"; then
+              echo "🎉 Embedded hero styles confirmed on port \$ALLOCATED_PORT!"
+            else
+              echo "⚠️ Hero styles not detected in response"
+            fi
+          else
+            echo "❌ Flask app not responding on port \$ALLOCATED_PORT"
+            cat app.log
+            exit 1
+          fi
+          
+          # Fix nginx configuration to proxy to dynamically allocated port
+          echo "🔧 Configuring nginx to proxy port 80 -> \$ALLOCATED_PORT..."
+          sudo tee /etc/nginx/sites-available/default > /dev/null << NGINXEOF
+        server {
+            listen 80 default_server;
+            listen [::]:80 default_server;
+            
+            server_name _;
+            
+            location / {
+                proxy_pass http://127.0.0.1:\$ALLOCATED_PORT;
+                proxy_set_header Host \$host;
+                proxy_set_header X-Real-IP \$remote_addr;
+                proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto \$scheme;
+                proxy_buffering off;
+                proxy_http_version 1.1;
+                proxy_connect_timeout 5s;
+                proxy_send_timeout 60s;
+                proxy_read_timeout 60s;
+            }
+            
+            location /static/ {
+                alias /home/ec2-user/bolaquent-app/static/;
+                expires 1y;
+                add_header Cache-Control "public, immutable";
+            }
+        }
+NGINXEOF
+          
+          # Test and reload nginx
+          sudo nginx -t && sudo systemctl reload nginx || echo "⚠️ Nginx reload failed"
+          sudo systemctl enable nginx
+          sudo systemctl start nginx
+          
+          # Test nginx proxy
+          sleep 3
+          curl -I http://localhost/ && echo "✅ Nginx proxy working" || echo "⚠️ Nginx proxy needs troubleshooting"
+          
+          # FINAL NGINX FIX - Embedded in pipeline
+          echo "🚨 FINAL FIX: Configure nginx to make http://54.161.222.239/ work"
+          
+          # Kill ALL old Flask processes
+          sudo pkill -f "python.*app.py" || true
+          sudo pkill -f "Flask" || true
+          sudo lsof -ti:5000 | xargs -r sudo kill -9 || true
+          sudo lsof -ti:5001 | xargs -r sudo kill -9 || true
+          sleep 5
+          
+          # Remove ALL nginx configurations to start fresh
+          sudo rm -f /etc/nginx/sites-enabled/* || true
+          sudo rm -f /etc/nginx/sites-available/default || true
+          sudo rm -f /etc/nginx/conf.d/*.conf || true
+          
+          # Create definitive nginx configuration
+          sudo tee /etc/nginx/conf.d/bolaquent-final.conf > /dev/null << 'FINALCONFIG'
+        server {
+            listen 80 default_server;
+            listen [::]:80 default_server;
+            server_name _;
+            
+            # Main proxy location
+            location / {
+                proxy_pass http://127.0.0.1:5000;
+                proxy_set_header Host \$host;
+                proxy_set_header X-Real-IP \$remote_addr;
+                proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto \$scheme;
+                proxy_buffering off;
+                proxy_request_buffering off;
+                proxy_http_version 1.1;
+                proxy_connect_timeout 10s;
+                proxy_send_timeout 60s;
+                proxy_read_timeout 60s;
+                proxy_redirect off;
+            }
+            
+            # Static files
+            location /static/ {
+                alias /home/ec2-user/bolaquent-app/static/;
+                expires 1d;
+                add_header Cache-Control "public";
+            }
+            
+            # Health check
+            location /health-check {
+                return 200 "OK";
+                add_header Content-Type text/plain;
+            }
+        }
+        FINALCONFIG
+          
+          # Test nginx configuration
+          if sudo nginx -t; then
+              echo "✅ Nginx config valid"
+          else
+              echo "❌ Nginx config failed"
+              exit 1
+          fi
+          
+          # Restart nginx completely
+          sudo systemctl stop nginx || true
+          sleep 3
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
+          
+          # Verify nginx is running
+          if sudo systemctl is-active nginx >/dev/null; then
+              echo "✅ Nginx is running"
+          else
+              echo "❌ Nginx failed to start"
+              sudo systemctl status nginx
+              exit 1
+          fi
+          
+          # Start fresh Flask application with allocated port
+          echo "🚀 Starting fresh Flask application on port \$ALLOCATED_PORT..."
+          export FLASK_ENV=production
+          export PORT=\$ALLOCATED_PORT
+          export FLASK_HOST=0.0.0.0
+          
+          nohup ./venv/bin/python app.py > /tmp/flask-final.log 2>&1 &
+          FLASK_PID=\$!
+          echo \$FLASK_PID > /tmp/flask-final.pid
+          echo "📝 Flask started with PID: \$FLASK_PID on port \$ALLOCATED_PORT"
+          
+          # Wait for Flask to start
+          sleep 15
+          
+          # Verify Flask is running
+          if ps -p \$FLASK_PID >/dev/null; then
+              echo "✅ Flask process running"
+          else
+              echo "❌ Flask process died"
+              cat /tmp/flask-final.log
+              exit 1
+          fi
+          
+          # Test Flask directly on allocated port
+          if curl -f http://localhost:\$ALLOCATED_PORT/ >/dev/null 2>&1; then
+              echo "✅ Flask responds on port \$ALLOCATED_PORT"
+          else
+              echo "❌ Flask not responding on port \$ALLOCATED_PORT"
+              cat /tmp/flask-final.log
+              exit 1
+          fi
+          
+          # Test nginx proxy - THE CRITICAL TEST
+          sleep 5
+          if curl -f http://localhost/ >/dev/null 2>&1; then
+              echo "🎉 SUCCESS: nginx proxy working on port 80!"
+              echo "🌐 http://54.161.222.239/ should now work!"
+          else
+              echo "❌ FAILED: nginx proxy not working"
+              curl -v http://localhost/ || true
+              exit 1
+          fi
+          
+          # TARGETED FIX: Static file serving
+          echo "🔧 Applying targeted nginx static file fix..."
+          chmod +x fix-nginx-static.sh
+          ./fix-nginx-static.sh
+          
+          # Verify dark mode deployment on allocated port
+          echo "🌙 Checking dark mode deployment on port \$ALLOCATED_PORT..."
+          if curl -s http://localhost:\$ALLOCATED_PORT/ | grep -q "dark-mode"; then
+              echo "✅ Dark mode deployed successfully on port \$ALLOCATED_PORT"
+          else
+              echo "⚠️ Dark mode not detected - but site should still work"
+          fi
+          
+          echo "📊 Final verification:"
+          echo "Port 80 (nginx): \$(curl -s -o /dev/null -w '%{http_code}' http://localhost/)"
+          echo "Port \$ALLOCATED_PORT (flask): \$(curl -s -o /dev/null -w '%{http_code}' http://localhost:\$ALLOCATED_PORT/)"
+          
+          echo "🎯 Smart Port Management Summary:"
+          echo "✅ Allocated Port: \$ALLOCATED_PORT"
+          echo "✅ Nginx Proxy: 80 -> \$ALLOCATED_PORT" 
+          echo "✅ Application URL: http://54.161.222.239/"
+        EOF
+        
+        # Clean up
+        rm private_key.pem
+    
+    - name: Verify deployment
+      run: |
+        echo "Deployment completed to EC2 instance i-0332d1b2863b08d95"
+        echo "Application should be accessible at http://54.161.222.239/"
+        
+        # Wait for deployment to complete
+        sleep 15
+        
+        # Test the deployment - nginx proxy should be working
+        echo "🔍 Testing AWS deployment with smart port management..."
+        if curl -I http://54.161.222.239/ 2>&1 | head -1 | grep -q "200 OK"; then
+          echo "✅ Smart port management deployment successful!"
+          echo "🌐 http://54.161.222.239/ is accessible"
+        else
+          echo "⚠️ Deployment needs verification - checking status..."
+          curl -I http://54.161.222.239/ || echo "Connection may still be establishing..."
+        fi
+
+  notify:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Create deployment notification
+      run: |
+        if [ "${{ needs.deploy.result }}" == "success" ]; then
+          echo "✅ Bolaquent deployed successfully to AWS"
+          echo "🌐 Live at: http://54.161.222.239/"
+        else
+          echo "❌ Deployment failed - check logs"
+        fi

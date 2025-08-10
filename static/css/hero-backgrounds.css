@@ -1,0 +1,384 @@
+/* New Simple Hero Background System - Reliable Approach */
+
+/* Apply hero backgrounds directly to body elements instead of separate divs */
+body.hero-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Homepage - Learning & Growth */
+body.hero-page.hero-learning {
+    background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Dashboard - Focused Study */
+body.hero-page.hero-focus {
+    background-image: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Vocabulary - Language & Words */
+body.hero-page.hero-vocabulary {
+    background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Practice - Interactive Learning */
+body.hero-page.hero-practice {
+    background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Achievements - Success & Celebration */
+body.hero-page.hero-achievement {
+    background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Admin - Professional Management */
+body.hero-page.hero-admin {
+    background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Welcome/Auth - Welcoming Learning Environment */
+body.hero-page.hero-welcome {
+    background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Error Pages - Support & Help */
+body.hero-page.hero-support {
+    background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') !important;
+}
+
+/* Container adjustments for hero pages */
+body.hero-page .container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    min-height: 100vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Dark overlay for better text readability */
+body.hero-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* Navigation styling for hero pages */
+body.hero-page .nav {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+body.hero-page .nav a {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.hero-page .nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+body.hero-page .nav .nav-brand {
+    color: white !important;
+}
+
+body.hero-page .nav-user-info,
+body.hero-page .nav-user-info span {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Content wrapper positioning */
+.hero-content-wrapper {
+    position: relative;
+    z-index: 5;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Hero content styling with better contrast */
+.hero-content {
+    position: relative;
+    z-index: 6;
+    text-align: center;
+    color: white;
+    max-width: 1200px;
+    padding: 3rem;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: 600;
+    opacity: 0.95;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    opacity: 0.9;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+/* Feature Cards in Hero */
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    max-width: 1000px;
+}
+
+.hero-feature-card {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.hero-feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.hero-feature-description {
+    opacity: 0.9;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Call-to-Action Buttons */
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.hero-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-btn-primary {
+    background: linear-gradient(45deg, #fff 0%, #f8fafc 100%);
+    color: #1e293b;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.hero-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Optimizations - Hero Background Scaling */
+@media (max-width: 768px) {
+    body.hero-page {
+        background-attachment: scroll !important; /* iOS Safari fix */
+        background-size: cover !important; 
+        background-position: center 30% !important; /* Optimized for mobile visibility */
+        /* Ensure images load on mobile */
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+    }
+
+    /* Specific mobile optimizations for different hero types */
+    body.hero-page.hero-learning {
+        background-position: center 25% !important; /* Show more of the learning environment */
+    }
+
+    body.hero-page.hero-vocabulary {
+        background-position: center 35% !important; /* Focus on book/reading area */
+    }
+
+    body.hero-page.hero-practice {
+        background-position: center 40% !important; /* Show interactive elements */
+    }
+
+    body.hero-page.hero-achievement {
+        background-position: center 20% !important; /* Show celebration/success imagery */
+    }
+
+    body.hero-page.hero-welcome {
+        background-position: center 30% !important; /* Welcoming environment focus */
+    }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    body.hero-page {
+        background-attachment: scroll !important;
+        /* Force background to display on iOS */
+        -webkit-background-size: cover !important;
+        background-size: cover !important;
+    }
+}
+
+/* Tablet-specific adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    body.hero-page {
+        background-position: center 30%; /* Slight adjustment for tablet */
+    }
+}
+
+/* Small mobile specific - prevent over-cropping */
+@media (max-width: 480px) {
+    body.hero-page {
+        background-size: cover;
+        background-position: center 25%; /* Show more content on small screens */
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+    body.hero-page {
+        background-size: cover;
+        background-position: center center; /* Center for landscape */
+    }
+}
+
+/* Additional mobile layout optimizations */
+@media (max-width: 768px) {
+    
+    .hero-content {
+        padding: 1.5rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .hero-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+    
+    .hero-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .hero-content-wrapper {
+        min-height: calc(100vh - 56px);
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.25rem;
+    }
+    
+    .hero-content {
+        padding: 1.25rem;
+    }
+}
+
+/* Performance and Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .hero-btn,
+    .hero-feature-card {
+        transition: none;
+    }
+    
+    .hero-btn:hover,
+    .hero-feature-card:hover {
+        transform: none;
+    }
+    
+    body.hero-page {
+        background-attachment: scroll;
+    }
+}
