@@ -377,9 +377,25 @@ function showQuiz() {
     const correctDef = word.definition;
     const options = [correctDef];
     
-    // Add some dummy options for demo (in real app, would pull from other words)
-    while (options.length < 4) {
-        options.push("Sample definition " + options.length);
+    // Generate pedagogically appropriate distractors from other vocabulary words
+    const availableDistractors = practiceWords
+        .filter(w => w.word !== word.word) // Exclude current word
+        .map(w => w.definition)
+        .filter(def => def !== correctDef); // Exclude identical definitions
+    
+    // Add intelligent distractors based on tier-appropriate pedagogy
+    while (options.length < 4 && availableDistractors.length > 0) {
+        // Select random distractor and remove it from available pool
+        const randomIndex = Math.floor(Math.random() * availableDistractors.length);
+        options.push(availableDistractors.splice(randomIndex, 1)[0]);
+    }
+    
+    // Fallback: If not enough vocabulary words, add tier-appropriate distractors
+    if (options.length < 4) {
+        const tierDistractors = generateTierDistractors(word, {{ session.tier_id or 3 }});
+        while (options.length < 4 && tierDistractors.length > 0) {
+            options.push(tierDistractors.shift());
+        }
     }
     
     // Shuffle options
@@ -552,6 +568,41 @@ function finishPractice() {
     `;
     
     document.querySelector('.practice-controls').style.display = 'none';
+}
+
+// Generate age-appropriate distractor definitions when vocabulary pool is insufficient
+function generateTierDistractors(word, tierLevel) {
+    // Tier-specific distractor patterns based on pedagogical research
+    const tierDistractors = {
+        1: [ // Early Verbal (Ages 2-4): Simple opposites and common confusions
+            "Very cold", "Very small", "Goes down", "White food", 
+            "Not hot", "Very quiet", "Yellow drink", "Square toy"
+        ],
+        2: [ // Preschool (Ages 4-6): Category mixing and semantic neighbors  
+            "Feeling sad and crying", "Animal with stripes", "Color of the sky",
+            "Something you eat for breakfast", "Place where you sleep", "Sound that animals make"
+        ],
+        3: [ // Elementary (Ages 6-10): Academic concepts and grade-level vocabulary
+            "A mathematical operation", "Part of a plant that grows underground",
+            "Tool used for writing", "Subject studied in school", "Type of weather condition"
+        ],
+        4: [ // Middle School (Ages 11-14): Abstract concepts and discipline mixing
+            "Scientific process involving chemicals", "Historical event from ancient times",
+            "Literary device used in poetry", "Geographic feature found in mountains"
+        ],
+        5: [ // High School (Ages 15-18): Advanced academic terminology
+            "Philosophical concept about existence", "Advanced mathematical theorem",
+            "Biological process in cellular metabolism", "Sociological theory about human behavior"
+        ],
+        6: [ // Adult (18+): Professional and sophisticated vocabulary
+            "Complex economic principle", "Advanced psychological construct", 
+            "Specialized technical methodology", "Nuanced cultural phenomenon"
+        ]
+    };
+    
+    // Return shuffled distractors for the appropriate tier
+    const distractors = [...(tierDistractors[tierLevel] || tierDistractors[3])];
+    return distractors.sort(() => Math.random() - 0.5);
 }
 
 // Initialize
