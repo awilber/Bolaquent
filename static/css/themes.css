@@ -92,6 +92,19 @@
   --border-default: rgba(255, 255, 255, 0.12);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.16);
+  
+  /* Missing CSS Variables - Critical for Hero Background Readability */
+  --surface-color: rgba(0, 0, 0, 0.8);
+  --surface-elevated: rgba(0, 0, 0, 0.85);
+  --primary-color: #5E9EFF;
+  --primary-hover: #7DB3FF;
+  --primary-active: #4A8FE7;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-radius: 8px;
+  --success-color: #4ADE80;
+  --error-color: #F87171;
+  --warning-color: #FBBF24;
+  --background-color: rgba(0, 0, 0, 0.75);
 }
 
 /* Base HTML and Body - ProductLifecycle Global Styles */
@@ -650,4 +663,49 @@ p {
 
 .glow {
   animation: glow 2s ease-in-out infinite;
+}
+
+/* CRITICAL: Hero Background Text Readability Overrides */
+/* Ensure all interactive elements are visible over hero backgrounds */
+
+.hero-page .quiz-option,
+.hero-page .stat-card,
+.hero-page .practice-mode {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.hero-page .quiz-option:hover {
+  background: rgba(94, 158, 255, 0.8) !important;
+  border-color: #5E9EFF !important;
+  transform: translateY(-2px);
+}
+
+.hero-page .practice-mode:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Fix quiz feedback visibility */
+.hero-page .quiz-feedback {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  padding: 1rem !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Fix all card elements on hero backgrounds */
+.hero-page .dashboard-card,
+.hero-page .vocab-card,
+.hero-page .achievement-card {
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
 }
