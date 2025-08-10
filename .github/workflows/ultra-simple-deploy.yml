@@ -1,0 +1,86 @@
+name: Ultra Simple Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to AWS via SSH
+      run: |
+        echo "${{ secrets.EC2_PRIVATE_KEY }}" > private_key.pem
+        chmod 600 private_key.pem
+        
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@54.161.222.239 << 'DEPLOY_END'
+        
+        # Clean processes
+        pkill -f "bolaquent" || true
+        pkill -f "python.*app.py" || true
+        sleep 3
+        
+        # Clean files
+        rm -rf bolaquent-app-old
+        [ -d "bolaquent-app" ] && mv bolaquent-app bolaquent-app-old
+        
+        # Fresh clone
+        git clone https://github.com/awilber/Bolaquent.git bolaquent-app
+        cd bolaquent-app
+        
+        # Python setup
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+        
+        # Find port
+        ALLOCATED_PORT=5010
+        for i in {0..10}; do
+          PORT=$((5010 + i * 10))
+          if ! lsof -i:$PORT > /dev/null 2>&1; then
+            ALLOCATED_PORT=$PORT
+            break
+          fi
+        done
+        
+        # Start Flask
+        export PORT=$ALLOCATED_PORT
+        export FLASK_ENV=production
+        export FLASK_HOST=0.0.0.0
+        nohup python app.py > app.log 2>&1 &
+        echo $! > app.pid
+        
+        # Wait and test
+        sleep 10
+        curl -f http://localhost:$ALLOCATED_PORT/ || exit 1
+        
+        # Configure nginx
+        sudo tee /etc/nginx/sites-available/default > /dev/null << 'NGINX_END'
+        server {
+            listen 80 default_server;
+            server_name _;
+            location / {
+                proxy_pass http://127.0.0.1:ALLOCATED_PORT_PLACEHOLDER;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+            }
+            location /static/ {
+                alias /home/ec2-user/bolaquent-app/static/;
+            }
+        }
+        NGINX_END
+        
+        # Replace port in nginx config
+        sudo sed -i "s/ALLOCATED_PORT_PLACEHOLDER/$ALLOCATED_PORT/g" /etc/nginx/sites-available/default
+        
+        # Restart nginx
+        sudo nginx -t && sudo systemctl reload nginx
+        
+        echo "Deploy complete: http://54.161.222.239/"
+        
+        DEPLOY_END
+        
+        rm private_key.pem

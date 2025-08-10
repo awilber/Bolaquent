@@ -56,6 +56,10 @@ bolaquent-*.tar.gz
 emergency-*.zip
 minimal-*.zip
 
+# Allow GitHub workflows
+!.github/
+!.github/workflows/
+
 # Database Files (optional - consider if you want to track bolaquent.db)
 # *.db
 # *.sqlite
