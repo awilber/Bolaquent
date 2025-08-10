@@ -34,7 +34,7 @@ jobs:
         # Python setup
         python3 -m venv venv
         source venv/bin/activate
-        pip install -r requirements.txt
+        pip install -r requirements-prod.txt
         
         # Find port
         ALLOCATED_PORT=5010
