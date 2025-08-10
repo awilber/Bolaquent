@@ -1,0 +1,15 @@
+name: Test Minimal CI/CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-basic:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Basic test
+      run: |
+        echo "✅ Minimal workflow working"
+        echo "Repository is clean and ready"
+        ls -la
