@@ -175,11 +175,11 @@ class SmartPortDeployment {
   }
 
   async killProjectProcesses() {
-    console.log(\`🔪 Killing \${this.projectName} processes...\`);
+    console.log('🔪 Killing ' + this.projectName + ' processes...');
     
     try {
       // Kill by project name pattern
-      execSync(\`pkill -f "\${this.projectName}" || true\`, { stdio: 'inherit' });
+      execSync('pkill -f "' + this.projectName + '" || true', { stdio: 'inherit' });
       execSync('pkill -f "python.*app.py" || true', { stdio: 'inherit' });
       execSync('pkill -f "Flask" || true', { stdio: 'inherit' });
       
@@ -189,7 +189,7 @@ class SmartPortDeployment {
       console.log("✅ Project processes killed");
       return true;
     } catch (error) {
-      console.log(\`⚠️ Process cleanup completed with warnings: \${error.message}\`);
+      console.log('⚠️ Process cleanup completed with warnings: ' + error.message);
       return true;
     }
   }
@@ -201,18 +201,18 @@ class SmartPortDeployment {
       const testPort = port + (i * 10);
       
       if (await this.isPortAvailable(testPort)) {
-        console.log(\`✅ Found available port: \${testPort}\`);
+        console.log('✅ Found available port: ' + testPort);
         return testPort;
       }
       
-      console.log(\`❌ Port \${testPort} is busy, trying next...\`);
+      console.log('❌ Port ' + testPort + ' is busy, trying next...');
     }
     
-    throw new Error(\`No available ports found starting from \${preferredPort}\`);
+    throw new Error('No available ports found starting from ' + preferredPort);
   }
 
   async smartDeploy() {
-    console.log(\`🚀 Smart deployment for \${this.projectName}\`);
+    console.log('🚀 Smart deployment for ' + this.projectName);
     
     // Step 1: Clean up existing processes
     await this.killProjectProcesses();
@@ -223,7 +223,7 @@ class SmartPortDeployment {
     // Step 3: Export port for Flask
     process.env.ALLOCATED_PORT = allocatedPort;
     
-    console.log(\`📝 Allocated port \${allocatedPort} for \${this.projectName}\`);
+    console.log('📝 Allocated port ' + allocatedPort + ' for ' + this.projectName);
     return allocatedPort;
   }
 }
@@ -235,7 +235,7 @@ async function main() {
     const port = await deployment.smartDeploy();
     
     // Output the allocated port for use in bash
-    console.log(\`ALLOCATED_PORT=\${port}\`);
+    console.log('ALLOCATED_PORT=' + port);
     process.exit(0);
   } catch (error) {
     console.error('❌ Smart deployment failed:', error.message);
