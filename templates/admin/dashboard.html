@@ -15,9 +15,10 @@
                 <p style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);">Manage users, vocabulary, and system settings</p>
             </div>
 
-    <!-- System Stats -->
-    <div class="admin-stats">
-        <h3>📊 System Statistics</h3>
+    <!-- System Stats with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="admin-stats" style="background: none; border: none; padding: 0; margin: 0;">
+        <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">📊 System Statistics</h3>
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">{{ stats.total_users if stats.total_users else 0 }}</div>
@@ -37,10 +38,12 @@
             </div>
         </div>
     </div>
+    </div>
 
-    <!-- Tier Distribution -->
-    <div class="tier-distribution">
-        <h3>👥 User Distribution by Tier</h3>
+    <!-- Tier Distribution with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="tier-distribution" style="background: none; border: none; padding: 0; margin: 0;">
+        <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">👥 User Distribution by Tier</h3>
         <div class="tier-stats">
             {% for tier in (stats.tier_distribution if stats.tier_distribution else []) %}
                 <div class="tier-bar">
@@ -57,10 +60,12 @@
             {% endfor %}
         </div>
     </div>
+    </div>
 
-    <!-- Quick Actions -->
-    <div class="admin-actions">
-        <h3>🛠️ Quick Actions</h3>
+    <!-- Quick Actions with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="admin-actions" style="margin: 0;">
+        <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">🛠️ Quick Actions</h3>
         <div class="action-grid">
             <div class="action-card">
                 <div class="action-icon">👥</div>
@@ -100,10 +105,12 @@
             </div>
         </div>
     </div>
+    </div>
 
-    <!-- Recent Activity -->
-    <div class="recent-activity">
-        <h3>📈 Recent Activity</h3>
+    <!-- Recent Activity with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="recent-activity" style="background: none; border: none; padding: 0; margin: 0;">
+        <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">📈 Recent Activity</h3>
         <div class="activity-list">
             {% if stats.recent_activity %}
                 {% for activity in stats.recent_activity %}
@@ -140,10 +147,12 @@
             {% endif %}
         </div>
     </div>
+    </div>
 
-    <!-- Database Management -->
-    <div class="database-management">
-        <h3>🗄️ Database Management</h3>
+    <!-- Database Management with Contrast Panel -->
+    <div style="background: rgba(0, 0, 0, 0.75); padding: 2rem; border-radius: 16px; margin-bottom: 2rem; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="database-management" style="background: none; border: none; padding: 0; margin: 0;">
+        <h3 style="color: white; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); margin: 0 0 1.5rem 0;">🗄️ Database Management</h3>
         <div class="db-actions">
             <button class="btn btn-secondary" onclick="backupDatabase()">
                 💾 Backup Database
@@ -159,6 +168,7 @@
             </button>
         </div>
         </div>
+    </div>
     </div>
 </div>
 </div>
