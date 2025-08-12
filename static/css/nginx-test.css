@@ -1,0 +1,7 @@
+/* Nginx Test CSS File - Created at $(date) */
+.nginx-test { 
+    color: green; 
+    font-weight: bold; 
+}
+/* If you can see this file content, nginx static serving is working */
+EOF < /dev/null
