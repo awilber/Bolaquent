@@ -70,26 +70,14 @@ jobs:
         # Set correct permissions for static files
         chmod -R 755 static/
         
-        # Configure nginx with proper static file handling
+        # Configure nginx to proxy everything to Flask (let Flask handle static files)
         sudo tee /etc/nginx/sites-available/default > /dev/null << 'NGINX_END'
         server {
             listen 80 default_server;
             server_name _;
             
-            # Set root directory for the application
-            root /home/ec2-user/bolaquent-app;
-            
-            # Static files with root + location pattern (more reliable than alias)
-            location /static/ {
-                # Files will be served from /home/ec2-user/bolaquent-app/static/
-                try_files $uri $uri/ =404;
-                expires 1y;
-                add_header Cache-Control "public, immutable";
-                add_header X-Content-Type-Options nosniff;
-                access_log off;
-            }
-            
-            # Application proxy
+            # Proxy ALL requests to Flask - no static file handling by nginx
+            # This ensures Flask's enhanced static file serving handles everything
             location / {
                 proxy_pass http://127.0.0.1:ALLOCATED_PORT_PLACEHOLDER;
                 proxy_set_header Host $host;
@@ -97,10 +85,13 @@ jobs:
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
                 
-                # Timeout settings
+                # Increased timeout for static file serving
                 proxy_connect_timeout 60s;
                 proxy_send_timeout 60s;
                 proxy_read_timeout 60s;
+                
+                # Allow larger uploads for static files
+                client_max_body_size 10M;
             }
         }
         NGINX_END

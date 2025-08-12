@@ -57,16 +57,37 @@ def create_app():
         """Alternative demo entry point"""
         return redirect(url_for("auth.quick"))
 
-    # Static file fallback for when nginx isn't serving them correctly
+    # Enhanced static file fallback for AWS nginx issues
     @app.route('/static/<path:filename>')
     def static_fallback(filename):
         """Serve static files when nginx configuration fails"""
         try:
-            return send_from_directory(app.static_folder, filename)
+            from flask import Response
+            import mimetypes
+            
+            # Set proper content type
+            content_type = mimetypes.guess_type(filename)[0] or 'text/plain'
+            
+            # Send file with proper headers
+            response = send_from_directory(app.static_folder, filename)
+            response.headers['Content-Type'] = content_type
+            response.headers['Cache-Control'] = 'public, max-age=31536000'  # 1 year cache
+            
+            return response
         except Exception as e:
-            # Log error but don't crash the app
-            app.logger.warning(f"Static file not found: {filename}")
-            return "File not found", 404
+            # For debugging: show what files exist in static folder
+            try:
+                import os
+                static_files = []
+                for root, dirs, files in os.walk(app.static_folder):
+                    for file in files[:10]:  # Limit to first 10 files
+                        rel_path = os.path.relpath(os.path.join(root, file), app.static_folder)
+                        static_files.append(rel_path)
+                
+                debug_info = f"File not found: {filename}\nAvailable files: {', '.join(static_files)}"
+                return debug_info, 404
+            except:
+                return f"Static file not found: {filename}", 404
 
     @app.errorhandler(404)
     def not_found(error):
