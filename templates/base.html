@@ -197,6 +197,55 @@
             color: white !important;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
         }
+
+        /* CRITICAL ACTION GRID LAYOUT - Missing from AWS */
+        .action-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+            gap: 20px !important;
+            margin-top: 20px !important;
+        }
+
+        .action-btn {
+            display: block !important;
+            text-decoration: none !important;
+            background: rgba(0, 0, 0, 0.75) !important;
+            border: 2px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 12px !important;
+            padding: 24px !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+            color: white !important;
+            position: relative !important;
+            overflow: hidden !important;
+            backdrop-filter: blur(10px) !important;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            transform: translateY(-4px) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .action-icon {
+            font-size: 48px !important;
+            margin-bottom: 12px !important;
+            display: block !important;
+        }
+
+        .action-title {
+            font-size: 18px !important;
+            font-weight: bold !important;
+            margin-bottom: 8px !important;
+            color: white !important;
+        }
+
+        .action-desc {
+            font-size: 14px !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.4 !important;
+        }
     </style>
     <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
     
