@@ -57,10 +57,14 @@ jobs:
         sleep 10
         curl -f http://localhost:$ALLOCATED_PORT/ || exit 1
         
-        # Verify static files exist
-        echo "Verifying static files..."
+        # Verify static files exist and debug nginx issues
+        echo "🔍 Verifying static files structure..."
         ls -la static/ || exit 1
         ls -la static/css/ || exit 1
+        echo "📁 Full static directory structure:"
+        find static/ -type f | head -10
+        echo "📄 Sample CSS file content check:"
+        head -3 static/css/themes.css || echo "⚠️ CSS file not readable"
         echo "Static files verified."
         
         # Set correct permissions for static files
@@ -72,18 +76,17 @@ jobs:
             listen 80 default_server;
             server_name _;
             
-            # Static files first - with proper headers
+            # Set root directory for the application
+            root /home/ec2-user/bolaquent-app;
+            
+            # Static files with root + location pattern (more reliable than alias)
             location /static/ {
-                alias /home/ec2-user/bolaquent-app/static/;
+                # Files will be served from /home/ec2-user/bolaquent-app/static/
+                try_files $uri $uri/ =404;
                 expires 1y;
                 add_header Cache-Control "public, immutable";
-                access_log off;
-                
-                # Security headers
                 add_header X-Content-Type-Options nosniff;
-                
-                # Try files and fallback
-                try_files $uri $uri/ =404;
+                access_log off;
             }
             
             # Application proxy
@@ -111,9 +114,10 @@ jobs:
         # Restart nginx
         sudo systemctl reload nginx
         
-        # Verify static file serving
-        sleep 2
-        curl -I http://localhost/static/css/themes.css || echo "WARNING: Static file verification failed"
+        # Verify static file serving - test external access, not localhost
+        sleep 3
+        echo "🔍 Testing static file serving externally..."
+        curl -I http://54.161.222.239/static/css/themes.css && echo "✅ Static files accessible externally" || echo "⚠️ Static file serving failed"
         
         echo "Deploy complete: http://54.161.222.239/"
         
