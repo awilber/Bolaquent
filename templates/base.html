@@ -99,6 +99,52 @@
             text-align: center;
             color: white;
         }
+
+        /* CRITICAL CSS VARIABLES - Essential for text readability */
+        :root {
+            --surface-color: rgba(0, 0, 0, 0.8);
+            --surface-elevated: rgba(0, 0, 0, 0.85);
+            --primary-color: #5E9EFF;
+            --primary-hover: #7DB3FF;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+        }
+
+        /* CRITICAL TEXT READABILITY FIXES - Hero Background Overrides */
+        .hero-page .quiz-option,
+        .hero-page .practice-mode,
+        .hero-page .stat-card {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 2px solid rgba(255, 255, 255, 0.15) !important;
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+            border-radius: 12px !important;
+            padding: 1rem !important;
+            margin: 0.5rem 0 !important;
+        }
+
+        /* Mobile Quiz Options - Critical for iOS readability */
+        .hero-page .quiz-options .quiz-option {
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(15px) !important;
+            border: 2px solid rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+            font-weight: 600 !important;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+        }
+
+        /* Practice mode buttons and controls */
+        .hero-page .practice-controls button,
+        .hero-page .btn {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(8px) !important;
+            color: white !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+        }
     </style>
     <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
     
