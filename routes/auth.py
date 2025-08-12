@@ -37,7 +37,7 @@ def login():
                         # Default to elementary tier if no match
                         tier = AgeTier.query.filter_by(name="Elementary").first()
 
-                    user = User(username=username, age=age, tier_id=tier.id if tier else 3)
+                    user = User(username=username, email=f"{username}@bolaquent.demo", age=age, tier_id=tier.id if tier else 3)
                     db.session.add(user)
                     db.session.commit()
 
