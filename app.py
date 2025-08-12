@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, send_from_directory
 from flask_cors import CORS
 from config import Config
 from models import db, AgeTier, VocabularyWord
@@ -56,6 +56,17 @@ def create_app():
     def try_app():
         """Alternative demo entry point"""
         return redirect(url_for("auth.quick"))
+
+    # Static file fallback for when nginx isn't serving them correctly
+    @app.route('/static/<path:filename>')
+    def static_fallback(filename):
+        """Serve static files when nginx configuration fails"""
+        try:
+            return send_from_directory(app.static_folder, filename)
+        except Exception as e:
+            # Log error but don't crash the app
+            app.logger.warning(f"Static file not found: {filename}")
+            return "File not found", 404
 
     @app.errorhandler(404)
     def not_found(error):
