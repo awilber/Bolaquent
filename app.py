@@ -57,6 +57,59 @@ def create_app():
         """Alternative demo entry point"""
         return redirect(url_for("auth.quick"))
 
+    @app.route("/debug-static")
+    def debug_static():
+        """Debug static file accessibility"""
+        import os
+        static_info = []
+        
+        try:
+            static_dir = app.static_folder
+            static_info.append(f"Static folder: {static_dir}")
+            
+            if os.path.exists(static_dir):
+                static_info.append("✅ Static folder exists")
+                
+                css_dir = os.path.join(static_dir, 'css')
+                if os.path.exists(css_dir):
+                    static_info.append("✅ CSS folder exists")
+                    css_files = os.listdir(css_dir)
+                    static_info.append(f"CSS files: {', '.join(css_files)}")
+                    
+                    # Check specific files
+                    for filename in ['themes.css', 'dashboard.css']:
+                        filepath = os.path.join(css_dir, filename)
+                        if os.path.exists(filepath):
+                            size = os.path.getsize(filepath)
+                            static_info.append(f"✅ {filename}: {size} bytes")
+                        else:
+                            static_info.append(f"❌ {filename}: Missing")
+                else:
+                    static_info.append("❌ CSS folder missing")
+            else:
+                static_info.append("❌ Static folder missing")
+                
+        except Exception as e:
+            static_info.append(f"Error: {str(e)}")
+            
+        return "<br>".join(static_info)
+
+    @app.route("/test-dashboard-css")
+    def test_dashboard_css():
+        """Direct test route for dashboard.css"""
+        try:
+            import os
+            css_path = os.path.join(app.static_folder, 'css', 'dashboard.css')
+            if os.path.exists(css_path):
+                with open(css_path, 'r') as f:
+                    content = f.read()
+                    from flask import Response
+                    return Response(content, mimetype='text/css')
+            else:
+                return f"dashboard.css not found at {css_path}", 404
+        except Exception as e:
+            return f"Error: {str(e)}", 500
+
     # Enhanced static file fallback for AWS nginx issues
     @app.route('/static/<path:filename>')
     def static_fallback(filename):
