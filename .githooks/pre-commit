@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Pre-commit hook to verify static files and critical functionality
+# Install with: ln -sf ../../.githooks/pre-commit .git/hooks/pre-commit
+
+echo "🔍 Pre-commit verification..."
+
+# Verify critical static files exist
+REQUIRED_STATIC_FILES=(
+    "static/css/themes.css"
+    "static/css/dashboard.css" 
+    "static/css/hero-backgrounds.css"
+    "static/css/additional-themes.css"
+)
+
+for file in "${REQUIRED_STATIC_FILES[@]}"; do
+    if [ ! -f "$file" ]; then
+        echo "❌ CRITICAL: Missing required static file: $file"
+        exit 1
+    fi
+    echo "✅ Found: $file"
+done
+
+# Verify critical CSS content exists
+echo "🎨 Checking critical CSS content..."
+
+# Check for text readability CSS variables
+if ! grep -q "surface-color.*rgba" static/css/themes.css; then
+    echo "❌ CRITICAL: Missing CSS variables for text readability in themes.css"
+    echo "Required: --surface-color: rgba(0, 0, 0, 0.8);"
+    exit 1
+fi
+
+# Check for backdrop-filter support
+if ! grep -q "backdrop-filter.*blur" static/css/themes.css; then
+    echo "❌ CRITICAL: Missing backdrop-filter for text contrast in themes.css"
+    echo "Required: backdrop-filter: blur(10px);"
+    exit 1
+fi
+
+# Verify Flask app can start
+echo "🐍 Testing Flask app startup..."
+timeout 10 python -c "
+from app import create_app
+app = create_app()
+print('✅ Flask app can be created successfully')
+" || {
+    echo "❌ CRITICAL: Flask app failed to start"
+    exit 1
+}
+
+echo "✅ All pre-commit checks passed!"
+echo "🚀 Safe to commit and deploy"

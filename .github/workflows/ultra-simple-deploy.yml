@@ -57,18 +57,47 @@ jobs:
         sleep 10
         curl -f http://localhost:$ALLOCATED_PORT/ || exit 1
         
-        # Configure nginx
+        # Verify static files exist
+        echo "Verifying static files..."
+        ls -la static/ || exit 1
+        ls -la static/css/ || exit 1
+        echo "Static files verified."
+        
+        # Set correct permissions for static files
+        chmod -R 755 static/
+        
+        # Configure nginx with proper static file handling
         sudo tee /etc/nginx/sites-available/default > /dev/null << 'NGINX_END'
         server {
             listen 80 default_server;
             server_name _;
+            
+            # Static files first - with proper headers
+            location /static/ {
+                alias /home/ec2-user/bolaquent-app/static/;
+                expires 1y;
+                add_header Cache-Control "public, immutable";
+                access_log off;
+                
+                # Security headers
+                add_header X-Content-Type-Options nosniff;
+                
+                # Try files and fallback
+                try_files $uri $uri/ =404;
+            }
+            
+            # Application proxy
             location / {
                 proxy_pass http://127.0.0.1:ALLOCATED_PORT_PLACEHOLDER;
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
-            }
-            location /static/ {
-                alias /home/ec2-user/bolaquent-app/static/;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                
+                # Timeout settings
+                proxy_connect_timeout 60s;
+                proxy_send_timeout 60s;
+                proxy_read_timeout 60s;
             }
         }
         NGINX_END
@@ -76,11 +105,40 @@ jobs:
         # Replace port in nginx config
         sudo sed -i "s/ALLOCATED_PORT_PLACEHOLDER/$ALLOCATED_PORT/g" /etc/nginx/sites-available/default
         
+        # Test nginx config before applying
+        sudo nginx -t || exit 1
+        
         # Restart nginx
-        sudo nginx -t && sudo systemctl reload nginx
+        sudo systemctl reload nginx
+        
+        # Verify static file serving
+        sleep 2
+        curl -I http://localhost/static/css/themes.css || echo "WARNING: Static file verification failed"
         
         echo "Deploy complete: http://54.161.222.239/"
         
         DEPLOY_END
         
         rm private_key.pem
+        
+    - name: Post-Deployment Verification
+      run: |
+        echo "Verifying deployment..."
+        sleep 5
+        
+        # Test main application
+        curl -f http://54.161.222.239/ || exit 1
+        echo "✅ Application accessible"
+        
+        # Test static files specifically
+        curl -f http://54.161.222.239/static/css/themes.css || exit 1
+        echo "✅ CSS files accessible"
+        
+        curl -f http://54.161.222.239/static/css/dashboard.css || exit 1 
+        echo "✅ Dashboard CSS accessible"
+        
+        # Test contrast panel functionality (look for backdrop-filter)
+        curl -s http://54.161.222.239/static/css/themes.css | grep "backdrop-filter" || exit 1
+        echo "✅ Text readability CSS present"
+        
+        echo "🎉 Deployment verification complete!"
