@@ -110,6 +110,45 @@ def create_app():
         except Exception as e:
             return f"Error: {str(e)}", 500
 
+    # Alternative CSS serving routes that bypass nginx static interception
+    @app.route("/css/<filename>")
+    def serve_css(filename):
+        """Serve CSS files via /css/ instead of /static/css/ to bypass nginx"""
+        try:
+            import os
+            from flask import Response
+            
+            css_path = os.path.join(app.static_folder, 'css', filename)
+            if os.path.exists(css_path) and filename.endswith('.css'):
+                with open(css_path, 'r') as f:
+                    content = f.read()
+                    response = Response(content, mimetype='text/css')
+                    response.headers['Cache-Control'] = 'public, max-age=31536000'
+                    return response
+            else:
+                return f"CSS file not found: {filename}", 404
+        except Exception as e:
+            return f"Error serving CSS: {str(e)}", 500
+
+    @app.route("/js/<filename>")
+    def serve_js(filename):
+        """Serve JS files via /js/ instead of /static/js/ to bypass nginx"""
+        try:
+            import os
+            from flask import Response
+            
+            js_path = os.path.join(app.static_folder, 'js', filename)
+            if os.path.exists(js_path) and filename.endswith('.js'):
+                with open(js_path, 'r') as f:
+                    content = f.read()
+                    response = Response(content, mimetype='application/javascript')
+                    response.headers['Cache-Control'] = 'public, max-age=31536000'
+                    return response
+            else:
+                return f"JS file not found: {filename}", 404
+        except Exception as e:
+            return f"Error serving JS: {str(e)}", 500
+
     # Enhanced static file fallback for AWS nginx issues
     @app.route('/static/<path:filename>')
     def static_fallback(filename):

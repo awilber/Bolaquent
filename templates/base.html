@@ -15,10 +15,17 @@
     <!-- Performance Optimization -->
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/additional-themes.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-backgrounds.css') }}">
+    <!-- Primary CSS loading with nginx bypass for AWS -->
+    <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/additional-themes.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/hero-backgrounds.css">
+    
+    <!-- Fallback to standard static URLs for localhost -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}" onerror="this.remove()">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/additional-themes.css') }}" onerror="this.remove()">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" onerror="this.remove()">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero-backgrounds.css') }}" onerror="this.remove()">
     
     <!-- Embedded Hero Backgrounds - Backup for AWS static file issues -->
     <style>
@@ -247,7 +254,8 @@
             line-height: 1.4 !important;
         }
     </style>
-    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <!-- JavaScript loading with nginx bypass for AWS -->
+    <script src="/js/theme-manager.js" onerror="this.src='{{ url_for('static', filename='js/theme-manager.js') }}'"></script>
     
     <style>
         /* Override inline styles to use CSS variables - ProductLifecycle Style */
