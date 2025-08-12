@@ -114,7 +114,11 @@
         /* CRITICAL TEXT READABILITY FIXES - Hero Background Overrides */
         .hero-page .quiz-option,
         .hero-page .practice-mode,
-        .hero-page .stat-card {
+        .hero-page .stat-card,
+        .hero-page .dashboard-card,
+        .hero-page .progress-card,
+        .hero-page .profile-card,
+        .hero-page .quick-actions {
             background: rgba(0, 0, 0, 0.8) !important;
             backdrop-filter: blur(10px) !important;
             -webkit-backdrop-filter: blur(10px) !important;
@@ -138,12 +142,60 @@
 
         /* Practice mode buttons and controls */
         .hero-page .practice-controls button,
-        .hero-page .btn {
+        .hero-page .btn,
+        .hero-page .action-btn,
+        .hero-page .action-grid a {
             background: rgba(0, 0, 0, 0.8) !important;
             backdrop-filter: blur(8px) !important;
             color: white !important;
             border: 2px solid rgba(255, 255, 255, 0.3) !important;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Dashboard specific elements */
+        .hero-page .dashboard-grid,
+        .hero-page .action-grid,
+        .hero-page .tier-badge,
+        .hero-page .progress-bar {
+            background: rgba(0, 0, 0, 0.6) !important;
+            backdrop-filter: blur(5px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px !important;
+            padding: 0.5rem !important;
+        }
+
+        /* Comprehensive coverage for all hero page text containers */
+        .hero-page .vocabulary-container,
+        .hero-page .achievements-container,
+        .hero-page .stats-grid,
+        .hero-page .vocab-stats,
+        .hero-page .achievement-stats,
+        .hero-page .vocab-controls,
+        .hero-page .playful-header,
+        .hero-page .admin-stats,
+        .hero-page .tier-distribution,
+        .hero-page .admin-actions,
+        .hero-page .recent-activity,
+        .hero-page .database-management {
+            background: rgba(0, 0, 0, 0.75) !important;
+            backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            padding: 1.5rem !important;
+            margin: 1rem 0 !important;
+            color: white !important;
+        }
+
+        /* Text elements within containers */
+        .hero-page .stat-card h3,
+        .hero-page .dashboard-card h3,
+        .hero-page .profile-card h3,
+        .hero-page .progress-card h3,
+        .hero-page h3,
+        .hero-page h2,
+        .hero-page p {
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
         }
     </style>
     <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
